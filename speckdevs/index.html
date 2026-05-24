@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeckDevs | Premium Creative Tech Agency & Studio</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans (Body) & Syne (Headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for Premium Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgLight: '#F9F9F9',
+                        primaryDark: '#191949',
+                        accentOrange: '#FE6062',
+                        accentGreen: '#6CA891',
+                        greyText: '#707070',
+                        lightGreyBorder: '#C2B6B6',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Syne"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'bento': '24px',
+                        'bento-lg': '32px',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -10px rgba(25, 25, 73, 0.04)',
+                        'premium': '0 20px 50px -15px rgba(25, 25, 73, 0.08)',
+                        'glow-orange': '0 10px 30px -5px rgba(254, 96, 98, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Premium Aesthetics */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F9F9F9;
+            color: #191949;
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Syne', sans-serif;
+        }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(249, 249, 249, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(194, 182, 182, 0.3);
+        }
+
+        /* Premium Bento Cards */
+        .bento-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(194, 182, 182, 0.25);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(108, 168, 145, 0.5);
+            box-shadow: 0 20px 40px -15px rgba(25, 25, 73, 0.06);
+        }
+
+        /* Ambient Nature Orbs */
+        .orb-green {
+            background: radial-gradient(circle, rgba(108, 168, 141, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(40px);
+        }
+
+        .orb-orange {
+            background: radial-gradient(circle, rgba(254, 96, 98, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(40px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F9F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C2B6B6;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #707070;
+        }
+
+        /* Infinite Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Page Transition Animations */
+        .page-enter {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        .page-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .page-exit {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .page-exit-active {
+            opacity: 0;
+            transform: translateY(-15px);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Custom Grid Pattern for Hero Backgrounds */
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(25, 25, 73, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(25, 25, 73, 0.02) 1px, transparent 1px);
+        }
+
+        /* AI Elements Custom Styles */
+        .typing-dots span {
+            animation: typing 1.4s infinite both;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: .2s; }
+        .typing-dots span:nth-child(3) { animation-delay: .4s; }
+        @keyframes typing {
+            0% { opacity: .2; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-4px); }
+            100% { opacity: .2; transform: translateY(0); }
+        }
+        .sprout-chat-container {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accentOrange selection:text-white">
+
+    <!-- FLOATING DECORATIVE BACKGROUND AMBIENCE -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] orb-green rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] orb-orange rounded-full"></div>
+        <div class="absolute top-[40%] right-[15%] w-[35vw] h-[35vw] orb-green rounded-full opacity-60"></div>
+        <div class="absolute inset-0 grid-bg opacity-40"></div>
+    </div>
+
+    <!-- STICKY FLOATING GLASS NAVBAR -->
+    <header class="fixed top-6 left-0 right-0 z-50 px-4 md:px-8 max-w-7xl mx-auto">
+        <nav class="glass-nav rounded-[24px] px-6 py-4 flex items-center justify-between shadow-soft">
+            <!-- Brand Logo -->
+            <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group focus:outline-none">
+                <div class="relative w-10 h-10 flex items-center justify-center bg-primaryDark rounded-[14px] overflow-hidden transition-all duration-300 group-hover:scale-105">
+                    <!-- Leaf visual combined with geometric node -->
+                    <span class="absolute inset-0 bg-gradient-to-tr from-accentGreen to-transparent opacity-40"></span>
+                    <i data-lucide="leaf" class="text-white w-5 h-5 z-10"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="heading-font font-extrabold text-[1.15rem] leading-none tracking-tight text-primaryDark">SpeckDevs</span>
+                    <span class="text-[9px] font-semibold text-accentOrange tracking-widest uppercase">Ecosystem Tech</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links - Active States Handled via JS -->
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="#home" onclick="navigateTo('home')" class="nav-link px-4 py-2 rounded-full text-sm font-semibold text-primaryDark hover:bg-black/5 transition-all">Home</a>
+                <a href="#about" onclick="navigateTo('about')" class="nav-link px-4 py-2 rounded-full text-sm font-semibold text-greyText hover:text-primaryDark hover:bg-black/5 transition-all">About</a>
+                <a href="#products" onclick="navigateTo('products')" class="nav-link px-4 py-2 rounded-full text-sm font-semibold text-greyText hover:text-primaryDark hover:bg-black/5 transition-all">Products</a>
+                <a href="#projects" onclick="navigateTo('projects')" class="nav-link px-4 py-2 rounded-full text-sm font-semibold text-greyText hover:text-primaryDark hover:bg-black/5 transition-all">Projects</a>
+                <a href="#brands" onclick="navigateTo('brands')" class="nav-link px-4 py-2 rounded-full text-sm font-semibold text-greyText hover:text-primaryDark hover:bg-black/5 transition-all">Brands</a>
+            </div>
+
+            <!-- CTA Right Action -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#contact" onclick="navigateTo('contact')" class="relative inline-flex items-center justify-center px-5 py-2.5 rounded-full font-bold text-sm text-white bg-primaryDark hover:bg-accentOrange transition-all duration-300 shadow-soft overflow-hidden group">
+                    <span class="relative z-10 flex items-center gap-2">
+                        Get Started <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl hover:bg-black/5 transition-all focus:outline-none" aria-label="Toggle Menu">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 text-primaryDark"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 bg-white/95 backdrop-blur-xl border border-lightGreyBorder/20 rounded-[24px] p-6 shadow-premium flex flex-col gap-4 z-40 transition-all">
+            <a href="#home" onclick="navigateTo('home'); toggleMobileMenu()" class="mobile-nav-link text-lg font-bold text-primaryDark py-2 border-b border-gray-100 flex items-center justify-between">Home <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="#about" onclick="navigateTo('about'); toggleMobileMenu()" class="mobile-nav-link text-lg font-bold text-greyText py-2 border-b border-gray-100 flex items-center justify-between">About <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="#products" onclick="navigateTo('products'); toggleMobileMenu()" class="mobile-nav-link text-lg font-bold text-greyText py-2 border-b border-gray-100 flex items-center justify-between">Products <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="#projects" onclick="navigateTo('projects'); toggleMobileMenu()" class="mobile-nav-link text-lg font-bold text-greyText py-2 border-b border-gray-100 flex items-center justify-between">Projects <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="#brands" onclick="navigateTo('brands'); toggleMobileMenu()" class="mobile-nav-link text-lg font-bold text-greyText py-2 border-b border-gray-100 flex items-center justify-between">Brands <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="#contact" onclick="navigateTo('contact'); toggleMobileMenu()" class="mobile-nav-link text-lg font-bold text-greyText py-2 flex items-center justify-between">Contact Us <i data-lucide="arrow-right" class="w-4 h-4 text-accentOrange"></i></a>
+        </div>
+    </header>
+
+    <!-- MAIN PAGE CONTAINER (DYNAMIC SPA CONTENT) -->
+    <main id="spa-content-container" class="relative z-10 pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto transition-all duration-500">
+        <!-- Content gets injected here via modern JS router -->
+    </main>
+
+    <!-- FLOATING SPROUT-AI BOT COMPONENT -->
+    <div id="floating-sprout-ai" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
+        <!-- Chatbox Container -->
+        <div id="sprout-chat-window" class="sprout-chat-container hidden pointer-events-auto w-[92vw] sm:w-[380px] h-[500px] bg-white border border-lightGreyBorder/30 rounded-[24px] shadow-premium flex flex-col overflow-hidden opacity-0 translate-y-4">
+            <!-- Header -->
+            <div class="bg-primaryDark text-white p-4.5 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-accentGreen/20 flex items-center justify-center">
+                        <i data-lucide="sparkles" class="w-4.5 h-4.5 text-accentGreen"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-sm heading-font tracking-tight leading-tight">SproutAI Copilot</h4>
+                        <span class="text-[9px] text-accentGreen uppercase font-bold tracking-widest">Ecosystem Assistant</span>
+                    </div>
+                </div>
+                <!-- API Settings Button -->
+                <div class="flex items-center gap-1">
+                    <button onclick="toggleApiSettings()" title="API Key Configuration" class="p-1.5 rounded-lg hover:bg-white/10 text-white/75 hover:text-white transition-all">
+                        <i data-lucide="settings" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleSproutChat()" class="p-1.5 rounded-lg hover:bg-white/10 text-white/75 hover:text-white transition-all">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- API Configuration Banner (Collapsible) -->
+            <div id="chat-api-settings" class="hidden bg-neutral-100 border-b border-lightGreyBorder/10 p-3 flex flex-col gap-2 transition-all">
+                <div class="flex justify-between items-center">
+                    <span class="text-[10px] font-bold text-primaryDark tracking-wider uppercase">Gemini API Configuration</span>
+                    <span class="text-[9px] text-greyText">(Leave blank for default)</span>
+                </div>
+                <div class="flex gap-2">
+                    <input type="password" id="gemini-key-input" placeholder="AIzaSy..." class="bg-white border border-lightGreyBorder/30 text-xs rounded-lg px-2.5 py-1.5 flex-1 focus:outline-none focus:border-accentGreen font-mono">
+                    <button onclick="saveApiKey()" class="bg-primaryDark text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-accentGreen transition-all">Save</button>
+                </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="sprout-chat-messages" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3.5 bg-neutral-50/50">
+                <!-- Welcome Message -->
+                <div class="flex items-start gap-2.5 max-w-[85%]">
+                    <div class="w-7 h-7 rounded-md bg-accentGreen/15 flex items-center justify-center text-accentGreen flex-shrink-0 mt-0.5">
+                        <i data-lucide="leaf" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div class="bg-white border border-lightGreyBorder/15 p-3 rounded-[16px] text-xs text-primaryDark leading-relaxed shadow-soft">
+                        Salutations! I am <strong>SproutAI</strong>, customized system designer for SpeckDevs. How can I assist you with your project topologies or SaaS blueprints today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Sugggestions Prompts -->
+            <div class="px-4 py-2 border-t border-lightGreyBorder/10 flex gap-2 overflow-x-auto whitespace-nowrap bg-white text-[10px] font-semibold text-greyText no-scrollbar">
+                <button onclick="sendQuickPrompt('What proprietary tools does SpeckDevs incubator have?')" class="px-2.5 py-1.5 rounded-full bg-neutral-100 hover:bg-accentGreen/10 hover:text-accentGreen border border-neutral-200/50 transition-all flex-shrink-0">Incubated Tools</button>
+                <button onclick="sendQuickPrompt('Generate an organic SaaS layout blueprint')" class="px-2.5 py-1.5 rounded-full bg-neutral-100 hover:bg-accentGreen/10 hover:text-accentGreen border border-neutral-200/50 transition-all flex-shrink-0">Organic Layout</button>
+                <button onclick="sendQuickPrompt('What is LeafDB database mapping?')" class="px-2.5 py-1.5 rounded-full bg-neutral-100 hover:bg-accentGreen/10 hover:text-accentGreen border border-neutral-200/50 transition-all flex-shrink-0">LeafDB Structure</button>
+            </div>
+
+            <!-- Input area -->
+            <form onsubmit="handleSproutChatSend(event)" class="p-3 bg-white border-t border-lightGreyBorder/15 flex gap-2 items-center">
+                <input required type="text" id="sprout-chat-input" placeholder="Query ecosystem blueprint..." class="flex-1 bg-neutral-50 border border-lightGreyBorder/25 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-accentGreen text-primaryDark placeholder-greyText/70">
+                <button type="submit" class="w-9 h-9 rounded-xl bg-primaryDark hover:bg-accentOrange text-white flex items-center justify-center transition-all shadow-soft flex-shrink-0">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Floating Button Trigger -->
+        <button onclick="toggleSproutChat()" class="pointer-events-auto w-14 h-14 rounded-full bg-primaryDark hover:bg-accentGreen text-white shadow-premium flex items-center justify-center transition-all duration-300 transform hover:scale-105 relative group">
+            <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-accentOrange border-2 border-white rounded-full animate-pulse"></span>
+            <i data-lucide="bot" id="chat-trigger-icon" class="w-6 h-6 transition-all group-hover:rotate-12"></i>
+        </button>
+    </div>
+
+    <!-- TEMPLATES FOR THE 8 DISTINCT PAGES -->
+    <div class="hidden">
+        
+        <!-- ==================== 1. HOME PAGE ==================== -->
+        <div id="temp-home">
+            <!-- Hero Header Section -->
+            <section class="mb-16 text-center lg:text-left">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 flex flex-col gap-6">
+                        <div class="inline-flex self-center lg:self-start items-center gap-2 px-4 py-2 rounded-full bg-accentGreen/10 border border-accentGreen/20 text-accentGreen font-bold text-xs tracking-wider uppercase">
+                            <span class="w-2 h-2 bg-accentGreen rounded-full animate-pulse"></span>
+                            Redefining Digital Landscapes — Version 4.0
+                        </div>
+                        <h1 class="heading-font text-4xl sm:text-6xl lg:text-7xl font-extrabold text-primaryDark leading-[1.05] tracking-tight">
+                            Synthesizing <span class="text-accentOrange">Organic</span> Design with Deep Tech Systems
+                        </h1>
+                        <p class="text-lg md:text-xl text-greyText leading-relaxed max-w-2xl font-normal">
+                            SpeckDevs drafts elite bento-grid SaaS environments, bespoke brand identities, and lightning-fast software systems inspired by nature’s flawless architecture.
+                        </p>
+                        <!-- Interactive CTA Grid -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mt-4">
+                            <a href="#projects" onclick="navigateTo('projects')" class="w-full sm:w-auto text-center px-8 py-4 rounded-[20px] bg-primaryDark text-white font-extrabold shadow-soft hover:bg-accentOrange hover:shadow-glow-orange transition-all duration-300">
+                                Explore Our Ecosystem
+                            </a>
+                            <a href="#contact" onclick="navigateTo('contact')" class="w-full sm:w-auto text-center px-8 py-4 rounded-[20px] bg-white border border-lightGreyBorder/30 text-primaryDark font-extrabold hover:border-accentGreen/80 transition-all duration-300 flex items-center justify-center gap-2">
+                                Launch Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ambient Floating Hero Deck -->
+                    <div class="lg:col-span-5 relative flex justify-center items-center">
+                        <div class="relative w-full max-w-[420px] aspect-square rounded-[32px] bg-gradient-to-tr from-accentGreen/20 via-white to-accentOrange/10 border border-lightGreyBorder/20 p-6 shadow-premium overflow-hidden">
+                            <!-- Interior Minimal Tech Graphic -->
+                            <div class="absolute inset-0 bg-grid-bg opacity-30"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-dashed border-primaryDark/15 flex items-center justify-center animate-spin" style="animation-duration: 40s;">
+                                <div class="w-36 h-36 rounded-full border border-dashed border-accentGreen/30 flex items-center justify-center">
+                                    <div class="w-24 h-24 rounded-full bg-white shadow-soft flex items-center justify-center">
+                                        <i data-lucide="cpu" class="w-8 h-8 text-accentGreen"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Stat Widget A -->
+                            <div class="absolute top-8 left-8 bg-white/85 backdrop-blur-md border border-lightGreyBorder/20 p-3.5 rounded-[18px] shadow-soft flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-accentOrange/10 flex items-center justify-center text-accentOrange">
+                                    <i data-lucide="zap" class="w-4 h-4"></i>
+                                </div>
+                                <div class="flex flex-col text-left">
+                                    <span class="text-xs text-greyText">Core Latency</span>
+                                    <span class="text-sm font-bold text-primaryDark">14ms Global</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating Stat Widget B -->
+                            <div class="absolute bottom-8 right-8 bg-white/85 backdrop-blur-md border border-lightGreyBorder/20 p-3.5 rounded-[18px] shadow-soft flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-accentGreen/10 flex items-center justify-center text-accentGreen">
+                                    <i data-lucide="activity" class="w-4 h-4"></i>
+                                </div>
+                                <div class="flex flex-col text-left">
+                                    <span class="text-xs text-greyText">System Integrity</span>
+                                    <span class="text-sm font-bold text-accentGreen">99.99% Organic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bento Layout Showcase (Premium Grid Elements) -->
+            <section class="mb-24">
+                <div class="flex flex-col gap-4 mb-10">
+                    <span class="text-xs font-bold text-accentOrange tracking-widest uppercase">Curated Ecosystem</span>
+                    <h2 class="heading-font text-3xl md:text-5xl font-extrabold text-primaryDark">The Studio Bento Matrix</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Bento Card 1: Main Studio Philosophy -->
+                    <div class="bento-card md:col-span-2 rounded-bento p-8 flex flex-col justify-between min-h-[320px]">
+                        <div class="flex items-start justify-between">
+                            <div class="w-12 h-12 rounded-[16px] bg-accentGreen/10 flex items-center justify-center text-accentGreen">
+                                <i data-lucide="anchor" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-primaryDark/5 text-primaryDark">Design Philosophy</span>
+                        </div>
+                        <div class="mt-8">
+                            <h3 class="heading-font text-2xl md:text-3xl font-bold text-primaryDark mb-3">Form Follows Photosynthesis</h3>
+                            <p class="text-greyText max-w-md">
+                                Just like natural systems, our user experiences breathe and scale optimally. We don't construct static pages; we cultivate interactive ecosystems that nurture high conversions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 2: Micro-Widget Live Server Status -->
+                    <div class="bento-card rounded-bento p-8 flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-greyText tracking-wide">Speck Nodes</span>
+                            <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-accentGreen">
+                                <span class="w-2.5 h-2.5 bg-accentGreen rounded-full animate-ping"></span> Live
+                            </span>
+                        </div>
+                        <div class="my-6">
+                            <div class="text-4xl font-extrabold text-primaryDark mb-1">99.98%</div>
+                            <div class="text-xs text-greyText">Core Service Carbon Efficiency Rating</div>
+                        </div>
+                        <div class="h-16 w-full flex items-end gap-1.5">
+                            <span class="w-full bg-accentGreen/20 rounded-t-lg h-10 hover:bg-accentGreen transition-all"></span>
+                            <span class="w-full bg-accentGreen/20 rounded-t-lg h-14 hover:bg-accentGreen transition-all"></span>
+                            <span class="w-full bg-accentGreen/20 rounded-t-lg h-12 hover:bg-accentGreen transition-all"></span>
+                            <span class="w-full bg-accentGreen/20 rounded-t-lg h-16 hover:bg-accentGreen transition-all"></span>
+                            <span class="w-full bg-accentGreen/30 rounded-t-lg h-8 hover:bg-accentGreen transition-all"></span>
+                            <span class="w-full bg-accentGreen/40 rounded-t-lg h-11 hover:bg-accentGreen transition-all"></span>
+                            <span class="w-full bg-accentGreen/20 rounded-t-lg h-15 hover:bg-accentGreen transition-all"></span>
+                            <span class="w-full bg-accentGreen rounded-t-lg h-[64px] transition-all"></span>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 3: Interactive Visual Dotted Grid drawing tool (Premium UX widget) -->
+                    <div class="bento-card rounded-bento p-8 flex flex-col justify-between min-h-[300px]">
+                        <div>
+                            <span class="text-xs font-bold text-accentOrange tracking-wider uppercase">Sandbox Play</span>
+                            <h4 class="heading-font text-lg font-bold text-primaryDark mt-2">Dotted Canvas</h4>
+                            <p class="text-xs text-greyText mt-1">Draw or hover over nodes to generate bio-energy loops.</p>
+                        </div>
+                        <!-- Canvas Draw Sandbox Grid -->
+                        <div class="my-4 grid grid-cols-7 gap-1 bg-neutral-50 p-3 rounded-[16px] border border-lightGreyBorder/10" id="sandbox-grid">
+                            <!-- Generated in JS dynamically to save space -->
+                        </div>
+                        <div class="text-[11px] text-greyText flex justify-between items-center">
+                            <span>Interactive Micro-simulation</span>
+                            <button onclick="resetSandboxGrid()" class="text-accentOrange hover:underline font-bold">Reset Nodes</button>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 4: Featured Product Preview -->
+                    <div class="bento-card md:col-span-2 rounded-bento p-8 flex flex-col justify-between">
+                        <div class="flex justify-between items-start">
+                            <div class="flex flex-col gap-1">
+                                <span class="text-xs font-bold text-accentGreen uppercase tracking-wider">Product Incubator</span>
+                                <h3 class="heading-font text-2xl font-bold text-primaryDark">LeafDB — Graph database for organic node relationships.</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-accentOrange/10 text-accentOrange rounded-full text-xs font-bold">New Release</span>
+                        </div>
+                        
+                        <div class="my-6 p-4 rounded-xl bg-primaryDark/5 border border-primaryDark/5 font-mono text-xs text-primaryDark overflow-x-auto">
+                            <code>const db = new LeafDB({ ecosystem: "Amazonian_Forest" });<br>await db.connect();<br>const relationship = db.nodes("Fern").growsNextTo("Moss");</code>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-greyText">Open-source with 4.2k GitHub Stars.</span>
+                            <a href="#products" onclick="navigateTo('products')" class="text-sm font-bold text-primaryDark hover:text-accentOrange flex items-center gap-1.5 transition-all">
+                                Try LeafDB <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust Showcase Section & Floating metrics -->
+            <section class="mb-24 rounded-bento bg-primaryDark text-white p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute inset-0 bg-grid-bg opacity-10"></div>
+                <div class="absolute -top-12 -right-12 w-64 h-64 bg-accentOrange rounded-full filter blur-[100px] opacity-20"></div>
+                <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-accentGreen rounded-full filter blur-[100px] opacity-20"></div>
+
+                <div class="relative z-10 grid md:grid-cols-4 gap-8 text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-white/10">
+                    <div class="flex flex-col gap-2">
+                        <span class="text-sm font-semibold text-accentGreen uppercase tracking-wider">Clients Worldwide</span>
+                        <div class="heading-font text-5xl font-extrabold">120+</div>
+                        <p class="text-sm text-white/60">SaaS scaleups and luxury tech brands.</p>
+                    </div>
+                    <div class="flex flex-col gap-2 md:pl-8">
+                        <span class="text-sm font-semibold text-accentOrange uppercase tracking-wider">Clean Code Metrics</span>
+                        <div class="heading-font text-5xl font-extrabold">A+</div>
+                        <p class="text-sm text-white/60">Fully modular architectures.</p>
+                    </div>
+                    <div class="flex flex-col gap-2 md:pl-8">
+                        <span class="text-sm font-semibold text-accentGreen uppercase tracking-wider">Awwwards & Honors</span>
+                        <div class="heading-font text-5xl font-extrabold">14</div>
+                        <p class="text-sm text-white/60">Recognized globally for aesthetics.</p>
+                    </div>
+                    <div class="flex flex-col gap-2 md:pl-8">
+                        <span class="text-sm font-semibold text-accentOrange uppercase tracking-wider">Studio Launch Capital</span>
+                        <div class="heading-font text-5xl font-extrabold">$24M+</div>
+                        <p class="text-sm text-white/60">Raised by products engineered by us.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== 2. ABOUT PAGE ==================== -->
+        <div id="temp-about">
+            <section class="mb-12">
+                <div class="text-center max-w-3xl mx-auto flex flex-col gap-4 mb-16">
+                    <span class="text-xs font-bold text-accentGreen tracking-widest uppercase">Our Lineage</span>
+                    <h1 class="heading-font text-4xl md:text-6xl font-extrabold text-primaryDark">Rooted in code, blooming in design</h1>
+                    <p class="text-lg text-greyText leading-relaxed">
+                        SpeckDevs is a cross-disciplinary team of visionaries, backend botanists, and visual architects crafting natural-state systems.
+                    </p>
+                </div>
+
+                <!-- Bento Grid Storytelling Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    <!-- Column 1: Founder story Card -->
+                    <div class="bento-card md:col-span-2 rounded-bento p-8 flex flex-col justify-between min-h-[400px]">
+                        <div>
+                            <div class="inline-flex px-3 py-1 rounded-full bg-accentOrange/10 text-accentOrange text-xs font-bold mb-6">Genesis</div>
+                            <h2 class="heading-font text-3xl font-bold text-primaryDark mb-4">Cultivating clean architecture since 2019</h2>
+                            <p class="text-greyText mb-4 leading-relaxed">
+                                SpeckDevs was founded on the principle that digital environments shouldn't feel sterile. By translating biological hierarchies (neural pathways, ecological symbiosis, leaf-vein structural efficiency) into computational design languages, we offer unparalleled user-journey structures.
+                            </p>
+                            <p class="text-greyText leading-relaxed">
+                                We operate in small, highly specialized teams of senior software crafts-engineers and artistic leads, guaranteeing premium execution without executive bloat.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-6 pt-6 border-t border-lightGreyBorder/10">
+                            <div class="w-12 h-12 rounded-full bg-slate-300 overflow-hidden border border-lightGreyBorder/30">
+                                <img src="https://placehold.co/150x150/191949/6CA891?text=CEO" alt="Founder Portrait" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primaryDark">Aris Thorne</h4>
+                                <span class="text-xs text-greyText">Founder & Principal Systems Director</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Studio stats / Mini cards stack -->
+                    <div class="flex flex-col gap-6">
+                        <!-- Vision Box -->
+                        <div class="bento-card rounded-bento p-6 flex-1 flex flex-col justify-between">
+                            <div class="w-10 h-10 rounded-[12px] bg-accentGreen/10 flex items-center justify-center text-accentGreen">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="heading-font text-lg font-bold text-primaryDark mb-2">The Vision</h4>
+                                <p class="text-sm text-greyText">A digital landscape that adapts, learns, and lives harmoniously alongside human intuition without friction.</p>
+                            </div>
+                        </div>
+                        <!-- Mission Box -->
+                        <div class="bento-card rounded-bento p-6 flex-1 flex flex-col justify-between">
+                            <div class="w-10 h-10 rounded-[12px] bg-accentOrange/10 flex items-center justify-center text-accentOrange">
+                                <i data-lucide="compass" class="w-5 h-5"></i>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="heading-font text-lg font-bold text-primaryDark mb-2">The Mission</h4>
+                                <p class="text-sm text-greyText">Building elite software architectures with nature-inspired layout metrics that scale up perfectly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Timeline Section -->
+                <div class="mb-16">
+                    <h3 class="heading-font text-2xl md:text-3xl font-extrabold text-primaryDark mb-8">Evolution of SpeckDevs</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="bento-card rounded-bento p-6">
+                            <span class="text-xs font-bold text-accentGreen">Q1 2020</span>
+                            <h4 class="font-bold text-primaryDark mt-2 mb-1">Sprout Foundation</h4>
+                            <p class="text-xs text-greyText">Launched studio in a cozy workspace with 3 core engineers focusing on design systems.</p>
+                        </div>
+                        <div class="bento-card rounded-bento p-6">
+                            <span class="text-xs font-bold text-accentOrange">Q3 2022</span>
+                            <h4 class="font-bold text-primaryDark mt-2 mb-1">Ecosystem Shift</h4>
+                            <p class="text-xs text-greyText">Pivoted to nature-inspired bento SaaS interfaces. Built framework models for Series A products.</p>
+                        </div>
+                        <div class="bento-card rounded-bento p-6">
+                            <span class="text-xs font-bold text-accentGreen">Q2 2024</span>
+                            <h4 class="font-bold text-primaryDark mt-2 mb-1">Product Incubator</h4>
+                            <p class="text-xs text-greyText">Incepted internal labs, spawning proprietary products like CanopyUI and LeafDB.</p>
+                        </div>
+                        <div class="bento-card rounded-bento p-6">
+                            <span class="text-xs font-bold text-accentOrange">Present</span>
+                            <h4 class="font-bold text-primaryDark mt-2 mb-1">Global Flora Scale</h4>
+                            <p class="text-xs text-greyText">Expanding digital footprints with decentralized team units worldwide, hosting 120+ platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== 3. PRODUCTS PAGE ==================== -->
+        <div id="temp-products">
+            <section class="mb-12">
+                <div class="text-center max-w-3xl mx-auto flex flex-col gap-4 mb-16">
+                    <span class="text-xs font-bold text-accentOrange tracking-widest uppercase">Internal Lab Incubators</span>
+                    <h1 class="heading-font text-4xl md:text-6xl font-extrabold text-primaryDark">Native SaaS utilities engineered to scale</h1>
+                    <p class="text-lg text-greyText leading-relaxed">
+                        We build elegant tools that bridge the gap between heavy software performance and stunning premium visual interactions.
+                    </p>
+                </div>
+
+                <!-- AI BLUEPRINT GENERATOR LAB CARD -->
+                <div class="bento-card rounded-bento p-8 mb-12 bg-gradient-to-tr from-accentGreen/10 via-white to-accentOrange/5 border border-accentGreen/30 relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-accentGreen rounded-full filter blur-[80px] opacity-20 pointer-events-none"></div>
+                    <div class="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-5 flex flex-col gap-5">
+                            <div class="inline-flex self-start items-center gap-1.5 px-3 py-1 rounded-full bg-accentGreen/20 text-accentGreen text-[10px] font-bold tracking-widest uppercase">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5 animate-pulse"></i> Gemini AI Laboratory
+                            </div>
+                            <h3 class="heading-font text-2xl md:text-3xl font-bold text-primaryDark leading-tight">Instant Ecosystem Blueprint</h3>
+                            <p class="text-sm text-greyText leading-relaxed">
+                                Pitch your startup idea, design target, or product concept. SpeckDevs' virtual lab agent will synthesize a modern, tailored bento topology and tech layout immediately.
+                            </p>
+                            <div class="flex flex-col gap-3">
+                                <input id="ai-blueprint-prompt" type="text" placeholder="e.g. A carbon-tracking application with circular telemetry graphs" class="w-full px-4 py-3 text-xs bg-white border border-lightGreyBorder/25 rounded-xl focus:outline-none focus:border-accentGreen font-medium text-primaryDark">
+                                <button onclick="generateAIBlueprint()" class="w-full py-3 bg-primaryDark hover:bg-accentOrange text-white text-xs font-bold rounded-xl shadow-soft transition-all flex items-center justify-center gap-2">
+                                    <span id="ai-lab-btn-text">Construct Topology</span> <i data-lucide="cpu" class="w-4 h-4" id="ai-lab-btn-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Result Panel -->
+                        <div class="lg:col-span-7 bg-white rounded-[20px] p-6 border border-lightGreyBorder/20 shadow-premium min-h-[250px] flex flex-col justify-between" id="ai-blueprint-result">
+                            <div class="text-center py-10 flex flex-col items-center justify-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center text-accentGreen/80">
+                                    <i data-lucide="binary" class="w-6 h-6 animate-pulse"></i>
+                                </div>
+                                <h4 class="font-bold text-sm text-primaryDark">AI Laboratory Sandbox</h4>
+                                <p class="text-xs text-greyText max-w-sm">Type your concept details in the selector inputs on the left to map real-time biological layouts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Bento Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Product 1: CanopyUI -->
+                    <div class="bento-card md:col-span-2 rounded-bento p-8 flex flex-col justify-between min-h-[440px]">
+                        <div>
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="px-3 py-1 bg-accentGreen/10 text-accentGreen rounded-full text-xs font-bold">Design System Tooling</span>
+                                <span class="text-xs font-mono text-greyText">v2.1.0 STABLE</span>
+                            </div>
+                            <h2 class="heading-font text-3xl font-extrabold text-primaryDark mb-3">CanopyUI Kit</h2>
+                            <p class="text-greyText max-w-xl leading-relaxed">
+                                The ultimate premium CSS framework providing custom organic component assets, asymmetrical responsive layouts, and automatic light/dark fluid nature grids.
+                            </p>
+                            
+                            <!-- Inside Mockup Graphics -->
+                            <div class="mt-8 grid grid-cols-3 gap-3">
+                                <div class="bg-slate-50 border border-lightGreyBorder/10 rounded-xl p-3 flex flex-col gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-accentOrange flex items-center justify-center text-white"><i data-lucide="sparkles" class="w-4 h-4"></i></div>
+                                    <span class="text-xs font-bold text-primaryDark">150+ Icons</span>
+                                </div>
+                                <div class="bg-slate-50 border border-lightGreyBorder/10 rounded-xl p-3 flex flex-col gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-accentGreen flex items-center justify-center text-white"><i data-lucide="layers" class="w-4 h-4"></i></div>
+                                    <span class="text-xs font-bold text-primaryDark">Bento Grid Configs</span>
+                                </div>
+                                <div class="bg-slate-50 border border-lightGreyBorder/10 rounded-xl p-3 flex flex-col gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-primaryDark flex items-center justify-center text-white"><i data-lucide="fingerprint" class="w-4 h-4"></i></div>
+                                    <span class="text-xs font-bold text-primaryDark">Sensory Feedback</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center mt-8 pt-6 border-t border-lightGreyBorder/10">
+                            <span class="text-xs text-greyText">Free with high premium pro extensions.</span>
+                            <a href="#contact" onclick="navigateTo('contact')" class="px-5 py-2 rounded-full bg-primaryDark text-white font-bold text-xs hover:bg-accentOrange transition-all">Download Assets</a>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: SproutAnalytics -->
+                    <div class="bento-card rounded-bento p-8 flex flex-col justify-between min-h-[440px]">
+                        <div>
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="px-3 py-1 bg-accentOrange/10 text-accentOrange rounded-full text-xs font-bold">SaaS API</span>
+                                <span class="text-xs font-mono text-greyText">99.9% CO₂ Net</span>
+                            </div>
+                            <h2 class="heading-font text-2xl font-extrabold text-primaryDark mb-3">Sprout Analytics</h2>
+                            <p class="text-sm text-greyText leading-relaxed mb-6">
+                                The world’s first API mapping telemetry of platform conversions while benchmarking the exact data server thermal profile in carbon-weighted footprints.
+                            </p>
+                            
+                            <!-- Analytics Mock Widget -->
+                            <div class="bg-gradient-to-br from-accentGreen/15 to-white border border-lightGreyBorder/10 rounded-xl p-4 flex flex-col gap-2">
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-greyText">Calculated Emission</span>
+                                    <span class="text-accentGreen font-bold">-24.2% Saved</span>
+                                </div>
+                                <div class="text-2xl font-bold text-primaryDark">0.024g / Load</div>
+                                <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-accentGreen h-full w-2/3"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2 mt-8">
+                            <button onclick="simulateTelemetry()" class="w-full py-3 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-primaryDark font-bold text-xs transition-all flex items-center justify-center gap-1.5">
+                                <i data-lucide="refresh-cw" class="w-3.5 h-3.5" id="telemetry-icon"></i> Simulate Telemetry Node
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3: LeafDB Serverless Node System -->
+                    <div class="bento-card md:col-span-3 rounded-bento p-8 flex flex-col justify-between">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="flex flex-col gap-4">
+                                <span class="text-xs font-bold text-accentGreen uppercase tracking-widest">Featured Core Tech</span>
+                                <h2 class="heading-font text-3xl font-extrabold text-primaryDark">LeafDB Graph Network</h2>
+                                <p class="text-greyText leading-relaxed">
+                                    A robust decentralized serverless structure mapping multi-relational arrays within fractions of microseconds. Perfect for spatial calculations, content graph generation, and luxury brand assets categorization schemas.
+                                </p>
+                                <div class="flex items-center gap-4 text-xs font-semibold text-primaryDark">
+                                    <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-accentGreen"></i> Zero Cold Starts</span>
+                                    <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-accentGreen"></i> Graph Visualization Ready</span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-950 text-white rounded-[20px] p-6 font-mono text-[11px] leading-relaxed shadow-premium border border-white/5">
+                                <span class="text-accentOrange">// Setup connection to decentralized cluster</span><br>
+                                <span class="text-accentGreen">import</span> { Cluster } <span class="text-accentGreen">from</span> <span class="text-neutral-300">'leafdb-decentralized'</span>;<br><br>
+                                <span class="text-accentGreen">const</span> cluster = <span class="text-accentGreen">new</span> Cluster({<br>
+                                &nbsp;&nbsp;node: <span class="text-neutral-300">'https://lucid-fern.speck.net'</span>,<br>
+                                &nbsp;&nbsp;credentials: process.env.SPECK_KEY<br>
+                                });<br><br>
+                                <span class="text-accentGreen">const</span> leafNode = <span class="text-accentGreen">await</span> cluster.createBranch(<span class="text-neutral-300">'Root'</span>);
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== 4. PROJECTS PAGE ==================== -->
+        <div id="temp-projects-page">
+            <section class="mb-12">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-accentGreen tracking-widest uppercase">The Ledger of Constructs</span>
+                        <h1 class="heading-font text-4xl md:text-6xl font-extrabold text-primaryDark">High fidelity case archives</h1>
+                    </div>
+                    <!-- Categories Filtering Tab Shell -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterProjects('all')" class="project-tab-btn px-4.5 py-2 rounded-full text-xs font-bold bg-primaryDark text-white transition-all shadow-soft">All Constructs</button>
+                        <button onclick="filterProjects('saas')" class="project-tab-btn px-4.5 py-2 rounded-full text-xs font-bold bg-white text-greyText border border-lightGreyBorder/20 hover:text-primaryDark hover:border-accentGreen/80 transition-all">SaaS Platforms</button>
+                        <button onclick="filterProjects('brand')" class="project-tab-btn px-4.5 py-2 rounded-full text-xs font-bold bg-white text-greyText border border-lightGreyBorder/20 hover:text-primaryDark hover:border-accentGreen/80 transition-all">Luxury Brand</button>
+                        <button onclick="filterProjects('web3')" class="project-tab-btn px-4.5 py-2 rounded-full text-xs font-bold bg-white text-greyText border border-lightGreyBorder/20 hover:text-primaryDark hover:border-accentGreen/80 transition-all">Decentralized Systems</button>
+                    </div>
+                </div>
+
+                <!-- Projects Dynamic Case Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid-container">
+                    <!-- Project 1 -->
+                    <div class="project-item bento-card rounded-bento p-6 flex flex-col justify-between min-h-[480px]" data-category="saas">
+                        <div class="relative w-full aspect-[16/10] bg-neutral-100 rounded-[18px] mb-6 overflow-hidden border border-lightGreyBorder/10 group">
+                            <img src="https://placehold.co/800x500/191949/6CA891?text=Aether+Ecosystem" alt="Aether Ecosystem Interface" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                <span class="text-white text-xs font-mono font-bold">Launch Live Platform <i data-lucide="external-link" class="inline w-3 h-3"></i></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-accentGreen/10 text-accentGreen text-[10px] font-extrabold rounded-full uppercase tracking-wider">SaaS</span>
+                                <span class="text-xs text-greyText">Engineered for Aether Inc.</span>
+                            </div>
+                            <h3 class="heading-font text-2xl font-bold text-primaryDark mb-2">Aether Intelligent Hub</h3>
+                            <p class="text-sm text-greyText leading-relaxed mb-4">
+                                A decentralized telemetry portal built on top of WebSockets and React-Fiber architecture, letting clean energy clients track solar node yields dynamically.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-lightGreyBorder/10 text-xs">
+                            <div class="flex gap-4">
+                                <div><span class="block font-bold text-primaryDark">+45%</span> <span class="text-greyText">Speed Index</span></div>
+                                <div><span class="block font-bold text-primaryDark">320ms</span> <span class="text-greyText">Edge Speed</span></div>
+                            </div>
+                            <button onclick="openModal('aether')" class="text-accentOrange font-extrabold hover:underline">Explore Specs</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-item bento-card rounded-bento p-6 flex flex-col justify-between min-h-[480px]" data-category="brand">
+                        <div class="relative w-full aspect-[16/10] bg-neutral-100 rounded-[18px] mb-6 overflow-hidden border border-lightGreyBorder/10 group">
+                            <img src="https://placehold.co/800x500/FE6062/FFFFFF?text=Flora+Jewels" alt="Flora Luxury Catalog" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                <span class="text-white text-xs font-mono font-bold">Launch Live Platform <i data-lucide="external-link" class="inline w-3 h-3"></i></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-accentOrange/10 text-accentOrange text-[10px] font-extrabold rounded-full uppercase tracking-wider">Luxury Brand</span>
+                                <span class="text-xs text-greyText">Engineered for Flora Diamonds</span>
+                            </div>
+                            <h3 class="heading-font text-2xl font-bold text-primaryDark mb-2">Flora High Jewelry</h3>
+                            <p class="text-sm text-greyText leading-relaxed mb-4">
+                                Immersive 3D interactive layout matching high-fashion catalog experiences, featuring customizable diamond matrices based on custom GPU rendering.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-lightGreyBorder/10 text-xs">
+                            <div class="flex gap-4">
+                                <div><span class="block font-bold text-primaryDark">1.2M+</span> <span class="text-greyText">Uniques / mo</span></div>
+                                <div><span class="block font-bold text-primaryDark">99.8%</span> <span class="text-greyText">Bounce Stability</span></div>
+                            </div>
+                            <button onclick="openModal('flora')" class="text-accentOrange font-extrabold hover:underline">Explore Specs</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-item bento-card rounded-bento p-6 flex flex-col justify-between min-h-[480px]" data-category="web3">
+                        <div class="relative w-full aspect-[16/10] bg-neutral-100 rounded-[18px] mb-6 overflow-hidden border border-lightGreyBorder/10 group">
+                            <img src="https://placehold.co/800x500/191949/FE6062?text=Sylvan+Network" alt="Sylvan Web3 Ecosystem" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                <span class="text-white text-xs font-mono font-bold">Launch Live Platform <i data-lucide="external-link" class="inline w-3 h-3"></i></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-accentGreen/10 text-accentGreen text-[10px] font-extrabold rounded-full uppercase tracking-wider">Decentralized</span>
+                                <span class="text-xs text-greyText">Engineered for Sylvan Foundation</span>
+                            </div>
+                            <h3 class="heading-font text-2xl font-bold text-primaryDark mb-2">Sylvan Carbon Ledger</h3>
+                            <p class="text-sm text-greyText leading-relaxed mb-4">
+                                An on-chain tokenization ledger proving organic land conservation footprints, featuring custom smart-contract telemetry with interactive dashboards.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-lightGreyBorder/10 text-xs">
+                            <div class="flex gap-4">
+                                <div><span class="block font-bold text-primaryDark">4.5M</span> <span class="text-greyText">Acres Protected</span></div>
+                                <div><span class="block font-bold text-primaryDark">0.02s</span> <span class="text-greyText">Block Latency</span></div>
+                            </div>
+                            <button onclick="openModal('sylvan')" class="text-accentOrange font-extrabold hover:underline">Explore Specs</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-item bento-card rounded-bento p-6 flex flex-col justify-between min-h-[480px]" data-category="saas">
+                        <div class="relative w-full aspect-[16/10] bg-neutral-100 rounded-[18px] mb-6 overflow-hidden border border-lightGreyBorder/10 group">
+                            <img src="https://placehold.co/800x500/6CA891/191949?text=Biome+SaaS" alt="Biome CRM Interface" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                <span class="text-white text-xs font-mono font-bold">Launch Live Platform <i data-lucide="external-link" class="inline w-3 h-3"></i></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-accentOrange/10 text-accentOrange text-[10px] font-extrabold rounded-full uppercase tracking-wider">SaaS</span>
+                                <span class="text-xs text-greyText">Engineered for Biome Analytics</span>
+                            </div>
+                            <h3 class="heading-font text-2xl font-bold text-primaryDark mb-2">Biome Enterprise Suite</h3>
+                            <p class="text-sm text-greyText leading-relaxed mb-4">
+                                Next-gen customer telemetry suites integrating automated pipelines with modular layouts, providing smooth interface navigation to 40k internal employees.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-lightGreyBorder/10 text-xs">
+                            <div class="flex gap-4">
+                                <div><span class="block font-bold text-primaryDark">40k+</span> <span class="text-greyText">Active Seats</span></div>
+                                <div><span class="block font-bold text-primaryDark">99.9%</span> <span class="text-greyText">NPS Rating</span></div>
+                            </div>
+                            <button onclick="openModal('biome')" class="text-accentOrange font-extrabold hover:underline">Explore Specs</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== 5. BRANDS PAGE ==================== -->
+        <div id="temp-brands">
+            <section class="mb-12">
+                <div class="text-center max-w-3xl mx-auto flex flex-col gap-4 mb-16">
+                    <span class="text-xs font-bold text-accentOrange tracking-widest uppercase">Trusted Worldwide</span>
+                    <h1 class="heading-font text-4xl md:text-6xl font-extrabold text-primaryDark">Powering global builders</h1>
+                    <p class="text-lg text-greyText leading-relaxed">
+                        From Seed-stage ecosystem innovators to multi-billion dollar tech leaders, we forge the platforms they trust to express their core identities.
+                    </p>
+                </div>
+
+                <!-- Infinite Logo Marquee Row -->
+                <div class="w-full overflow-hidden bg-primaryDark py-10 rounded-[28px] shadow-premium mb-16 relative">
+                    <div class="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-primaryDark to-transparent z-10"></div>
+                    <div class="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-primaryDark to-transparent z-10"></div>
+                    <div class="animate-marquee gap-16 items-center text-white font-extrabold text-lg heading-font select-none">
+                        <span>/ STRIPE CLONE /</span>
+                        <span>* SPECTRUM *</span>
+                        <span>[ LINEAR NODE ]</span>
+                        <span>▲ VERCEL CORE</span>
+                        <span>● RIPPLE LABS</span>
+                        <span>/ STRIPE CLONE /</span>
+                        <span>* SPECTRUM *</span>
+                        <span>[ LINEAR NODE ]</span>
+                        <span>▲ VERCEL CORE</span>
+                        <span>● RIPPLE LABS</span>
+                    </div>
+                </div>
+
+                <!-- Partnerships & Endorsements Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Column 1: Testimonial -->
+                    <div class="bento-card rounded-bento p-8 flex flex-col justify-between">
+                        <div class="flex items-center gap-1.5 text-accentOrange mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                        </div>
+                        <p class="text-primaryDark font-medium leading-relaxed mb-6 italic">
+                            "SpeckDevs redesigned our core SaaS interface from scratch. The aesthetic bento grid converted 30% higher than our previous templates. Truly exceptional craft."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-300 overflow-hidden">
+                                <img src="https://placehold.co/100x100/191949/6CA891?text=A" alt="Avatar" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs text-primaryDark">Aria Sterling</h4>
+                                <span class="text-[10px] text-greyText">VP of Design, Aether Systems</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Testimonial -->
+                    <div class="bento-card rounded-bento p-8 flex flex-col justify-between">
+                        <div class="flex items-center gap-1.5 text-accentOrange mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-accentOrange"></i>
+                        </div>
+                        <p class="text-primaryDark font-medium leading-relaxed mb-6 italic">
+                            "Their clean development methods allowed our engineering unit to ship within 6 weeks. The decentralized design models they shared are an absolute masterpiece."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-300 overflow-hidden">
+                                <img src="https://placehold.co/100x100/FE6062/FFFFFF?text=J" alt="Avatar" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs text-primaryDark">Julian Cross</h4>
+                                <span class="text-[10px] text-greyText">Technical Architect, Sylvan Ledger</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Trust Factor -->
+                    <div class="bento-card rounded-bento p-8 flex flex-col justify-between bg-accentGreen/10 border-accentGreen/30">
+                        <div class="w-12 h-12 rounded-[16px] bg-accentGreen/20 flex items-center justify-center text-accentGreen">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <div class="my-6">
+                            <h3 class="heading-font text-xl font-bold text-primaryDark mb-2">The Speck Security Seal</h3>
+                            <p class="text-sm text-greyText leading-relaxed">
+                                We guarantee absolute data protection. Every platform design incorporates complete visual access controls and satisfies SOC2 Type II parameters natively.
+                            </p>
+                        </div>
+                        <a href="#contact" onclick="navigateTo('contact')" class="text-xs font-bold text-primaryDark hover:text-accentOrange flex items-center gap-1.5">
+                            Read Security Blueprint <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== 6. CONTACT US PAGE ==================== -->
+        <div id="temp-contact">
+            <section class="mb-12">
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+                    <!-- Left Column: Agency Form Info -->
+                    <div class="lg:col-span-5 flex flex-col gap-6">
+                        <div class="inline-flex self-start items-center gap-2 px-3 py-1.5 rounded-full bg-accentOrange/10 border border-accentOrange/20 text-accentOrange font-bold text-xs tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 bg-accentOrange rounded-full animate-ping"></span>
+                            Now Booking Q3-Q4
+                        </div>
+                        <h1 class="heading-font text-4xl sm:text-5xl font-extrabold text-primaryDark leading-tight">Let's plant some high-performance nodes</h1>
+                        <p class="text-greyText leading-relaxed">
+                            Have a SaaS concept to prototype? An existing enterprise environment that requires deep aesthetic elevation? Fill out our planning framework.
+                        </p>
+                        
+                        <!-- Mini Interactive Budget Estimator Tool -->
+                        <div class="p-6 bg-white border border-lightGreyBorder/20 rounded-bento shadow-soft">
+                            <span class="text-xs font-bold text-accentGreen uppercase tracking-wider">Ecosystem Calculator</span>
+                            <h4 class="font-bold text-primaryDark text-sm mt-1 mb-4">Project Budget Scope</h4>
+                            <input type="range" min="10" max="150" value="45" step="5" class="w-full accent-accentOrange mb-3" id="budget-range" oninput="updateBudgetValue(this.value)">
+                            <div class="flex justify-between items-center text-xs font-bold">
+                                <span class="text-greyText">Est. Allocation:</span>
+                                <span class="text-accentOrange text-base" id="budget-display">$45,000 USD</span>
+                            </div>
+                        </div>
+
+                        <!-- Contact channels -->
+                        <div class="flex flex-col gap-3 text-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-primaryDark/5 flex items-center justify-center text-primaryDark"><i data-lucide="mail" class="w-4 h-4"></i></div>
+                                <span class="text-greyText">ecosystem@speckdevs.com</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-primaryDark/5 flex items-center justify-center text-primaryDark"><i data-lucide="phone" class="w-4 h-4"></i></div>
+                                <span class="text-greyText">+1 (555) 304-FERN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Form itself -->
+                    <div class="lg:col-span-7 bg-white border border-lightGreyBorder/20 rounded-[28px] p-8 shadow-premium">
+                        <form id="contact-agency-form" onsubmit="handleContactSubmit(event)" class="flex flex-col gap-6">
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-xs font-bold text-primaryDark">Your Name</label>
+                                    <input type="text" required placeholder="Alex Thorne" class="w-full px-4 py-3 rounded-[12px] bg-neutral-50 border border-lightGreyBorder/25 text-sm text-primaryDark focus:outline-none focus:border-accentGreen transition-all">
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-xs font-bold text-primaryDark">Business Email</label>
+                                    <input type="email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-[12px] bg-neutral-50 border border-lightGreyBorder/25 text-sm text-primaryDark focus:outline-none focus:border-accentGreen transition-all">
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <label class="text-xs font-bold text-primaryDark">Service Architecture Requested</label>
+                                <select class="w-full px-4 py-3 rounded-[12px] bg-neutral-50 border border-lightGreyBorder/25 text-sm text-primaryDark focus:outline-none focus:border-accentGreen transition-all">
+                                    <option>Bento-Grid Platform Design & Frontend (SaaS)</option>
+                                    <option>Deep Tech Decentralized Ecosystems</option>
+                                    <option>Bespoke Brand Identity & Fine Illustration</option>
+                                    <option>Full Scale Consulting Engagement</option>
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <label class="text-xs font-bold text-primaryDark">Tell us about your digital topology</label>
+                                <textarea required rows="4" placeholder="Brief details about the performance targets, conversions, or visual milestones..." class="w-full px-4 py-3 rounded-[12px] bg-neutral-50 border border-lightGreyBorder/25 text-sm text-primaryDark focus:outline-none focus:border-accentGreen transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-[14px] bg-primaryDark hover:bg-accentOrange text-white font-extrabold shadow-soft transition-all text-sm flex items-center justify-center gap-2">
+                                Transmit Message <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+
+                        <div id="contact-success-msg" class="hidden mt-4 p-4 rounded-[12px] bg-accentGreen/10 border border-accentGreen/25 text-accentGreen text-xs font-bold text-center">
+                            Transmission logged. Our lead architect will follow up in 14 hours.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== 7. TERMS & CONDITIONS PAGE ==================== -->
+        <div id="temp-terms">
+            <section class="mb-12 max-w-4xl mx-auto">
+                <div class="flex flex-col gap-4 mb-10">
+                    <span class="text-xs font-bold text-accentGreen uppercase tracking-widest">Legal Architecture</span>
+                    <h1 class="heading-font text-3xl md:text-5xl font-extrabold text-primaryDark">Terms of Platform Governance</h1>
+                    <span class="text-xs text-greyText">Last Modified: May 22, 2026</span>
+                </div>
+
+                <div class="bento-card rounded-bento p-8 flex flex-col gap-6 text-sm text-greyText leading-relaxed">
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">1. Acceptance of Ecosystem</h3>
+                    <p>
+                        By accessing, deploying, or linking nodes to the services provided under SpeckDevs ("Ecosystem"), you are explicitly verifying agreement with these protocols. If you decline these parameters, you must decouple all terminal requests immediately.
+                    </p>
+
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">2. Intellectual & Asset Conservation</h3>
+                    <p>
+                        All proprietary component assets compiled in CanopyUI, LeafDB engines, and geometric layouts are the exclusive trademark of SpeckDevs, unless explicitly structured as open-source repositories under MIT licensing. Unauthorized redistribution of premium templates is monitored via automated hash detection pipelines.
+                    </p>
+
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">3. Limit of Liability</h3>
+                    <p>
+                        SpeckDevs maintains platform nodes on best-effort models. We accept zero liability for data anomalies, down-cycles on cluster arrays, or temporary user-experience interruptions outside our controlled servers.
+                    </p>
+
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">4. Governing Law</h3>
+                    <p>
+                        These terms shall be evaluated, processed, and enforced strictly in accordance with digital state parameters and international technological directives, without giving effect to conflict-of-law anomalies.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== 8. PRIVACY POLICY PAGE ==================== -->
+        <div id="temp-privacy">
+            <section class="mb-12 max-w-4xl mx-auto">
+                <div class="flex flex-col gap-4 mb-10">
+                    <span class="text-xs font-bold text-accentOrange uppercase tracking-widest">Ecosystem Protection Protocol</span>
+                    <h1 class="heading-font text-3xl md:text-5xl font-extrabold text-primaryDark">Privacy Shield & Telemetry Charter</h1>
+                    <span class="text-xs text-greyText">Last Modified: May 22, 2026</span>
+                </div>
+
+                <div class="bento-card rounded-bento p-8 flex flex-col gap-6 text-sm text-greyText leading-relaxed">
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">1. The Nature of Data Gathering</h3>
+                    <p>
+                        We operate on zero-tracking principles. Standard platform connections map minimal metadata (IP ranges, viewport configurations, device types) purely to optimize the rendering dynamics of our bento cards. No persistent personal data is cached without express encryption validation.
+                    </p>
+
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">2. Sprout Telemetry Isolation</h3>
+                    <p>
+                        Our internal system (Sprout Analytics) collects server emission metrics. No behavioral mapping, mouse coordinates tracking, or cookie-based profile synthesis occurs under this API.
+                    </p>
+
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">3. Decoupling & Node Erasure</h3>
+                    <p>
+                        Any client profile registered under our consultation forms may issue immediate terminal instructions to strip database records permanently. Simply transmit "Decouple My Records" to our core team channel.
+                    </p>
+
+                    <h3 class="heading-font text-xl font-bold text-primaryDark mt-4">4. Third-Party Interfaces</h3>
+                    <p>
+                        We never syndicate or distribute compiled records with corporate advertising aggregators. Your architectural assets remain your unique intellectual environment.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- INTERACTIVE CASE STUDY SPECS MODALS (HIDDEN BY DEFAULT) -->
+    <div id="project-modal" class="hidden fixed inset-0 bg-primaryDark/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-[28px] max-w-2xl w-full border border-lightGreyBorder/25 p-8 shadow-premium relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-6 right-6 p-2 rounded-xl hover:bg-neutral-100 text-greyText transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="modal-content" class="flex flex-col gap-6">
+                <!-- Injected dynamically via script -->
+            </div>
+        </div>
+    </div>
+
+    <!-- GLOBAL FOOTER -->
+    <footer class="relative z-10 bg-primaryDark text-white pt-20 pb-12 mt-20 rounded-t-[40px] overflow-hidden border-t border-white/5">
+        <div class="absolute inset-0 bg-grid-bg opacity-10"></div>
+        <div class="absolute top-0 right-0 w-[40vw] h-[40vw] orb-green opacity-20 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 relative z-10">
+            <!-- Footer Brand Column -->
+            <div class="md:col-span-2 flex flex-col gap-6">
+                <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3">
+                    <div class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-[14px]">
+                        <i data-lucide="leaf" class="text-accentGreen w-5 h-5"></i>
+                    </div>
+                    <span class="heading-font font-extrabold text-[1.25rem] tracking-tight">SpeckDevs</span>
+                </a>
+                <p class="text-sm text-white/60 max-w-sm leading-relaxed">
+                    Sculpting custom digital platforms where biological design precision and lightning-fast software code architectures merge.
+                </p>
+                <!-- Newsletter Capture -->
+                <div class="flex flex-col gap-3">
+                    <span class="text-xs font-bold text-accentOrange tracking-wider uppercase">Subscribe to the Sprout Newsletter</span>
+                    <form onsubmit="handleSubscribeSubmit(event)" class="flex gap-2 max-w-md">
+                        <input required type="email" placeholder="sprout@domain.com" class="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-accentGreen text-white placeholder-white/30 flex-1">
+                        <button type="submit" class="bg-accentOrange hover:bg-accentOrange/90 text-white rounded-xl px-4 py-2 text-xs font-bold transition-all">Sow Seed</button>
+                    </form>
+                    <div id="sub-success" class="hidden text-[11px] text-accentGreen font-bold">Successfully subscribed to Sprout updates!</div>
+                </div>
+            </div>
+
+            <!-- Site Navigation Columns -->
+            <div>
+                <h4 class="font-bold text-sm text-accentGreen uppercase tracking-widest mb-6">Explore Maps</h4>
+                <ul class="flex flex-col gap-3 text-xs text-white/65">
+                    <li><a href="#home" onclick="navigateTo('home')" class="hover:text-white transition-all">Studio Home</a></li>
+                    <li><a href="#about" onclick="navigateTo('about')" class="hover:text-white transition-all">About Our Core</a></li>
+                    <li><a href="#products" onclick="navigateTo('products')" class="hover:text-white transition-all">Product Incubators</a></li>
+                    <li><a href="#projects" onclick="navigateTo('projects')" class="hover:text-white transition-all">High Fidelity Cases</a></li>
+                    <li><a href="#brands" onclick="navigateTo('brands')" class="hover:text-white transition-all">Client Ecosystems</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal/Contact Column -->
+            <div>
+                <h4 class="font-bold text-sm text-accentOrange uppercase tracking-widest mb-6">Governance</h4>
+                <ul class="flex flex-col gap-3 text-xs text-white/65">
+                    <li><a href="#terms" onclick="navigateTo('terms')" class="hover:text-white transition-all">Terms & Conditions</a></li>
+                    <li><a href="#privacy" onclick="navigateTo('privacy')" class="hover:text-white transition-all">Privacy Shield Charter</a></li>
+                    <li><a href="#contact" onclick="navigateTo('contact')" class="hover:text-white transition-all">Connect Studio</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright Meta -->
+        <div class="max-w-7xl mx-auto px-6 md:px-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 relative z-10">
+            <span>&copy; 2026 SpeckDevs. All nodes operational. Designed with absolute minimal footprint.</span>
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-white transition-all"><i data-lucide="github" class="w-4 h-4"></i></a>
+                <a href="#" class="hover:text-white transition-all"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                <a href="#" class="hover:text-white transition-all"><i data-lucide="figma" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CUSTOM SPA ENGINE & WEBAPP SCRIPTS -->
+    <script>
+        // Project Specifications Mock Database
+        const projectData = {
+            aether: {
+                title: "Aether Intelligent Hub",
+                client: "Aether Inc.",
+                tech: "React 19, Tailwind CSS, Rust Websockets",
+                metrics: "45% faster load speeds, 320ms Edge network response",
+                desc: "The Aether project centered around delivering a fully customizable analytics environment that handles rapid data feeds from multiple clean solar farms globally without interface stuttering. We designed a clean asymmetrical grid displaying custom graphs and visual triggers to ease operations.",
+                challenge: "Handling complex websocket feeds with high data density while matching luxury, high-end design visual standards.",
+                solution: "Engineered on React-Fiber rendering channels with automated component caching."
+            },
+            flora: {
+                title: "Flora High Jewelry",
+                client: "Flora Diamonds Group",
+                tech: "Three.js, WebGL Core, GSAP Engine",
+                metrics: "1.2M+ Monthly unique clients, 99.8% page retention",
+                desc: "An ultra-premium immersive catalogs system mimicking structural nature flows. Utilizing customized WebGL renderers to reflect diamond refractive indices directly within standard modern browsers.",
+                challenge: "Providing hyper-realistic materials rendering across generic mobile displays without battery drainage.",
+                solution: "Designed custom canvas nodes rendering at exact 60fps, degrading textures gracefully on lesser processors."
+            },
+            sylvan: {
+                title: "Sylvan Carbon Ledger",
+                client: "Sylvan Foundation",
+                tech: "Solidity Core, CanopyUI Kit, Node.js API",
+                metrics: "4.5M Acres of conservation fully certified",
+                desc: "An on-chain verification system translating organic preservation tracking maps into tokenized security matrices.",
+                challenge: "Communicating heavy spatial data matrices on standard consumer screens clearly.",
+                solution: "Created highly accessible nature dashboard systems using CanopyUI grids."
+            },
+            biome: {
+                title: "Biome Enterprise Suite",
+                client: "Biome Analytics",
+                tech: "Next.js 16, LeafDB Decentralized, Tailwind CSS",
+                metrics: "40k+ Active Seats, 99.9% NPS Rating",
+                desc: "A massive, custom-configured internal enterprise workflow layout tailored to nature-oriented utility agencies managing land surveys across four global continents.",
+                challenge: "Simplifying vast form matrices for field specialists while retaining a gorgeous minimal design system.",
+                solution: "Leveraged custom bento matrix boards grouping workflows logical maps."
+            }
+        };
+
+        // Routing Engine mapping anchor paths to structural containers
+        const pages = {
+            'home': 'temp-home',
+            'about': 'temp-about',
+            'products': 'temp-products',
+            'projects': 'temp-projects-page',
+            'brands': 'temp-brands',
+            'contact': 'temp-contact',
+            'terms': 'temp-terms',
+            'privacy': 'temp-privacy'
+        };
+
+        /* GEMINI CORE AI INTEGRATION SCRIPT */
+        let GEMINI_API_KEY = ""; // Stays empty to let Canvas automatically inject it, or can be user-specified.
+
+        // Load cached API key from localStorage if available
+        if (localStorage.getItem("SPECK_GEMINI_KEY")) {
+            GEMINI_API_KEY = localStorage.getItem("SPECK_GEMINI_KEY");
+            setTimeout(() => {
+                const inputEl = document.getElementById("gemini-key-input");
+                if (inputEl) inputEl.value = GEMINI_API_KEY;
+            }, 500);
+        }
+
+        function toggleApiSettings() {
+            const panel = document.getElementById("chat-api-settings");
+            panel.classList.toggle("hidden");
+        }
+
+        function saveApiKey() {
+            const val = document.getElementById("gemini-key-input").value.trim();
+            GEMINI_API_KEY = val;
+            localStorage.setItem("SPECK_GEMINI_KEY", val);
+            const banner = document.getElementById("chat-api-settings");
+            if (banner) banner.classList.add("hidden");
+            appendSystemMessage("Configuration saved. Active node utilizing customized key.");
+        }
+
+        // General-purpose fetching handler targeting gemini-3-flash-preview
+        async function callGemini(userPrompt, systemInstruction = "", formatJson = false) {
+            const model = "gemini-3-flash-preview";
+            // Use user key if saved, else fallback to empty key where runtime automatically binds it.
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }]
+            };
+
+            if (systemInstruction) {
+                payload.systemInstruction = {
+                    parts: [{ text: systemInstruction }]
+                };
+            }
+
+            if (formatJson) {
+                payload.generationConfig = {
+                    responseMimeType: "application/json"
+                };
+            }
+
+            let retries = 3;
+            let delay = 1000;
+
+            while (retries > 0) {
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API response status error: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const textOutput = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (textOutput) {
+                        return textOutput;
+                    }
+                    throw new Error("Empty candidate result structures");
+                } catch (err) {
+                    retries--;
+                    if (retries === 0) {
+                        console.error("Gemini invocation failed permanently.", err);
+                        throw err;
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2; // Exponential backoff
+                }
+            }
+        }
+
+        /* SPROUT-AI FLOATING BOT UX LOGIC */
+        function toggleSproutChat() {
+            const windowEl = document.getElementById("sprout-chat-window");
+            if (windowEl.classList.contains("hidden")) {
+                windowEl.classList.remove("hidden");
+                setTimeout(() => {
+                    windowEl.classList.remove("opacity-0", "translate-y-4");
+                    windowEl.classList.add("opacity-100", "translate-y-0");
+                }, 10);
+            } else {
+                windowEl.classList.add("opacity-0", "translate-y-4");
+                windowEl.classList.remove("opacity-100", "translate-y-0");
+                setTimeout(() => {
+                    windowEl.classList.add("hidden");
+                }, 400);
+            }
+        }
+
+        function appendUserMessage(text) {
+            const container = document.getElementById("sprout-chat-messages");
+            const div = document.createElement("div");
+            div.className = "flex items-start gap-2.5 max-w-[85%] self-end flex-row-reverse";
+            div.innerHTML = `
+                <div class="w-7 h-7 rounded-md bg-accentOrange/15 flex items-center justify-center text-accentOrange flex-shrink-0 mt-0.5">
+                    <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                </div>
+                <div class="bg-primaryDark text-white p-3 rounded-[16px] text-xs leading-relaxed shadow-soft">
+                    ${text}
+                </div>
+            `;
+            container.appendChild(div);
+            lucide.createIcons();
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendSystemMessage(text, isAi = true) {
+            const container = document.getElementById("sprout-chat-messages");
+            const div = document.createElement("div");
+            div.className = "flex items-start gap-2.5 max-w-[85%]";
+            
+            const iconBg = isAi ? "bg-accentGreen/15 text-accentGreen" : "bg-neutral-200 text-neutral-600";
+            const iconName = isAi ? "leaf" : "info";
+
+            div.innerHTML = `
+                <div class="w-7 h-7 rounded-md ${iconBg} flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i data-lucide="${iconName}" class="w-3.5 h-3.5"></i>
+                </div>
+                <div class="bg-white border border-lightGreyBorder/15 p-3 rounded-[16px] text-xs text-primaryDark leading-relaxed shadow-soft whitespace-pre-line">
+                    ${text}
+                </div>
+            `;
+            container.appendChild(div);
+            lucide.createIcons();
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendTypingIndicator() {
+            const container = document.getElementById("sprout-chat-messages");
+            const div = document.createElement("div");
+            div.className = "flex items-start gap-2.5 max-w-[85%]" ;
+            div.id = "chat-typing-indicator";
+            div.innerHTML = `
+                <div class="w-7 h-7 rounded-md bg-accentGreen/15 flex items-center justify-center text-accentGreen flex-shrink-0 mt-0.5 animate-pulse">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                </div>
+                <div class="bg-white border border-lightGreyBorder/15 p-3.5 rounded-[16px] text-xs text-primaryDark leading-relaxed shadow-soft flex items-center gap-1">
+                    <span class="text-greyText font-medium text-[11px] mr-1">Synthesizing</span>
+                    <div class="typing-dots flex gap-0.5">
+                        <span class="w-1.5 h-1.5 bg-accentGreen rounded-full inline-block"></span>
+                        <span class="w-1.5 h-1.5 bg-accentGreen rounded-full inline-block"></span>
+                        <span class="w-1.5 h-1.5 bg-accentGreen rounded-full inline-block"></span>
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const el = document.getElementById("chat-typing-indicator");
+            if (el) el.remove();
+        }
+
+        async function processSproutChat(userText) {
+            appendTypingIndicator();
+            const sysPrompt = "You are SproutAI, a world-class premium systems architect and customer support bot for SpeckDevs agency. Keep answers brief (max 4-5 sentences), elegant, and professional. Highlight that we design bento grid portfolios, LeafDB (decentralized database), CanopyUI (design system kits), and Sprout Analytics (CO2-tracked SaaS data loops). Do not use markdown backticks codes or bullet points unless highly structured. Speak with an expensive, futuristic, minimalist tone.";
+            
+            try {
+                const answer = await callGemini(userText, sysPrompt);
+                removeTypingIndicator();
+                appendSystemMessage(answer);
+            } catch (err) {
+                removeTypingIndicator();
+                appendSystemMessage("An interactive node error interrupted the network connection. Please verify your Gemini API alignment configurations or try again shortly.", false);
+            }
+        }
+
+        function handleSproutChatSend(e) {
+            e.preventDefault();
+            const input = document.getElementById("sprout-chat-input");
+            const text = input.value.trim();
+            if (!text) return;
+
+            appendUserMessage(text);
+            input.value = "";
+            processSproutChat(text);
+        }
+
+        function sendQuickPrompt(promptText) {
+            appendUserMessage(promptText);
+            processSproutChat(promptText);
+        }
+
+        /* AI BLUEPRINT DYNAMIC LABORATORY GENERATOR */
+        async function generateAIBlueprint() {
+            const promptInput = document.getElementById("ai-blueprint-prompt");
+            const queryText = promptInput.value.trim();
+            if (!queryText) return;
+
+            const btnText = document.getElementById("ai-lab-btn-text");
+            const btnIcon = document.getElementById("ai-lab-btn-icon");
+            const outputWindow = document.getElementById("ai-blueprint-result");
+
+            btnText.innerText = "Sowing Concept Seeds...";
+            btnIcon.setAttribute("data-lucide", "refresh-cw");
+            btnIcon.classList.add("animate-spin");
+            lucide.createIcons();
+
+            outputWindow.innerHTML = `
+                <div class="flex flex-col items-center justify-center gap-4 py-12">
+                    <div class="typing-dots flex gap-1.5">
+                        <span class="w-3.5 h-3.5 bg-accentGreen rounded-full inline-block"></span>
+                        <span class="w-3.5 h-3.5 bg-accentOrange rounded-full inline-block"></span>
+                        <span class="w-3.5 h-3.5 bg-primaryDark rounded-full inline-block"></span>
+                    </div>
+                    <span class="text-xs font-bold text-primaryDark tracking-widest uppercase">Incubating Architecture Node...</span>
+                </div>
+            `;
+
+            // Dynamic system schema mapping beautiful bento layouts with specific requirements
+            const systemPrompt = `You are the SpeckDevs Laboratory AI core. Analyze the user's idea and generate a customized platform blueprint in valid JSON format.
+            You must output strictly the JSON object and absolutely nothing else. No markdown wrappers like \`\`\`json.
+            Use this schema:
+            {
+              "projectName": "Name of the customized concept project",
+              "systemTopology": "2-3 words description of topology type (e.g. Asymmetrical Micro-Telemetry)",
+              "primaryHexColor": "Tailwind color code or custom hex color fitting nature luxury aesthetic",
+              "modularStructure": [
+                { "module": "First module name", "role": "Specific role in the bento layout", "complexity": "S/M/L" },
+                { "module": "Second module name", "role": "Specific role", "complexity": "S/M/L" },
+                { "module": "Third module name", "role": "Specific role", "complexity": "S/M/L" }
+              ],
+              "databaseRecommendation": "Recommend either LeafDB, CanopyUI layer or custom carbon metrics with rationale",
+              "sprintDuration": "Number of weeks estimate"
+            }`;
+
+            try {
+                const responseText = await callGemini(queryText, systemPrompt, true);
+                const data = JSON.parse(responseText.trim());
+
+                outputWindow.innerHTML = `
+                    <div class="flex flex-col gap-5 text-left h-full justify-between">
+                        <!-- Top details -->
+                        <div class="flex items-start justify-between border-b border-lightGreyBorder/10 pb-4">
+                            <div>
+                                <span class="text-[10px] font-bold text-accentOrange tracking-wider uppercase">Generated Blueprint</span>
+                                <h4 class="heading-font text-xl font-extrabold text-primaryDark mt-0.5">${data.projectName}</h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase" style="background-color: ${data.primaryHexColor}22; color: ${data.primaryHexColor}">
+                                ${data.systemTopology}
+                            </span>
+                        </div>
+
+                        <!-- Bento Modules Grid simulation representation -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 my-2">
+                            ${data.modularStructure.map(mod => `
+                                <div class="p-3.5 rounded-xl border border-lightGreyBorder/20 bg-neutral-50 flex flex-col justify-between hover:border-accentGreen/40 transition-all">
+                                    <span class="text-[10px] font-extrabold text-primaryDark uppercase tracking-wide truncate">${mod.module}</span>
+                                    <span class="text-[11px] text-greyText mt-1.5 leading-tight">${mod.role}</span>
+                                    <span class="text-[9px] font-bold text-accentOrange self-end mt-2">Complexity: ${mod.complexity}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <!-- Footer specifications -->
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-t border-lightGreyBorder/10 pt-4 text-xs">
+                            <div class="flex flex-col">
+                                <span class="text-[10px] text-greyText font-bold uppercase">Database Alignment</span>
+                                <span class="font-semibold text-primaryDark mt-0.5">${data.databaseRecommendation}</span>
+                            </div>
+                            <div class="text-right flex flex-col items-start sm:items-end">
+                                <span class="text-[10px] text-greyText font-bold uppercase">Estimated Phase Space</span>
+                                <span class="font-bold text-accentGreen mt-0.5">${data.sprintDuration} Sprints</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } catch (err) {
+                console.error(err);
+                outputWindow.innerHTML = `
+                    <div class="flex flex-col items-center justify-center gap-3 py-10 text-center">
+                        <div class="w-12 h-12 rounded-full bg-accentOrange/15 flex items-center justify-center text-accentOrange">
+                            <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-primaryDark">Synthesis Disrupted</h4>
+                        <p class="text-xs text-greyText max-w-sm">Failed to build a custom topology layout. Verify your Gemini key settings or formulate a simplified request concept.</p>
+                        <button onclick="resetAIBlueprintSandbox()" class="mt-2 text-xs font-bold text-accentGreen hover:underline">Reset Node Sandbox</button>
+                    </div>
+                `;
+            } finally {
+                btnText.innerText = "Construct Topology";
+                btnIcon.setAttribute("data-lucide", "cpu");
+                btnIcon.classList.remove("animate-spin");
+                lucide.createIcons();
+            }
+        }
+
+        function resetAIBlueprintSandbox() {
+            const outputWindow = document.getElementById("ai-blueprint-result");
+            if (outputWindow) {
+                outputWindow.innerHTML = `
+                    <div class="text-center py-10 flex flex-col items-center justify-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center text-accentGreen/80">
+                            <i data-lucide="binary" class="w-6 h-6 animate-pulse"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-primaryDark">AI Laboratory Sandbox</h4>
+                        <p class="text-xs text-greyText max-w-sm">Type your concept details in the selector inputs on the left to map real-time biological layouts.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+            }
+        }
+
+        // Dynamic State Navigation with transition states
+        function navigateTo(targetPage) {
+            const container = document.getElementById('spa-content-container');
+            const targetId = pages[targetPage] || 'temp-home';
+            const template = document.getElementById(targetId);
+
+            if (!template) return;
+
+            // Framer Motion style Page Exit transition
+            container.classList.add('page-exit-active');
+            
+            setTimeout(() => {
+                // Clear and Inject template content
+                container.innerHTML = template.innerHTML;
+                
+                // Initialize layout micro-interactions dynamically
+                initPageInteractions(targetPage);
+                
+                // Refresh SVG Icons
+                lucide.createIcons();
+                
+                // Update active navigation state
+                updateActiveNavbar(targetPage);
+
+                // Scroll back smoothly to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Framer Motion style Page Entry transition
+                container.classList.remove('page-exit-active');
+                container.classList.add('page-enter');
+                
+                setTimeout(() => {
+                    container.classList.add('page-enter-active');
+                }, 50);
+
+            }, 350);
+        }
+
+        // Active State Link Visualizer
+        function updateActiveNavbar(targetPage) {
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === '#' + targetPage) {
+                    link.classList.add('bg-primaryDark/10', 'text-primaryDark');
+                    link.classList.remove('text-greyText');
+                } else {
+                    link.classList.remove('bg-primaryDark/10', 'text-primaryDark');
+                    link.classList.add('text-greyText');
+                }
+            });
+        }
+
+        // Toggle Drawer on Mobile Viewports
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        // Project Specifications Modal Handler
+        function openModal(projectKey) {
+            const modal = document.getElementById('project-modal');
+            const modalContent = document.getElementById('modal-content');
+            const data = projectData[projectKey];
+
+            if (!data) return;
+
+            modalContent.innerHTML = `
+                <div class="flex flex-col gap-3">
+                    <span class="text-xs font-bold text-accentOrange tracking-widest uppercase">Platform Blueprint</span>
+                    <h2 class="heading-font text-3xl font-extrabold text-primaryDark">${data.title}</h2>
+                    <span class="text-xs text-greyText">Client: <strong class="text-primaryDark">${data.client}</strong> &bull; Stack: <strong class="text-primaryDark">${data.tech}</strong></span>
+                </div>
+                <div class="h-px bg-lightGreyBorder/10 my-1"></div>
+                <div class="flex flex-col gap-4 text-sm text-greyText leading-relaxed">
+                    <p>${data.desc}</p>
+                    <div>
+                        <h4 class="font-extrabold text-primaryDark text-base mb-1">Architectural Challenge:</h4>
+                        <p>${data.challenge}</p>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-primaryDark text-base mb-1">Biological System Solution:</h4>
+                        <p>${data.solution}</p>
+                    </div>
+                </div>
+                <div class="h-px bg-lightGreyBorder/10 my-1"></div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-accentGreen">${data.metrics}</span>
+                    <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-primaryDark text-white font-bold text-xs hover:bg-accentOrange transition-all">Close Architecture</button>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // Dynamic Interactive Utilities for Sandbox Drawing Card
+        function generateSandboxGrid() {
+            const gridContainer = document.getElementById('sandbox-grid');
+            if (!gridContainer) return;
+
+            gridContainer.innerHTML = '';
+            for (let i = 0; i < 28; i++) {
+                const node = document.createElement('div');
+                node.className = 'aspect-square bg-gray-200 rounded-full cursor-crosshair transition-all duration-300 hover:scale-125';
+                node.addEventListener('mouseover', () => {
+                    node.classList.remove('bg-gray-200');
+                    // Alternate colors randomly for nature-inspired visualization
+                    const color = Math.random() > 0.4 ? 'bg-accentGreen' : 'bg-accentOrange';
+                    node.classList.add(color, 'shadow-glow-orange');
+                });
+                gridContainer.appendChild(node);
+            }
+        }
+
+        function resetSandboxGrid() {
+            const gridContainer = document.getElementById('sandbox-grid');
+            if (!gridContainer) return;
+            const nodes = gridContainer.children;
+            for (let node of nodes) {
+                node.className = 'aspect-square bg-gray-200 rounded-full cursor-crosshair transition-all duration-300 hover:scale-125';
+            }
+        }
+
+        // Estimator Slider logic
+        function updateBudgetValue(val) {
+            const display = document.getElementById('budget-display');
+            if (display) {
+                display.innerText = `$${parseInt(val).toLocaleString()} ,000 USD`;
+            }
+        }
+
+        // Live Simulated Analytics Indicator
+        function simulateTelemetry() {
+            const icon = document.getElementById('telemetry-icon');
+            if (icon) {
+                icon.classList.add('animate-spin');
+                setTimeout(() => {
+                    icon.classList.remove('animate-spin');
+                    // Changed from standard alert to a premium non-blocking popup
+                    appendSystemMessage("Sprout Telemetry simulation updated: carbon consumption metric optimized to -24.2% CO₂ Saved.", true);
+                    toggleSproutChat();
+                }, 1000);
+            }
+        }
+
+        // Contact form processor
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('contact-success-msg');
+            if (successMsg) {
+                successMsg.classList.remove('hidden');
+                e.target.reset();
+            }
+        }
+
+        // Newsletter subscription handler
+        function handleSubscribeSubmit(e) {
+            e.preventDefault();
+            const subSuccess = document.getElementById('sub-success');
+            if (subSuccess) {
+                subSuccess.classList.remove('hidden');
+                e.target.reset();
+            }
+        }
+
+        // Project Filter Utility
+        function filterProjects(category) {
+            const items = document.querySelectorAll('.project-item');
+            const buttons = document.querySelectorAll('.project-tab-btn');
+
+            // Set dynamic button visuals
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(category)) {
+                    btn.className = "project-tab-btn px-4.5 py-2 rounded-full text-xs font-bold bg-primaryDark text-white transition-all shadow-soft";
+                } else {
+                    btn.className = "project-tab-btn px-4.5 py-2 rounded-full text-xs font-bold bg-white text-greyText border border-lightGreyBorder/20 hover:text-primaryDark hover:border-accentGreen/80 transition-all";
+                }
+            });
+
+            // Filtering visibility with animations
+            items.forEach(item => {
+                const itemCat = item.getAttribute('data-category');
+                if (category === 'all' || itemCat === category) {
+                    item.style.display = 'flex';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Initialization hook for special interactive elements when SPA swaps templates
+        function initPageInteractions(targetPage) {
+            if (targetPage === 'home') {
+                generateSandboxGrid();
+            }
+        }
+
+        // Initialization on Load
+        window.onload = function() {
+            // Check hash in URL or route to home
+            const initialHash = window.location.hash.replace('#', '');
+            const defaultPage = pages[initialHash] ? initialHash : 'home';
+            navigateTo(defaultPage);
+        }
+
+        // Native Hashchange handling
+        window.addEventListener('hashchange', () => {
+            const pageHash = window.location.hash.replace('#', '');
+            if (pages[pageHash]) {
+                navigateTo(pageHash);
+            }
+        });
+    </script>
+</body>
+</html>
