@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="N2 Cloud Kitchen - Fresh, hygienic, and premium homemade tiffin delivery service in Valparai. Enjoy healthy breakfast, lunch, and dinner delivered straight to your door.">
+    <title>N2 Cloud Kitchen | Premium Tiffin & Meal Delivery Valparai</title>
+    
+    <!-- Google Fonts: Playfair Display & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            deep: '#0F5132',      /* Deep Forest Green */
+                            rich: '#2E7D32',      /* Lively Rich Green */
+                            cream: '#FFF8E7',     /* Soft Alabaster Cream */
+                            creamDark: '#F3EAD3', /* Darker Cream for contrast */
+                            gold: '#D4AF37',      /* Premium Accent Gold */
+                            orange: '#E65100',    /* Appetizing Accent Orange */
+                            dark: '#1C2E24',      /* Deep Charcoal Green for Text */
+                            gray: '#64748B'       /* Slate gray for secondary text */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -5px rgba(15, 81, 50, 0.12)',
+                        'floating': '0 15px 35px -5px rgba(46, 125, 50, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Inline Styles for customized animations & scrollbars -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF8E7;
+            color: #1C2E24;
+        }
+        h1, h2, h3, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom scrollbar to match the premium theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF8E7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0F5132;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2E7D32;
+        }
+        /* Custom glassmorphism classes */
+        .glass-header {
+            background-color: rgba(255, 248, 231, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#2e7d32 0.5px, transparent 0.5px), radial-gradient(#2e7d32 0.5px, #fff8e7 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.04;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen selection:bg-brand-rich selection:text-white">
+
+    <!-- Background texture decoration -->
+    <div class="fixed inset-0 bg-pattern pointer-events-none z-0"></div>
+
+    <!-- Header Desktop / Tablet Navigation -->
+    <header class="sticky top-0 z-40 w-full transition-all duration-300 border-b border-brand-creamDark glass-header shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Identity -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-deep flex items-center justify-center text-brand-cream border-2 border-brand-gold transition-transform group-hover:scale-105 duration-300">
+                        <i class="fa-solid fa-utensils text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-black tracking-tight text-brand-deep">N2 <span class="text-brand-rich">Kitchen</span></span>
+                        <span class="block text-xs uppercase tracking-widest text-brand-gold font-bold">Cloud Kitchen & Tiffin</span>
+                    </div>
+                </a>
+
+                <!-- Nav Menu - Desktop -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Home</a>
+                    <a href="#menu" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Our Menu</a>
+                    <a href="#why-choose" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Why Us</a>
+                    <a href="#plans" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Tiffin Plans</a>
+                    <a href="#delivery" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Delivery Areas</a>
+                    <a href="#about" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">About</a>
+                </nav>
+
+                <!-- Action CTA Button - Desktop -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/919488826723?text=Hello%20N2%20Cloud%20Kitchen!%20I'm%20interested%20in%20ordering%20meals." 
+                       target="_blank" 
+                       class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-deep text-brand-cream font-semibold hover:bg-brand-rich border-2 border-brand-gold hover:border-brand-cream transition-all duration-300 transform hover:-translate-y-0.5 shadow-md">
+                        <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                        <span>Order Now</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Toggle -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-brand-deep p-2 focus:outline-none focus:ring-2 focus:ring-brand-rich rounded-lg" aria-label="Toggle navigation menu">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-brand-cream border-b border-brand-creamDark px-4 pt-4 pb-6 space-y-3 shadow-lg z-50">
+            <a href="#home" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Home</a>
+            <a href="#menu" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Our Menu</a>
+            <a href="#why-choose" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Why Us</a>
+            <a href="#plans" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Tiffin Plans</a>
+            <a href="#delivery" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Delivery Areas</a>
+            <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">About</a>
+            <a href="https://wa.me/919488826723?text=Hello%20N2%20Cloud%20Kitchen!%20I'd%20like%20to%20place%20an%20order." 
+               target="_blank" 
+               class="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-colors">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Direct WhatsApp Order</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center pt-8 pb-16 overflow-hidden z-10">
+        <!-- Background Elements / Accents -->
+        <div class="absolute -top-10 -right-10 w-96 h-96 bg-brand-rich/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-brand-gold/15 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-rich/15 border border-brand-rich/30 text-brand-deep font-semibold text-xs sm:text-sm tracking-wide uppercase">
+                        <i class="fa-solid fa-leaf text-brand-rich"></i>
+                        <span>100% Homemade, Clean & Organic</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-deep leading-tight">
+                        Fresh & Hygienic <br class="hidden sm:inline">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-rich to-brand-deep font-serif italic">Homemade Tiffin</span> <br>
+                        Delivered Daily
+                    </h1>
+
+                    <p class="text-brand-gray text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Say goodbye to daily cooking stress! Authentic South Indian breakfast and wholesome homestyle meals prepared in pure olive and cold-pressed oils. Prepared fresh & delivered directly to your doorstep in Valparai.
+                    </p>
+
+                    <!-- CTA Action Grid -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="https://wa.me/919488826723?text=Hi%20N2%20Cloud%20Kitchen!%20I'm%20visiting%20your%20site%20and%20want%20to%20order%20delicious%20tiffin%20meals." 
+                           target="_blank" 
+                           class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-emerald-600 text-white font-bold text-lg hover:bg-emerald-700 hover:shadow-floating transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Order on WhatsApp</span>
+                        </a>
+                        <a href="#menu" 
+                           class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white border-2 border-brand-creamDark text-brand-deep font-bold text-lg hover:border-brand-rich hover:bg-brand-cream hover:text-brand-rich transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>View Full Menu</span>
+                        </a>
+                    </div>
+
+                    <!-- Highlight Badges -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 max-w-md mx-auto lg:mx-0 border-t border-brand-creamDark">
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-brand-rich font-serif">100%</div>
+                            <div class="text-xs text-brand-gray font-medium">Hygienic Home Cooking</div>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-brand-rich font-serif">Free</div>
+                            <div class="text-xs text-brand-gray font-medium">Delivery in Town</div>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-brand-rich font-serif">Daily</div>
+                            <div class="text-xs text-brand-gray font-medium">Fresh Menu Rotation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Banner Image -->
+                <div class="lg:col-span-5 relative flex justify-center items-center">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px]">
+                        <!-- Background Circle Animations -->
+                        <div class="absolute inset-0 bg-brand-rich rounded-full opacity-10 animate-pulse"></div>
+                        <div class="absolute inset-4 border-2 border-dashed border-brand-gold/40 rounded-full animate-[spin_40s_linear_infinite]"></div>
+                        
+                        <!-- Main Food Showcase Image inside frame -->
+                        <div class="absolute inset-8 rounded-full overflow-hidden border-4 border-brand-deep shadow-2xl bg-brand-cream animate-[bounce_5s_ease-in-out_infinite]">
+                            <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600&auto=format&fit=crop&q=80" 
+                                 alt="Fresh South Indian Delicious Breakfast Spread" 
+                                 class="w-full h-full object-cover transform scale-110 hover:scale-125 transition-transform duration-700"
+                                 onerror="this.src='https://placehold.co/600x600/0F5132/FFF8E7?text=Delicious+N2+Tiffin'">
+                        </div>
+
+                        <!-- Floating Micro-Card 1: Healthy Rice Meal -->
+                        <div class="absolute -top-4 -left-4 bg-white/95 backdrop-blur-sm border border-brand-creamDark rounded-2xl p-3 shadow-premium flex items-center gap-3 animate-[bounce_4s_ease-in-out_infinite_1s]">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-brand-orange">
+                                <i class="fa-solid fa-bowl-rice"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Tiffin Lunch</span>
+                                <span class="block text-xs font-black text-brand-deep">Pure Comfort Meals</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Micro-Card 2: High Rating -->
+                        <div class="absolute -bottom-4 -right-4 bg-white/95 backdrop-blur-sm border border-brand-creamDark rounded-2xl p-3 shadow-premium flex items-center gap-3 animate-[bounce_6s_ease-in-out_infinite_2s]">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Our Rating</span>
+                                <span class="block text-xs font-black text-brand-deep">4.9/5 (200+ Reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Menu Gallery Section -->
+    <section id="menu" class="py-20 bg-brand-creamDark/40 relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Explore Our Cravings</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Our Featured Specialties</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-gray text-base">Fresh and organic food prepared carefully daily. Toggle through our specialties and place your instant WhatsApp orders with custom options.</p>
+                
+                <!-- Category Filters -->
+                <div class="flex flex-wrap items-center justify-center gap-2 pt-6" id="menu-filters">
+                    <button onclick="filterMenu('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-brand-deep text-brand-cream border border-brand-deep">
+                        All Items
+                    </button>
+                    <button onclick="filterMenu('breakfast')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-brand-deep border border-brand-creamDark hover:border-brand-rich">
+                        Breakfast Mains
+                    </button>
+                    <button onclick="filterMenu('chutney')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-brand-deep border border-brand-creamDark hover:border-brand-rich">
+                        Chutneys & Sides
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="menu-grid">
+                
+                <!-- Item 1: Idly -->
+                <div class="menu-item breakfast bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600&auto=format&fit=crop&q=80" 
+                             alt="Soft Premium Idli" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Soft+Idly'">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Must Try</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Podi / Plain Idly</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Piping hot, pillowy soft steamed rice cakes made from fermented premium short-grain rice batter.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-leaf mr-1"></i> Breakfast</span>
+                            <button onclick="openCustomizer('Idly')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Dosa -->
+                <div class="menu-item breakfast bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80" 
+                             alt="Crispy Golden Ghee Dosa" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Crispy+Dosa'">
+                        <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Crispy Gold</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Ghee Roast Dosa</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Crispy, paper-thin golden savory crepe roasted beautifully with pure country cow ghee.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-leaf mr-1"></i> Breakfast</span>
+                            <button onclick="openCustomizer('Dosa')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Idiyappam -->
+                <div class="menu-item breakfast bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80" 
+                             alt="Authentic Soft Idiyappam" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Idiyappam'">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Traditional</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Idiyappam</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Light and fluffy steamed rice string hoppers, best enjoyed with rich coconut milk or spicy kurma.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-leaf mr-1"></i> Breakfast</span>
+                            <button onclick="openCustomizer('Idiyappam')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Chapathi -->
+                <div class="menu-item breakfast bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600&auto=format&fit=crop&q=80" 
+                             alt="Healthy Wheat Chapathi" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Chapathi'">
+                        <span class="absolute top-4 right-4 bg-brand-orange text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Diet Friendly</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Whole Wheat Chapathi</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Soft, layered, healthy chapathis made of 100% whole wheat flour, prepared completely oil-free or lightweight ghee.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-leaf mr-1"></i> Breakfast</span>
+                            <button onclick="openCustomizer('Chapathi')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Coconut Chutney -->
+                <div class="menu-item chutney bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Creamy Coconut Chutney" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Coconut+Chutney'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">White Coconut Chutney</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Authentic grated coconut blended smoothly with fresh roasted gram, mild green chillies, tempered in mustard oil.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mortar-pestle mr-1"></i> Side Dip</span>
+                            <button onclick="openCustomizer('Coconut Chutney')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Tomato Chutney -->
+                <div class="menu-item chutney bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Spicy Tangy Tomato Chutney" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Tomato+Chutney'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Tomato Kara Chutney</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Savory, rich, spicy roasted red tomatoes, onions, garlic and sun-dried chillies infused with premium hing.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mortar-pestle mr-1"></i> Side Dip</span>
+                            <button onclick="openCustomizer('Tomato Chutney')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Pudina Chutney -->
+                <div class="menu-item chutney bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Fresh Healthy Mint Chutney" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Pudina+Chutney'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Fresh Pudina Chutney</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Herbal antioxidant-rich garden mint leaves and fresh coriander blended together with tangy tamarind extracts.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mortar-pestle mr-1"></i> Side Dip</span>
+                            <button onclick="openCustomizer('Pudina Chutney')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Sambar -->
+                <div class="menu-item chutney bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Traditional South Indian Vegetable Sambar" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Hotel+Sambar'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">N2 Spl Hotel Sambar</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Traditional homestyle slow-simmered lentils loaded with handpicked native drumstick, pumpkin, and special homemade spice blend.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-bowl-hot mr-1"></i> Curry Side</span>
+                            <button onclick="openCustomizer('Sambar')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Grid Cards -->
+    <section id="why-choose" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Our Commitments</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Why Choose N2 Kitchen?</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-gray text-base">We prioritize your health, family wellness, and absolute comfort over everything else. That is why our local cloud kitchen follows premium, traditional food guidelines.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1: Fresh Ingredients -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-brand-rich flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-leaf text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Fresh & Hygienic Ingredients</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">We pick organic herbs and farm-fresh local vegetables daily in Valparai, cooking with absolute hygiene protocol.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2: Homemade Taste -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-kitchen-set text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">100% Homemade Taste</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">No artificial preservatives, dynamic coloring agents, or excess sodium. It tastes exactly like pure home cooking.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3: Family-Friendly Meals -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-people-group text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Family-Friendly Meals</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Tailored, non-spicy, easily digestible options perfect for small children and aging elderly grandparents alike.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 4: On-Time Delivery -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-truck-fast text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">On-Time Hot Delivery</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Your food is dispatched in highly insulated premium food packs to keep breakfast and tiffin piping hot.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 5: Affordable Pricing -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-wallet text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Affordable & Easy Pricing</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Budget-friendly plans that save cooking gas, grocery trips, and hours of tiring clean-up chores daily.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 6: Quality You Can Trust -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-circle-check text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Quality You Can Trust</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">FSSAI compliant standards of cleanliness, certified cooks, and periodic audits of the kitchen room environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Tiffin Plans Section -->
+    <section id="plans" class="py-20 bg-brand-deep text-brand-cream relative overflow-hidden z-10 scroll-mt-20">
+        <!-- Floating circular backgrounds for theme depth -->
+        <div class="absolute -top-16 -left-16 w-80 h-80 bg-brand-rich/20 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-16 -right-16 w-80 h-80 bg-brand-gold/10 rounded-full blur-2xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-gold uppercase tracking-widest font-black text-xs sm:text-sm">Cost-saving Tiffin Plans</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-serif">Subscribed Meals Made Simple</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-cream/80 text-base">Select standard packages or play with our live WhatsApp interactive customizer below to configure breakfast, lunch or dinner exactly how you prefer!</p>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-16">
+                
+                <!-- Card 1: Daily Trial -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-brand-gold/40 hover:bg-white/10 transition-all duration-300">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1.5 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">Quick Trial</span>
+                            <i class="fa-solid fa-calendar-day text-brand-gold text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-white">Daily Meal Plan</h3>
+                            <p class="text-brand-cream/70 text-sm mt-1">Perfect for temporary visitors, tourists, or quick single cravings in town.</p>
+                        </div>
+                        <div class="border-y border-white/10 py-4 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-brand-gold">₹120</span>
+                            <span class="text-brand-cream/60 text-sm">/ Per Day</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-brand-cream/90">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> 1 Main Dish of choice (Dosa/Idly/Chapathi)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> 2 Sides (Sambar & choice of Chutney)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Fresh hot dispatch guarantee</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Regular WhatsApp updates</li>
+                        </ul>
+                    </div>
+                    <div class="pt-8">
+                        <button onclick="orderPlan('Daily Trial Plan (₹120/day)')" class="w-full py-4 rounded-xl bg-white text-brand-deep font-bold hover:bg-brand-gold hover:text-brand-deep transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Select Daily Trial</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Weekly Plan -->
+                <div class="bg-white/10 border-2 border-brand-gold rounded-3xl p-8 flex flex-col justify-between relative transform lg:-translate-y-4 shadow-xl">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-gold text-brand-deep font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full">
+                        Highly Popular
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1.5 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">Saver Offer</span>
+                            <i class="fa-solid fa-calendar-week text-brand-gold text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-white">Weekly Meal Plan</h3>
+                            <p class="text-brand-cream/70 text-sm mt-1">Great for professionals, local employees, and students living solo.</p>
+                        </div>
+                        <div class="border-y border-white/10 py-4 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-brand-gold">₹799</span>
+                            <span class="text-brand-cream/60 text-sm">/ Per Week</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-white">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Full 7 days of scheduled food</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Free delivery within local Valparai</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Custom plan pause/resume option</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Rotating breakfast menu</li>
+                        </ul>
+                    </div>
+                    <div class="pt-8">
+                        <button onclick="orderPlan('Weekly Plan (₹799/week)')" class="w-full py-4 rounded-xl bg-brand-gold text-brand-deep font-black hover:bg-white hover:text-brand-deep transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Select Weekly Plan</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Monthly Premium -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-brand-gold/40 hover:bg-white/10 transition-all duration-300">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1.5 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider font-semibold">Ultimate value</span>
+                            <i class="fa-solid fa-crown text-brand-gold text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-white">Monthly Super Saver</h3>
+                            <p class="text-brand-cream/70 text-sm mt-1">Absolute luxury. No grocery runs or cooking chores for an entire month.</p>
+                        </div>
+                        <div class="border-y border-white/10 py-4 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-brand-gold">₹2,999</span>
+                            <span class="text-brand-cream/60 text-sm">/ Per Month</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-brand-cream/90">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> 30 days of hassle-free hot delivery</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Free home delivery + Custom dispatch time</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Pause whenever you travel away</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Free special Sunday dessert addition</li>
+                        </ul>
+                    </div>
+                    <div class="pt-8">
+                        <button onclick="orderPlan('Monthly Super Saver Plan (₹2999/month)')" class="w-full py-4 rounded-xl bg-white text-brand-deep font-bold hover:bg-brand-gold hover:text-brand-deep transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Select Monthly Plan</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Custom Meal Plan Form Calculator -->
+            <div class="bg-white text-brand-dark rounded-3xl p-6 sm:p-10 shadow-2xl border border-brand-creamDark max-w-4xl mx-auto">
+                <div class="text-center space-y-2 mb-8">
+                    <h3 class="text-2xl font-bold text-brand-deep">Customize Your Subscription</h3>
+                    <p class="text-brand-gray text-sm">Select options dynamically to estimate and request on WhatsApp instantly.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Step 1: Meal Period -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">1. Choose Meals</label>
+                        <select id="calc-meals" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:outline-none focus:ring-2 focus:ring-brand-rich">
+                            <option value="Breakfast Only">Breakfast Only</option>
+                            <option value="Lunch Only">Lunch Only</option>
+                            <option value="Dinner Only">Dinner Only</option>
+                            <option value="Breakfast + Lunch">Breakfast + Lunch</option>
+                            <option value="Breakfast + Dinner">Breakfast & Dinner</option>
+                            <option value="Lunch + Dinner">Lunch & Dinner</option>
+                            <option value="All Three Meals">All 3 Meals (Full Day)</option>
+                        </select>
+                    </div>
+
+                    <!-- Step 2: Plan Type -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">2. Duration Period</label>
+                        <select id="calc-duration" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:outline-none focus:ring-2 focus:ring-brand-rich">
+                            <option value="Single Trial Day">Single Trial Day</option>
+                            <option value="7 Days Weekly Plan">7 Days (Weekly Plan)</option>
+                            <option value="30 Days Monthly Plan">30 Days (Monthly Plan)</option>
+                        </select>
+                    </div>
+
+                    <!-- Step 3: Diet Preference -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">3. Diet Choice</label>
+                        <select id="calc-diet" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:outline-none focus:ring-2 focus:ring-brand-rich">
+                            <option value="Classic Homemade Veg">Classic Homemade Veg</option>
+                            <option value="Non-Veg (Spcl Days)">Include Egg / Non-Veg</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-brand-creamDark flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="block text-xs text-brand-gray font-semibold">Ready to Send WhatsApp Proposal:</span>
+                        <span class="text-lg font-black text-brand-deep" id="calc-preview-text">Veg, Breakfast Only for Single Trial Day</span>
+                    </div>
+                    <button onclick="sendCalculatedPlan()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Send Custom Request</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Areas Section -->
+    <section id="delivery" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Description Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Quick Check</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">We Deliver Fresh to Valparai & Surrounding Areas</h2>
+                    <div class="w-24 h-1 bg-brand-gold rounded-full"></div>
+                    <p class="text-brand-gray leading-relaxed">
+                        To maintain standard food warmth, we operate optimized fast-courier hot cases within Valparai town limits and neighboring tea estate regions. Check if your street or area is covered below!
+                    </p>
+
+                    <!-- Real-time Area Checker Form -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-creamDark shadow-premium space-y-4">
+                        <label for="area-input" class="block text-xs font-black uppercase tracking-widest text-brand-rich">Type your neighborhood:</label>
+                        <div class="relative">
+                            <input type="text" id="area-input" placeholder="e.g. Stanmore, Valparai Town..." class="w-full pl-4 pr-12 py-3.5 rounded-xl border-2 border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium">
+                            <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-brand-gray text-lg">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </div>
+                        <button onclick="checkDeliveryArea()" class="w-full py-3.5 rounded-xl bg-brand-deep hover:bg-brand-rich text-brand-cream font-bold transition-all">
+                            Verify Instant Coverage
+                        </button>
+                        <div id="checker-result" class="hidden p-3 rounded-xl text-center text-sm font-bold"></div>
+                    </div>
+                </div>
+
+                <!-- Visual list of neighborhoods -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium relative overflow-hidden">
+                        <h3 class="text-xl font-bold text-brand-deep mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-map-location-dot text-brand-rich"></i>
+                            <span>N2 Active Delivery Zones</span>
+                        </h3>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Valparai Main Town</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Stanmore Estate</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Iyerpadi Junction</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Cinchona Estate</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Mudis Town</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Anali Estate</span>
+                            </div>
+                        </div>
+
+                        <!-- Special status notice -->
+                        <div class="mt-6 p-4 bg-emerald-50 text-brand-deep rounded-2xl border border-emerald-100 flex items-start gap-3">
+                            <i class="fa-solid fa-circle-info text-brand-rich mt-0.5 shrink-0"></i>
+                            <p class="text-xs leading-relaxed text-brand-gray">
+                                <strong class="text-brand-deep">Staying outside these areas?</strong> Don't worry! Contact us on WhatsApp directly. For customized tiffin bulk corporate deliveries, we travel up to 15km further.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-brand-creamDark/40 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Word of Mouth</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Loved By Hungry Families</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-gray text-base">Read authentic reviews from locals, working teachers, bankers, and tourists visiting Valparai hill station.</p>
+            </div>
+
+            <!-- Testimonial Grid Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-yellow-500">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray text-sm leading-relaxed italic">
+                            "The Soft Idlys and Kara Chutney from N2 Kitchen remind me exactly of my grandma's recipe. Ordering via WhatsApp is incredibly fast, and food is delivered super hot!"
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brand-creamDark mt-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-deep text-brand-cream flex items-center justify-center font-bold">
+                            AR
+                        </div>
+                        <div>
+                            <span class="block text-sm font-bold text-brand-deep">Ananya Raman</span>
+                            <span class="block text-xs text-brand-gray">Valparai Resident</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-yellow-500">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray text-sm leading-relaxed italic">
+                            "Being a teacher, I rarely find time to prep meals in the morning. N2 Weekly tiffin plan is a total lifesaver. Less oil, highly hygienic, and very affordable."
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brand-creamDark mt-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-deep text-brand-cream flex items-center justify-center font-bold">
+                            DK
+                        </div>
+                        <div>
+                            <span class="block text-sm font-bold text-brand-deep">Dr. Karthik</span>
+                            <span class="block text-xs text-brand-gray">Local School Principal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-yellow-500">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray text-sm leading-relaxed italic">
+                            "We visited Valparai as tourists last week and ordered dinner from N2. The Ghee Dosa was incredibly crispy and tasted exceptionally pure. Heartily recommend them!"
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brand-creamDark mt-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-deep text-brand-cream flex items-center justify-center font-bold">
+                            VP
+                        </div>
+                        <div>
+                            <span class="block text-sm font-bold text-brand-deep">Vijay Prasad</span>
+                            <span class="block text-xs text-brand-gray">Tourist from Chennai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About N2 Cloud Kitchen -->
+    <section id="about" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Brand Story Image Grid -->
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="rounded-3xl overflow-hidden shadow-premium">
+                            <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600&auto=format&fit=crop&q=80" 
+                                 alt="Preparing Fresh Rotis / Chapathis" 
+                                 class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/400x300/0F5132/FFF8E7?text=Kitchen+Action'">
+                        </div>
+                        <div class="bg-brand-deep p-6 rounded-3xl text-brand-cream space-y-2">
+                            <div class="text-3xl font-black font-serif text-brand-gold">100%</div>
+                            <span class="block text-xs font-bold uppercase tracking-wider">Cold Pressed Oils Only</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="bg-brand-rich p-6 rounded-3xl text-brand-cream space-y-2">
+                            <i class="fa-solid fa-mortar-pestle text-3xl text-brand-gold"></i>
+                            <h4 class="text-lg font-bold">Traditional Methods</h4>
+                        </div>
+                        <div class="rounded-3xl overflow-hidden shadow-premium">
+                            <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80" 
+                                 alt="Steaming warm hot idly and sambar prep" 
+                                 class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/400x300/0F5132/FFF8E7?text=Steaming+Mains'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Story Text Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Our Heart & Soul</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Made With Love, Served With Warmth</h2>
+                    <div class="w-24 h-1 bg-brand-gold rounded-full"></div>
+                    <p class="text-brand-gray text-base leading-relaxed">
+                        N2 Cloud Kitchen started in Valparai with a basic, powerful goal: to serve clean, premium, home-like nutritional tiffins for families and individuals who don't have time to cook, yet refuse to compromise their physical health with commercial, artificial restaurant food.
+                    </p>
+                    <p class="text-brand-gray text-base leading-relaxed">
+                        Every single item, from our crisp ghee roast crepes to our complex, slow-simmered hotel-style lentil sambar, is made exactly how we prepare dishes for our own children. We source farm-fresh vegetables directly, prepare spices fresh, and wash dishes thoroughly under standard hygienic protocol.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-50 text-brand-rich flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <span class="text-sm font-bold text-brand-deep">Committed to Health</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-50 text-brand-rich flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <span class="text-sm font-bold text-brand-deep">Valparai Local Trust</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-brand-creamDark/40 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Got Questions?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-deep font-serif">Frequently Asked Questions</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+            </div>
+
+            <!-- FAQ List -->
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(1)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>How early in advance should I order my tiffin?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-1" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        For regular daily breakfast items, ordering by 7:00 PM the previous evening or 6:30 AM in the morning is highly recommended. For subscriptions (weekly or monthly), orders are automatically scheduled at your preferred time.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(2)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>What oils do you cook with?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-2" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        We strictly cook with high-quality cold-pressed sesame oil, premium groundnut oil, and pure country cow ghee. We absolutely reject cheap refined palm oils or repeated frying reuse.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(3)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>Can I pause my weekly or monthly subscription?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-3" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        Absolutely! If you are traveling or eating out, simply drop us a WhatsApp message at least 4 hours prior. We will pause your delivery quota and add the paused days seamlessly to your plan's extension.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(4)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>Is there a delivery fee?</span>
+                        <i id="faq-icon-4" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-4" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        Delivery is 100% free within Valparai Main Town limits. For distant estates or junctions, a very nominal transit charge might be added depending on the exact coordinates of delivery.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Lead Form Section -->
+    <section id="contact" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                
+                <!-- Contact info cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="space-y-4">
+                        <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Get In Touch</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-deep font-serif">Connect With N2 Kitchen</h2>
+                        <div class="w-24 h-1 bg-brand-gold rounded-full"></div>
+                        <p class="text-brand-gray text-sm leading-relaxed">
+                            Have general questions or catering requirements for corporate tea parties and estate get-togethers? Drop us a line or call instantly.
+                        </p>
+                    </div>
+
+                    <!-- Details Card -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-creamDark shadow-premium space-y-6">
+                        <a href="tel:+919488826723" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-cream border border-brand-creamDark text-brand-deep flex items-center justify-center group-hover:bg-brand-deep group-hover:text-brand-cream transition-colors shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Call Phone Number</span>
+                                <span class="block text-sm sm:text-base font-bold text-brand-deep group-hover:text-brand-rich transition-colors">+91 94888 26723</span>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/919488826723?text=Hi!%20I'm%20inquiring%20about%20N2%20Cloud%20Kitchen." target="_blank" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors shrink-0">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">WhatsApp Chat</span>
+                                <span class="block text-sm sm:text-base font-bold text-brand-deep group-hover:text-brand-rich transition-colors">+91 94888 26723</span>
+                            </div>
+                        </a>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-cream border border-brand-creamDark text-brand-deep flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-map-pin"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Our Cloud Kitchen Address</span>
+                                <p class="text-sm sm:text-base font-bold text-brand-deep leading-relaxed">
+                                    N2 Cloud Kitchen,<br>
+                                    Main Road Junction, Valparai,<br>
+                                    Coimbatore District, Tamil Nadu.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simulated Google Maps Placeholder Widget -->
+                    <div class="rounded-3xl overflow-hidden border border-brand-creamDark h-48 relative shadow-premium">
+                        <!-- High quality static local landscape showing Valparai tea fields to capture location vibe -->
+                        <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80" 
+                             alt="Beautiful Local Valparai Area View" 
+                             class="w-full h-full object-cover brightness-75"
+                             onerror="this.src='https://placehold.co/600x400/0F5132/FFF8E7?text=Valparai+Location'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-deep/80 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-xs text-brand-gold uppercase tracking-widest font-bold">Valparai Main Town</span>
+                            <span class="text-white text-sm font-bold mt-1">N2 Cloud Kitchen dispatch center hub.</span>
+                            <a href="https://maps.google.com/?q=Valparai" target="_blank" class="text-xs text-emerald-300 font-bold hover:underline mt-2 inline-flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Google Maps Coordinates
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-brand-deep">Send Us a Quick Message</h3>
+                        <p class="text-brand-gray text-sm">Fill in your information to request a call back or place special requests.</p>
+                        
+                        <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Your Name</label>
+                                    <input type="text" id="contact-name" placeholder="John Doe" required class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Phone Number</label>
+                                    <input type="tel" id="contact-phone" placeholder="9876543210" required class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Select Food Category</label>
+                                <select id="contact-category" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:border-brand-rich focus:outline-none">
+                                    <option value="Daily Tiffin Delivery Subscription">Daily Tiffin Delivery Subscription</option>
+                                    <option value="Weekly or Monthly Saver Packages">Weekly / Monthly Saver Packages</option>
+                                    <option value="Bulk Corporate or Party Orders">Bulk Party / Estate Gathering Delivery</option>
+                                    <option value="General Queries or Feedbacks">General Feedback / Inquiries</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Your Message / Custom Details</label>
+                                <textarea id="contact-message" rows="4" placeholder="Tell us about special requirements (e.g. non-spicy, specific timings...)" required class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-brand-deep hover:bg-brand-rich text-brand-cream font-bold text-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-sm"></i>
+                                <span>Send Message Request</span>
+                            </button>
+                        </form>
+                        
+                        <div id="contact-success" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-brand-deep text-center font-bold text-sm">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i> Message Sent successfully! Our representative will call you immediately.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-brand-deep text-brand-cream pt-16 pb-24 md:pb-12 border-t border-brand-gold/20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Column 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-rich text-brand-cream border border-brand-gold flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-utensils text-sm"></i>
+                        </div>
+                        <span class="text-xl font-black text-white">N2 <span class="text-brand-gold">Kitchen</span></span>
+                    </div>
+                    <p class="text-brand-cream/70 text-sm leading-relaxed">
+                        Purity meets home-cooked delicious flavor. Delivering authentic, freshly prepared, organic tiffin meals with ultimate love and care in Valparai, Tamil Nadu.
+                    </p>
+                    <div class="flex items-center space-x-4 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-deep transition-all flex items-center justify-center text-sm"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-deep transition-all flex items-center justify-center text-sm"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-deep transition-all flex items-center justify-center text-sm"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Navigation -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest border-b border-white/10 pb-2">Quick Navigation</h4>
+                    <ul class="space-y-2 text-sm text-brand-cream/80">
+                        <li><a href="#home" class="hover:text-brand-gold transition-colors block py-1">Home</a></li>
+                        <li><a href="#menu" class="hover:text-brand-gold transition-colors block py-1">Our Featured Menu</a></li>
+                        <li><a href="#why-choose" class="hover:text-brand-gold transition-colors block py-1">Why Choose Us</a></li>
+                        <li><a href="#plans" class="hover:text-brand-gold transition-colors block py-1">Tiffin Packages</a></li>
+                        <li><a href="#delivery" class="hover:text-brand-gold transition-colors block py-1">Delivery Zones</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Details -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest border-b border-white/10 pb-2">Connect Info</h4>
+                    <p class="text-brand-cream/80 text-sm leading-relaxed">
+                        N2 Kitchen HQ, <br>
+                        Main Road Town Square, <br>
+                        Valparai, Coimbatore District, TN.
+                    </p>
+                    <div class="pt-2 text-sm text-brand-gold font-bold">
+                        <a href="tel:+919488826723" class="hover:underline block py-1"><i class="fa-solid fa-phone mr-2"></i> +91 94888 26723</a>
+                        <a href="mailto:n2kitchen@gmail.com" class="hover:underline block py-1"><i class="fa-solid fa-envelope mr-2"></i> info@n2cloudkitchen.com</a>
+                    </div>
+                </div>
+
+                <!-- Column 4: Newsletter or Quote -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest border-b border-white/10 pb-2">Kitchen Hours</h4>
+                    <p class="text-brand-cream/80 text-sm leading-relaxed">
+                        Every Single Day:<br>
+                        Breakfast: <span class="text-brand-gold">06:30 AM - 10:00 AM</span><br>
+                        Lunch: <span class="text-brand-gold">12:00 PM - 03:00 PM</span><br>
+                        Dinner: <span class="text-brand-gold">07:00 PM - 09:30 PM</span>
+                    </p>
+                    <span class="block text-xs bg-brand-rich/40 text-brand-gold px-3 py-1.5 rounded-lg border border-brand-rich/60 font-semibold text-center uppercase tracking-widest">Open 365 Days</span>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom copyrights -->
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-cream/60 gap-4 text-center">
+                <span>&copy; 2026 N2 Cloud Kitchen. All Rights Reserved. Crafted with pure care in Valparai, Tamil Nadu.</span>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Floating Action WhatsApp Button -->
+    <a href="https://wa.me/919488826723?text=Hi%20N2%20Kitchen!%20I%20want%20to%20place%20an%20order%20right%20now." 
+       target="_blank" 
+       class="fixed bottom-20 md:bottom-8 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-floating transition-all duration-300 transform hover:scale-110"
+       aria-label="Order on WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Mobile Sticky Bottom Navigation Menu (Hidden on Desktop) -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-brand-cream border-t border-brand-creamDark shadow-2xl md:hidden px-4 py-3 flex items-center justify-around">
+        <a href="#home" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Home</span>
+        </a>
+        <a href="#menu" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-utensils text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Menu</span>
+        </a>
+        <a href="#plans" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-calendar-alt text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Plans</span>
+        </a>
+        <a href="#delivery" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-truck-fast text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Zones</span>
+        </a>
+        <a href="#contact" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-message text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Contact</span>
+        </a>
+    </div>
+
+    <!-- Custom Food Item Order Customizer Popup Modal -->
+    <div id="customizer-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl relative border border-brand-creamDark transform scale-95 transition-transform duration-300" id="modal-container">
+            
+            <!-- Header section of modal -->
+            <div class="bg-brand-deep p-6 text-brand-cream relative">
+                <button onclick="closeCustomizer()" class="absolute top-4 right-4 text-brand-cream/80 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <h3 class="text-2xl font-bold font-serif" id="custom-item-title">Customize Order</h3>
+                <p class="text-brand-cream/80 text-xs mt-1">Prepare it exactly how you want it served</p>
+            </div>
+
+            <!-- Body section of customizer -->
+            <div class="p-6 space-y-6">
+                <!-- Quantity selector -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">Quantity / Servings</label>
+                    <div class="flex items-center gap-4">
+                        <button onclick="adjustQuantity(-1)" class="w-10 h-10 rounded-xl bg-brand-cream border border-brand-creamDark flex items-center justify-center text-brand-deep hover:bg-brand-deep hover:text-white transition-colors font-bold text-lg">-</button>
+                        <span id="custom-quantity" class="text-xl font-bold text-brand-deep min-w-[20px] text-center">1</span>
+                        <button onclick="adjustQuantity(1)" class="w-10 h-10 rounded-xl bg-brand-cream border border-brand-creamDark flex items-center justify-center text-brand-deep hover:bg-brand-deep hover:text-white transition-colors font-bold text-lg">+</button>
+                    </div>
+                </div>
+
+                <!-- Spiciness preference -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">Spiciness Level</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setSpice('Mild')" class="spice-btn px-4 py-2.5 rounded-xl border border-brand-creamDark bg-brand-cream font-semibold text-xs text-brand-deep text-center transition-all focus:outline-none">Mild (Kids)</button>
+                        <button onclick="setSpice('Medium')" class="spice-btn active px-4 py-2.5 rounded-xl border border-brand-deep bg-brand-deep font-semibold text-xs text-brand-cream text-center transition-all focus:outline-none">Medium (Standard)</button>
+                        <button onclick="setSpice('Spicy')" class="spice-btn px-4 py-2.5 rounded-xl border border-brand-creamDark bg-brand-cream font-semibold text-xs text-brand-deep text-center transition-all focus:outline-none">Hot / Spicy</button>
+                    </div>
+                </div>
+
+                <!-- Custom request text -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">Custom Instructions</label>
+                    <input type="text" id="custom-instructions" placeholder="e.g. Less salt, extra ghee, no oil..." class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium text-sm">
+                </div>
+            </div>
+
+            <!-- Action buttons inside modal footer -->
+            <div class="p-6 border-t border-brand-creamDark bg-brand-cream flex gap-3">
+                <button onclick="closeCustomizer()" class="flex-1 py-3.5 rounded-xl bg-white border border-brand-creamDark text-brand-deep font-bold transition-colors">Cancel</button>
+                <button onclick="submitCustomizedOrder()" class="flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Confirm Order</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Logic Javascript -->
+    <script>
+        // Global Customizer State
+        let currentItemName = '';
+        let currentSpiceLevel = 'Medium';
+        let currentQty = 1;
+
+        // Interactive Mobile Menu toggle logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.className = "fa-solid fa-xmark text-2xl";
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = "fa-solid fa-bars text-2xl";
+            }
+        });
+
+        // Close Mobile Menu on clicking links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = "fa-solid fa-bars text-2xl";
+            });
+        });
+
+        // Filtering Menu Items
+        function filterMenu(category) {
+            // Update filter buttons styling
+            const buttons = document.querySelectorAll('#menu-filters button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-deep', 'text-brand-cream', 'active');
+                btn.classList.add('bg-white', 'text-brand-deep');
+            });
+
+            // Find clicked button to toggle active theme
+            const activeBtn = Array.from(buttons).find(btn => btn.textContent.toLowerCase().includes(category === 'all' ? 'all' : category));
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-brand-deep');
+                activeBtn.classList.add('bg-brand-deep', 'text-brand-cream', 'active');
+            }
+
+            // Toggle items view
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else if (item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Customizer modal control mechanics
+        function openCustomizer(itemName) {
+            currentItemName = itemName;
+            currentQty = 1;
+            currentSpiceLevel = 'Medium';
+            document.getElementById('custom-quantity').textContent = currentQty;
+            document.getElementById('custom-instructions').value = '';
+            document.getElementById('custom-item-title').textContent = itemName;
+
+            // Reset spice buttons theme
+            setSpice('Medium');
+
+            // Open Modal
+            const modal = document.getElementById('customizer-modal');
+            const container = document.getElementById('modal-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeCustomizer() {
+            const modal = document.getElementById('customizer-modal');
+            const container = document.getElementById('modal-container');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 150);
+        }
+
+        function adjustQuantity(val) {
+            currentQty = Math.max(1, currentQty + val);
+            document.getElementById('custom-quantity').textContent = currentQty;
+        }
+
+        function setSpice(spice) {
+            currentSpiceLevel = spice;
+            const btns = document.querySelectorAll('.spice-btn');
+            btns.forEach(btn => {
+                if (btn.textContent.includes(spice)) {
+                    btn.classList.remove('bg-brand-cream', 'text-brand-deep');
+                    btn.classList.add('bg-brand-deep', 'text-brand-cream');
+                } else {
+                    btn.classList.remove('bg-brand-deep', 'text-brand-cream');
+                    btn.classList.add('bg-brand-cream', 'text-brand-deep');
+                }
+            });
+        }
+
+        function submitCustomizedOrder() {
+            const instructions = document.getElementById('custom-instructions').value;
+            const spiceDetails = `Spiciness Level: ${currentSpiceLevel}`;
+            const instructionsDetail = instructions ? `Note: ${instructions}` : '';
+            
+            const message = `Hello N2 Kitchen! I want to order the following item:\n\n- *${currentItemName}*\n- Qty: *${currentQty} Servings*\n- ${spiceDetails}\n${instructionsDetail}\n\nPlease confirm availability and let me know total price. Thank you!`;
+            
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+            closeCustomizer();
+        }
+
+        // Instant WhatsApp order for standard selected packages
+        function orderPlan(planName) {
+            const message = `Hi N2 Cloud Kitchen team! I'm highly interested in subscribing to your:\n\n*${planName}*\n\nPlease let me know how I can confirm my delivery timings, address details, and initiate payment. Cheers!`;
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Real-time custom plan estimator logic
+        const calcMeals = document.getElementById('calc-meals');
+        const calcDuration = document.getElementById('calc-duration');
+        const calcDiet = document.getElementById('calc-diet');
+        const calcPreview = document.getElementById('calc-preview-text');
+
+        function updatePlanEstimates() {
+            const meals = calcMeals.value;
+            const duration = calcDuration.value;
+            const diet = calcDiet.value;
+            calcPreview.innerHTML = `<span class="text-brand-rich">${diet}</span> - ${meals} for <span class="text-brand-rich">${duration}</span>`;
+        }
+
+        [calcMeals, calcDuration, calcDiet].forEach(element => {
+            element.addEventListener('change', updatePlanEstimates);
+        });
+
+        function sendCalculatedPlan() {
+            const meals = calcMeals.value;
+            const duration = calcDuration.value;
+            const diet = calcDiet.value;
+
+            const message = `Hello! I calculated my custom plan proposal on your website:\n\n- Diet: *${diet}*\n- Meals Selected: *${meals}*\n- Period Duration: *${duration}*\n\nPlease send me a custom price quotation and scheduling timeline. Thank you!`;
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Valparai Area Checker logic
+        const activeDeliveryAreas = [
+            'valparai', 'town', 'main town', 'bazaar', 'stanmore', 'stanmore estate', 
+            'iyerpadi', 'iyerpadi junction', 'cinchona', 'cinchona estate', 
+            'mudis', 'mudis town', 'anali', 'anali estate'
+        ];
+
+        function checkDeliveryArea() {
+            const inputVal = document.getElementById('area-input').value.trim().toLowerCase();
+            const resultDiv = document.getElementById('checker-result');
+            
+            if (!inputVal) {
+                resultDiv.textContent = 'Please enter a valid area name first!';
+                resultDiv.className = 'p-3 rounded-xl text-center text-sm font-bold bg-amber-100 text-amber-800 block';
+                return;
+            }
+
+            const isCovered = activeDeliveryAreas.some(area => inputVal.includes(area) || area.includes(inputVal));
+
+            if (isCovered) {
+                resultDiv.textContent = 'Yes! We deliver hot meals to your location!';
+                resultDiv.className = 'p-3 rounded-xl text-center text-sm font-bold bg-emerald-100 text-emerald-800 block';
+            } else {
+                resultDiv.textContent = 'We might cover this on demand. Direct message us on WhatsApp to confirm!';
+                resultDiv.className = 'p-3 rounded-xl text-center text-sm font-bold bg-red-100 text-red-800 block';
+            }
+        }
+
+        // FAQ Toggle Logic
+        function toggleFAQ(id) {
+            const ans = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Contact Form Callback
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const category = document.getElementById('contact-category').value;
+            const message = document.getElementById('contact-message').value;
+
+            // Simple WhatsApp Redirect for instant message submit
+            const fullMsg = `Hi N2 Kitchen! I filled out the contact form:\n\n- Name: *${name}*\n- Phone: *${phone}*\n- Category: *${category}*\n- Message: *${message}*`;
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(fullMsg)}`;
+            
+            // Show local success state
+            document.getElementById('contact-success').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('contact-form').reset();
+                window.open(waUrl, '_blank');
+            }, 1000);
+        }
+
+        // Initialize calculations load
+        window.onload = function() {
+            updatePlanEstimates();
+        };
+    </script>
+</body>
+</html>
