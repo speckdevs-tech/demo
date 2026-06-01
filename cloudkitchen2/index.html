@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hot Box Kitchen - Premium, piping-hot homemade meals and tiffins delivered in specialized thermal insulated boxes. Order breakfast, lunch, and dinner.">
+    <title>Hot Box Kitchen | Premium Piping-Hot Meal Delivery</title>
+    
+    <!-- Google Fonts: Playfair Display & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            deep: '#BE3144',      /* Premium Rich Crimson Red */
+                            rich: '#F05454',      /* Warm Appetizing Coral Red */
+                            cream: '#FFFDF9',     /* Elegant Soft Pearl Cream */
+                            creamDark: '#F5EBE6', /* Warm accent cream for separation */
+                            gold: '#F5A623',      /* Radiant Honey Gold */
+                            orange: '#D84315',    /* Steaming Spicy Orange */
+                            dark: '#222831',      /* Sophisticated Deep Charcoal Text */
+                            gray: '#5C6370'       /* Slate grey for high legibility body text */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -5px rgba(190, 49, 68, 0.08)',
+                        'floating': '0 15px 35px -5px rgba(240, 84, 84, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFFDF9;
+            color: #222831;
+        }
+        h1, h2, h3, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Premium custom scrollbar matching warm theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #BE3144;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F05454;
+        }
+        /* Custom glassmorphism header */
+        .glass-header {
+            background-color: rgba(255, 253, 249, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Steam Animation */
+        @keyframes steam {
+            0% { transform: translateY(0) scaleX(1); opacity: 0.1; }
+            50% { transform: translateY(-5px) scaleX(1.1); opacity: 0.4; }
+            100% { transform: translateY(-10px) scaleX(1.2); opacity: 0; }
+        }
+        .steam-icon {
+            animation: steam 2s infinite ease-out;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen selection:bg-brand-rich selection:text-white">
+
+    <!-- Header Desktop / Tablet Navigation -->
+    <header class="sticky top-0 z-40 w-full transition-all duration-300 border-b border-brand-creamDark glass-header shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Identity -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-deep flex items-center justify-center text-brand-cream border-2 border-brand-gold transition-transform group-hover:scale-105 duration-300 relative">
+                        <i class="fa-solid fa-fire-burner text-lg"></i>
+                        <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-gold"></span>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-black tracking-tight text-brand-deep">Hot Box <span class="text-brand-rich">Kitchen</span></span>
+                        <span class="block text-xs uppercase tracking-widest text-brand-gold font-bold">Piping Hot Homestyle Delivery</span>
+                    </div>
+                </a>
+
+                <!-- Nav Menu - Desktop -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Home</a>
+                    <a href="#menu" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Our Menu</a>
+                    <a href="#why-choose" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Why Us</a>
+                    <a href="#plans" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Meal Plans</a>
+                    <a href="#delivery" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Delivery Zones</a>
+                    <a href="#about" class="text-brand-dark hover:text-brand-rich font-medium transition-colors duration-200">Our Story</a>
+                </nav>
+
+                <!-- Action CTA Button - Desktop -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/919488826723?text=Hello%20Hot%20Box%20Kitchen!%20I'm%20interested%20in%20ordering%20steaming%20hot%20meals." 
+                       target="_blank" 
+                       class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-deep text-brand-cream font-semibold hover:bg-brand-rich border-2 border-brand-gold hover:border-brand-cream transition-all duration-300 transform hover:-translate-y-0.5 shadow-md">
+                        <i class="fa-brands fa-whatsapp text-lg text-green-300"></i>
+                        <span>Order Steaming Hot</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Toggle -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-brand-deep p-2 focus:outline-none focus:ring-2 focus:ring-brand-rich rounded-lg" aria-label="Toggle navigation menu">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-brand-cream border-b border-brand-creamDark px-4 pt-4 pb-6 space-y-3 shadow-lg z-50 animate-fade-in">
+            <a href="#home" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Home</a>
+            <a href="#menu" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Our Menu</a>
+            <a href="#why-choose" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Why Us</a>
+            <a href="#plans" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Meal Plans</a>
+            <a href="#delivery" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Delivery Zones</a>
+            <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl bg-white text-brand-dark font-medium hover:bg-brand-deep hover:text-white transition-all">Our Story</a>
+            <a href="https://wa.me/919488826723?text=Hello%20Hot%20Box%20Kitchen!%20I'd%20like%20to%20place%20an%20order." 
+               target="_blank" 
+               class="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-colors">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Direct WhatsApp Order</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center pt-8 pb-16 overflow-hidden z-10">
+        <!-- Background Blur Accents -->
+        <div class="absolute -top-10 -right-10 w-96 h-96 bg-brand-rich/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-brand-gold/15 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-rich/15 border border-brand-rich/30 text-brand-deep font-semibold text-xs sm:text-sm tracking-wide uppercase">
+                        <i class="fa-solid fa-fire-alt text-brand-rich animate-pulse"></i>
+                        <span>Insulated Thermal Packings for Peak Freshness</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-deep leading-tight">
+                        Piping Hot, Fresh <br class="hidden sm:inline">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-deep to-brand-rich font-serif italic">Homestyle Tiffins</span> <br>
+                        Delivered Daily
+                    </h1>
+
+                    <p class="text-brand-gray text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Say goodbye to cold, soggy lunches! Authentic, wholesome meals prepared fresh with dynamic cold-pressed oils, packed in state-of-the-art thermal boxes, and delivered straight to your desk or doorstep.
+                    </p>
+
+                    <!-- CTA Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="https://wa.me/919488826723?text=Hi%20Hot%20Box%20Kitchen!%20I'm%20visiting%20your%20site%20and%20want%20to%20order%20delicious%20piping%20hot%20meals." 
+                           target="_blank" 
+                           class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-emerald-600 text-white font-bold text-lg hover:bg-emerald-700 hover:shadow-floating transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Order on WhatsApp</span>
+                        </a>
+                        <a href="#menu" 
+                           class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white border-2 border-brand-creamDark text-brand-deep font-bold text-lg hover:border-brand-rich hover:bg-brand-cream hover:text-brand-rich transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>Explore Hot Menu</span>
+                        </a>
+                    </div>
+
+                    <!-- Highlight Badges -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 max-w-md mx-auto lg:mx-0 border-t border-brand-creamDark">
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-brand-deep font-serif">65°C+</div>
+                            <div class="text-xs text-brand-gray font-medium">Guaranteed Thermal Heat</div>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-brand-deep font-serif">Zero</div>
+                            <div class="text-xs text-brand-gray font-medium">Reheating Needed</div>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-brand-deep font-serif">Daily</div>
+                            <div class="text-xs text-brand-gray font-medium">Freshly Cooked Menu</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Banner Image -->
+                <div class="lg:col-span-5 relative flex justify-center items-center">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px]">
+                        <!-- Background Circle Animations -->
+                        <div class="absolute inset-0 bg-brand-rich rounded-full opacity-10 animate-pulse"></div>
+                        <div class="absolute inset-4 border-2 border-dashed border-brand-gold/40 rounded-full animate-[spin_40s_linear_infinite]"></div>
+                        
+                        <!-- Main Food Showcase Image inside frame -->
+                        <div class="absolute inset-8 rounded-full overflow-hidden border-4 border-brand-deep shadow-2xl bg-brand-cream animate-[bounce_5s_ease-in-out_infinite]">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80" 
+                                 alt="Fresh Delicious Food In Hot Box" 
+                                 class="w-full h-full object-cover transform scale-110 hover:scale-125 transition-transform duration-700"
+                                 onerror="this.src='https://placehold.co/600x600/BE3144/FFFDF9?text=Hot+Box+Kitchen'">
+                        </div>
+
+                        <!-- Floating Micro-Card 1: Steaming Indicator -->
+                        <div class="absolute -top-4 -left-4 bg-white/95 backdrop-blur-sm border border-brand-creamDark rounded-2xl p-3 shadow-premium flex items-center gap-3 animate-[bounce_4s_ease-in-out_infinite_1s]">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-brand-orange relative">
+                                <i class="fa-solid fa-cloud-sun steam-icon"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Packed Hot</span>
+                                <span class="block text-xs font-black text-brand-deep">Thermal Insulated</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Micro-Card 2: High Rating -->
+                        <div class="absolute -bottom-4 -right-4 bg-white/95 backdrop-blur-sm border border-brand-creamDark rounded-2xl p-3 shadow-premium flex items-center gap-3 animate-[bounce_6s_ease-in-out_infinite_2s]">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Trust Rating</span>
+                                <span class="block text-xs font-black text-brand-deep">4.9/5 (1,500+ Lovers)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Menu Gallery Section -->
+    <section id="menu" class="py-20 bg-brand-creamDark/40 relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">What's Cooking Today</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Our Steaming Specialties</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-gray text-base">Handpicked premium options, prepared with strict sanitization standards and fresh organic ingredients. Filter your choice and customize your order instantly.</p>
+                
+                <!-- Category Filters -->
+                <div class="flex flex-wrap items-center justify-center gap-2 pt-6" id="menu-filters">
+                    <button onclick="filterMenu('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-brand-deep text-brand-cream border border-brand-deep shadow-md">
+                        All Specialties
+                    </button>
+                    <button onclick="filterMenu('meals')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-brand-deep border border-brand-creamDark hover:border-brand-rich">
+                        Hot Mains
+                    </button>
+                    <button onclick="filterMenu('sides')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-brand-deep border border-brand-creamDark hover:border-brand-rich">
+                        Chutneys & Sides
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="menu-grid">
+                
+                <!-- Item 1: Idly -->
+                <div class="menu-item meals bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600&auto=format&fit=crop&q=80" 
+                             alt="Steaming Hot Idly" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Ghee+Idly'">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Fluffy & Hot</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Podi / Plain Idly</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Pillowy soft steamed rice cakes coated in fresh homemade gunpowder spice mix, cooked with dynamic sesame oil.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mug-hot mr-1"></i> Breakfast</span>
+                            <button onclick="openCustomizer('Podi Plain Idly')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Dosa -->
+                <div class="menu-item meals bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80" 
+                             alt="Crispy Roast Dosa" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Ghee+Dosa'">
+                        <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Chef's Special</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Ghee Roast Dosa</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Crispy, paper-thin golden savory crepe roasted beautifully with pure country cow ghee, packed to preserve crispness.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mug-hot mr-1"></i> Breakfast</span>
+                            <button onclick="openCustomizer('Ghee Roast Dosa')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Idiyappam -->
+                <div class="menu-item meals bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80" 
+                             alt="Piping Hot Idiyappam" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Idiyappam'">
+                        <span class="absolute top-4 right-4 bg-brand-deep text-brand-cream text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Traditional</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Idiyappam</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Light and fluffy steamed rice string hoppers, packed piping hot. Best enjoyed with rich, cardamom-infused coconut milk.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mug-hot mr-1"></i> Breakfast</span>
+                            <button onclick="openCustomizer('Idiyappam')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Chapathi -->
+                <div class="menu-item meals bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600&auto=format&fit=crop&q=80" 
+                             alt="Soft Layered Chapathi" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Wheat+Chapathi'">
+                        <span class="absolute top-4 right-4 bg-orange-600 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Diet Friendly</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Whole Wheat Chapathi</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Puff-baked soft layered whole wheat flatbreads. Prepared zero-oil or with light organic ghee coatings.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mug-hot mr-1"></i> Breakfast / Dinner</span>
+                            <button onclick="openCustomizer('Whole Wheat Chapathi')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Coconut Chutney -->
+                <div class="menu-item sides bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Creamy Coconut Chutney" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Coconut+Chutney'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">White Coconut Chutney</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Creamy grated organic coconut blended with premium green chillies, tempered with mustard seeds and curry leaves.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mortar-pestle mr-1"></i> Side dip</span>
+                            <button onclick="openCustomizer('White Coconut Chutney')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Tomato Chutney -->
+                <div class="menu-item sides bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Spicy Tomato Chutney" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Tomato+Chutney'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Tomato Kara Chutney</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Fiery roasted red tomatoes, garlic, caramelized onions, and dynamic hot red pepper flakes blended smooth.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mortar-pestle mr-1"></i> Side dip</span>
+                            <button onclick="openCustomizer('Tomato Kara Chutney')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Pudina Chutney -->
+                <div class="menu-item sides bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Mint Chutney" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Pudina+Chutney'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Fresh Pudina Chutney</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Antioxidant-rich organic garden mint leaves and fresh coriander ground with dry tamarind juice.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-mortar-pestle mr-1"></i> Side dip</span>
+                            <button onclick="openCustomizer('Fresh Pudina Chutney')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Sambar -->
+                <div class="menu-item sides bg-white rounded-3xl overflow-hidden shadow-premium border border-brand-creamDark hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" 
+                             alt="Steaming Hot Vegetable Sambar" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Spl+Sambar'">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-brand-deep">Hot Box Spl Sambar</h3>
+                        <p class="text-brand-gray text-sm line-clamp-2">Slow-boiled nutritious golden lentils packed with local farm carrots, pumpkins, drumsticks, and freshly ground spices.</p>
+                        <div class="pt-4 flex items-center justify-between border-t border-brand-creamDark">
+                            <span class="text-xs text-brand-rich font-semibold uppercase tracking-wider"><i class="fa-solid fa-bowl-hot mr-1"></i> Curry Side</span>
+                            <button onclick="openCustomizer('Hot Box Spl Sambar')" class="px-4 py-2 rounded-xl bg-brand-rich hover:bg-brand-deep text-brand-cream text-xs font-bold transition-colors">
+                                Customize Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Grid Cards -->
+    <section id="why-choose" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Engineered For Purity</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Why Hot Box Kitchen?</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-gray text-base">We prioritize physical well-being, hygienic shipping standards, and dynamic client convenience. Our signature insulated boxes rewrite local food delivery guidelines.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1: Fresh Ingredients -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-50 text-brand-deep flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-seedling text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Organic & Fresh Produce</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">No store-bought preservatives. We grind fresh spices and pick organic locally-farmed greens daily.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2: Homemade Taste -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-cookie-bite text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Authentic Homestyle Taste</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Prepared zero MSG, with minimal fats. Cooked with the warmth and care of premium kitchen traditions.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3: Insulated Boxes -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-temperature-arrow-up text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Innovative Thermal Boxes</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Advanced food boxes keep meals insulated at 65°C+ for hours. Say goodbye to microwaves!</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 4: Fast Delivery -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-bolt text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">On-Time Fast Delivery</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Optimized fleet dispatch. We run calculated delivery routes to reach your office before the lunch bell.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 5: Affordable Pricing -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Affordable Tiffin Rates</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Budget-friendly plans designed specifically for professionals and students seeking clean nourishment.</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 6: Certified Hygiene -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium hover:shadow-lg transition-transform hover:-translate-y-1 duration-300 flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-shield-halved text-2xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-brand-deep">Strict Cleanliness Control</h3>
+                        <p class="text-brand-gray text-sm leading-relaxed">Fully sanitized kitchens. Periodic temperature logs for staffs, FSSAI-guided packaging, and deep-cleaning audits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Tiffin Plans Section -->
+    <section id="plans" class="py-20 bg-brand-deep text-brand-cream relative overflow-hidden z-10 scroll-mt-20">
+        <div class="absolute -top-16 -left-16 w-80 h-80 bg-brand-rich/20 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-16 -right-16 w-80 h-80 bg-brand-gold/10 rounded-full blur-2xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-gold uppercase tracking-widest font-black text-xs sm:text-sm">Cost-saving Tiffin Plans</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-serif">Subscribed Meals Made Simple</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-cream/80 text-base">Select standard packages or build a highly customized meal rotation with our live calculator below.</p>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-16">
+                
+                <!-- Card 1: Daily Trial -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-brand-gold/40 hover:bg-white/10 transition-all duration-300">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1.5 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">Quick Trial</span>
+                            <i class="fa-solid fa-calendar-day text-brand-gold text-2xl animate-pulse"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-white">Daily Meal Plan</h3>
+                            <p class="text-brand-cream/70 text-sm mt-1">Perfect for single cravings, busy office hours, or spontaneous meal plans.</p>
+                        </div>
+                        <div class="border-y border-white/10 py-4 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-brand-gold">₹140</span>
+                            <span class="text-brand-cream/60 text-sm">/ Per Day</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-brand-cream/90">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> 1 Steaming Main Dish (Dosa/Idly/Chapathi)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> 2 Hand-pounded Chutneys & Hot Sambar</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Packaged in standard insulated hot cases</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> High-speed transit dispatch</li>
+                        </ul>
+                    </div>
+                    <div class="pt-8">
+                        <button onclick="orderPlan('Daily Trial Plan (₹140/day)')" class="w-full py-4 rounded-xl bg-white text-brand-deep font-bold hover:bg-brand-gold hover:text-brand-deep transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Select Daily Trial</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Weekly Plan -->
+                <div class="bg-white/10 border-2 border-brand-gold rounded-3xl p-8 flex flex-col justify-between relative transform lg:-translate-y-4 shadow-xl">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-gold text-brand-deep font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full">
+                        Highly Popular
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1.5 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">Super Saver</span>
+                            <i class="fa-solid fa-calendar-week text-brand-gold text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-white">Weekly Meal Plan</h3>
+                            <p class="text-brand-cream/70 text-sm mt-1">Excellent option for working professionals and student semesters.</p>
+                        </div>
+                        <div class="border-y border-white/10 py-4 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-brand-gold">₹899</span>
+                            <span class="text-brand-cream/60 text-sm">/ Per Week</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-white">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Full 7 days of scheduled premium food</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Free delivery within local IT parks & zones</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Seamless Pause/Resume feature</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-sm"></i> Rotated daily breakfast mains menu</li>
+                        </ul>
+                    </div>
+                    <div class="pt-8">
+                        <button onclick="orderPlan('Weekly Plan (₹899/week)')" class="w-full py-4 rounded-xl bg-brand-gold text-brand-deep font-black hover:bg-white hover:text-brand-deep transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Select Weekly Saver</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Monthly Premium -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-brand-gold/40 hover:bg-white/10 transition-all duration-300">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1.5 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">Supreme Value</span>
+                            <i class="fa-solid fa-crown text-brand-gold text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-white">Monthly Super Saver</h3>
+                            <p class="text-brand-cream/70 text-sm mt-1">Total relaxation. Complete freedom from grocery lists and cleanup chores.</p>
+                        </div>
+                        <div class="border-y border-white/10 py-4 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-brand-gold">₹3,499</span>
+                            <span class="text-brand-cream/60 text-sm">/ Per Month</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-brand-cream/90">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> 30 days of seamless homestyle deliveries</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Completely Free Home Delivery with custom scheduling</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Pause whenever you go out of town</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold text-xs"></i> Special sweet/dessert added on weekends</li>
+                        </ul>
+                    </div>
+                    <div class="pt-8">
+                        <button onclick="orderPlan('Monthly Super Saver Plan (₹3499/month)')" class="w-full py-4 rounded-xl bg-white text-brand-deep font-bold hover:bg-brand-gold hover:text-brand-deep transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Select Monthly Saver</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Custom Meal Plan Form Calculator -->
+            <div class="bg-white text-brand-dark rounded-3xl p-6 sm:p-10 shadow-2xl border border-brand-creamDark max-w-4xl mx-auto">
+                <div class="text-center space-y-2 mb-8">
+                    <h3 class="text-2xl font-bold text-brand-deep">Calculate Your Custom Subscription</h3>
+                    <p class="text-brand-gray text-sm">Select options dynamically to estimate and request on WhatsApp instantly.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Step 1: Meal Period -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">1. Choose Meals</label>
+                        <select id="calc-meals" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:outline-none focus:ring-2 focus:ring-brand-rich">
+                            <option value="Breakfast Only">Breakfast Only</option>
+                            <option value="Lunch Only">Lunch Only</option>
+                            <option value="Dinner Only">Dinner Only</option>
+                            <option value="Breakfast + Lunch">Breakfast + Lunch</option>
+                            <option value="Breakfast + Dinner">Breakfast & Dinner</option>
+                            <option value="Lunch + Dinner">Lunch & Dinner</option>
+                            <option value="All Three Meals">All 3 Meals (Full Day)</option>
+                        </select>
+                    </div>
+
+                    <!-- Step 2: Plan Type -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">2. Duration Period</label>
+                        <select id="calc-duration" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:outline-none focus:ring-2 focus:ring-brand-rich">
+                            <option value="Single Trial Day">Single Trial Day</option>
+                            <option value="7 Days Weekly Plan">7 Days (Weekly Plan)</option>
+                            <option value="30 Days Monthly Plan">30 Days (Monthly Plan)</option>
+                        </select>
+                    </div>
+
+                    <!-- Step 3: Diet Preference -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">3. Diet Choice</label>
+                        <select id="calc-diet" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:outline-none focus:ring-2 focus:ring-brand-rich">
+                            <option value="Classic Homemade Veg">Classic Homemade Veg</option>
+                            <option value="Non-Veg (Spcl Days)">Include Egg / Non-Veg</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-brand-creamDark flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="block text-xs text-brand-gray font-semibold">Ready to Send WhatsApp Proposal:</span>
+                        <span class="text-lg font-black text-brand-deep" id="calc-preview-text">Veg, Breakfast Only for Single Trial Day</span>
+                    </div>
+                    <button onclick="sendCalculatedPlan()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Send Custom Request</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Areas Section -->
+    <section id="delivery" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Description Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Transit Check</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">We Deliver Piping Hot Across Selected Hubs</h2>
+                    <div class="w-24 h-1 bg-brand-gold rounded-full"></div>
+                    <p class="text-brand-gray leading-relaxed">
+                        To guarantee peak food temperature, we limit our high-speed courier drops within designated high-density corridors. Verify your exact delivery eligibility below!
+                    </p>
+
+                    <!-- Real-time Area Checker Form -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-creamDark shadow-premium space-y-4">
+                        <label for="area-input" class="block text-xs font-black uppercase tracking-widest text-brand-rich">Type your neighborhood or IT Park:</label>
+                        <div class="relative">
+                            <input type="text" id="area-input" placeholder="e.g. Indiranagar, Tech Park, Whitefield..." class="w-full pl-4 pr-12 py-3.5 rounded-xl border-2 border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium">
+                            <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-brand-gray text-lg">
+                                <i class="fa-solid fa-magnifying-glass animate-pulse"></i>
+                            </div>
+                        </div>
+                        <button onclick="checkDeliveryArea()" class="w-full py-3.5 rounded-xl bg-brand-deep hover:bg-brand-rich text-brand-cream font-bold transition-all shadow-md">
+                            Verify Delivery Coverage
+                        </button>
+                        <div id="checker-result" class="hidden p-3 rounded-xl text-center text-sm font-bold"></div>
+                    </div>
+                </div>
+
+                <!-- Visual list of neighborhoods -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium relative overflow-hidden">
+                        <h3 class="text-xl font-bold text-brand-deep mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-map-location-dot text-brand-rich"></i>
+                            <span>Active Steaming Hot Zones</span>
+                        </h3>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Indiranagar Area</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Whitefield Tech Hub</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Koramangala Block</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">HSR Sector 1-7</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">Jayanagar Circle</span>
+                            </div>
+                            <div class="p-3 bg-brand-cream rounded-xl border border-brand-creamDark flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-brand-rich"></i>
+                                <span class="text-xs sm:text-sm font-semibold text-brand-deep">MG Road Hub</span>
+                            </div>
+                        </div>
+
+                        <!-- Special status notice -->
+                        <div class="mt-6 p-4 bg-red-50 text-brand-deep rounded-2xl border border-red-100 flex items-start gap-3">
+                            <i class="fa-solid fa-circle-info text-brand-rich mt-0.5 shrink-0"></i>
+                            <p class="text-xs leading-relaxed text-brand-gray">
+                                <strong class="text-brand-deep">Not in our primary zones?</strong> Don't fret! Ping us on WhatsApp. For corporate subscription groups (5+ hotboxes), we coordinate special long-distance heated transit dispatches.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-brand-creamDark/40 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Word of Mouth</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Loved By Hungry Professionals</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-brand-gray text-base">Read through verified stories from corporate managers, home engineers, and healthy-living lovers.</p>
+            </div>
+
+            <!-- Testimonial Grid Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-yellow-500">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray text-sm leading-relaxed italic">
+                            "The thermal packaging is genius. My Ghee Roast Dosa arrived crisp, warm, and smelled incredibly fresh, like it was served right off the pan in Indiranagar. Unbeatable convenience!"
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brand-creamDark mt-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-deep text-brand-cream flex items-center justify-center font-bold">
+                            MK
+                        </div>
+                        <div>
+                            <span class="block text-sm font-bold text-brand-deep">Manoj Kumar</span>
+                            <span class="block text-xs text-brand-gray">IT Consultant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-yellow-500">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray text-sm leading-relaxed italic">
+                            "We subscribed to the monthly plan for our family dinner. The food is light, healthy, prepared clean with quality cold-pressed oils. It actually feels like cooking at home."
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brand-creamDark mt-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-deep text-brand-cream flex items-center justify-center font-bold">
+                            SK
+                        </div>
+                        <div>
+                            <span class="block text-sm font-bold text-brand-deep">Shreya Kapoor</span>
+                            <span class="block text-xs text-brand-gray">Working Mother</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-yellow-500">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-brand-gray text-sm leading-relaxed italic">
+                            "Being a bachelor, lunch was always a struggle between junk food or soggy orders. Hot Box Kitchen serves authentic, warm meals on time. Highly recommended!"
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brand-creamDark mt-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-deep text-brand-cream flex items-center justify-center font-bold">
+                            AN
+                        </div>
+                        <div>
+                            <span class="block text-sm font-bold text-brand-deep">Akash Nair</span>
+                            <span class="block text-xs text-brand-gray">Software Engineer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Brand Story Image Grid -->
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="rounded-3xl overflow-hidden shadow-premium">
+                            <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600&auto=format&fit=crop&q=80" 
+                                 alt="Preparing Rotis" 
+                                 class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/400x300/BE3144/FFFDF9?text=Fresh+Kitchen'">
+                        </div>
+                        <div class="bg-brand-deep p-6 rounded-3xl text-brand-cream space-y-2">
+                            <div class="text-3xl font-black font-serif text-brand-gold">100%</div>
+                            <span class="block text-xs font-bold uppercase tracking-wider">Hygienic Preparation</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="bg-brand-rich p-6 rounded-3xl text-brand-cream space-y-2">
+                            <i class="fa-solid fa-fire text-3xl text-brand-gold animate-bounce"></i>
+                            <h4 class="text-lg font-bold">Thermal Lock Technology</h4>
+                        </div>
+                        <div class="rounded-3xl overflow-hidden shadow-premium">
+                            <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80" 
+                                 alt="Hot Steam Idly Prep" 
+                                 class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/400x300/BE3144/FFFDF9?text=Steaming+Mains'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Story Text Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Our Heart & Soul</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep font-serif">Freshly Cooked. Packed Hot. Delivered Fast.</h2>
+                    <div class="w-24 h-1 bg-brand-gold rounded-full"></div>
+                    <p class="text-brand-gray text-base leading-relaxed">
+                        Hot Box Kitchen was born from a simple yet powerful goal: to deliver wholesome, high-quality homestyle tiffins to individuals who refuse to compromise their physical health with cold, reheated restaurant meals. 
+                    </p>
+                    <p class="text-brand-gray text-base leading-relaxed">
+                        Every single item in our cloud kitchen is slow-simmered, hand-stirred, and prepared with standard hygiene protocols. We immediately lock the meals in state-of-the-art insulated food cases, preserving pristine heat, aroma, and natural steam without toxic plastic containers.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-red-50 text-brand-deep flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <span class="text-sm font-bold text-brand-deep">Made With Love</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-red-50 text-brand-deep flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <span class="text-sm font-bold text-brand-deep">Premium Local Trust</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-brand-creamDark/40 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Got Questions?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-deep font-serif">Frequently Asked Questions</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+            </div>
+
+            <!-- FAQ List -->
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(1)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>How early in advance should I order my Hot Box?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-1" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        For standard single-day hotboxes, booking by 8:00 PM the previous evening or 7:00 AM on the day of delivery is highly recommended. Subscribed plans are scheduled and dispatched automatically.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(2)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>What is special about the Hot Box insulation?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-2" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        Our specialized food boxes are lined with multi-layer thermal foil and high-density polyurethane insulation, keeping your breakfast or lunch locked at a safe, steam-producing temperature (above 65°C) without chemical reheating.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(3)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>Can I pause my weekly/monthly subscription when I travel?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-3" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        Absolutely! Just drop us a WhatsApp message at least 4 hours before your regular dispatch time. We will pause your delivery quota and add the paused days to your subscription extension seamlessly.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-2xl border border-brand-creamDark shadow-premium overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(4)" class="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-brand-deep hover:text-brand-rich transition-colors">
+                        <span>Do you charge any extra delivery fee?</span>
+                        <i id="faq-icon-4" class="fa-solid fa-chevron-down text-brand-gray transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-4" class="hidden px-6 pb-5 text-sm text-brand-gray leading-relaxed border-t border-brand-cream/50 pt-3">
+                        Standard delivery is 100% free within our main active hot zones. A minimal transit fee may apply for distances further out, depending on your precise coordinates.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-brand-cream relative z-10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                
+                <!-- Contact info cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="space-y-4">
+                        <span class="text-brand-rich uppercase tracking-widest font-black text-xs sm:text-sm">Get In Touch</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-deep font-serif">Connect With Our Kitchen</h2>
+                        <div class="w-24 h-1 bg-brand-gold rounded-full"></div>
+                        <p class="text-brand-gray text-sm leading-relaxed">
+                            Have general inquiries, office catering needs, or bulk subscription requirements for dynamic events? Contact us directly.
+                        </p>
+                    </div>
+
+                    <!-- Details Card -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-creamDark shadow-premium space-y-6">
+                        <a href="tel:+919488826723" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-cream border border-brand-creamDark text-brand-deep flex items-center justify-center group-hover:bg-brand-deep group-hover:text-brand-cream transition-colors shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Call Hotline</span>
+                                <span class="block text-sm sm:text-base font-bold text-brand-deep group-hover:text-brand-rich transition-colors">+91 94888 26723</span>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/919488826723?text=Hi!%20I'm%20inquiring%20about%20Hot%20Box%20Kitchen." target="_blank" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors shrink-0">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">WhatsApp Live Chat</span>
+                                <span class="block text-sm sm:text-base font-bold text-brand-deep group-hover:text-brand-rich transition-colors">+91 94888 26723</span>
+                            </div>
+                        </a>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-cream border border-brand-creamDark text-brand-deep flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-crosshairs"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-gray font-semibold">Cloud Dispatch Hub Address</span>
+                                <p class="text-sm sm:text-base font-bold text-brand-deep leading-relaxed">
+                                    Hot Box Kitchen HQ,<br>
+                                    Tech Hub Main Junction,<br>
+                                    Bengaluru, Karnataka.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Graphic Vibe -->
+                    <div class="rounded-3xl overflow-hidden border border-brand-creamDark h-48 relative shadow-premium">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80" 
+                             alt="Hot Box Kitchen Location" 
+                             class="w-full h-full object-cover brightness-75"
+                             onerror="this.src='https://placehold.co/600x400/BE3144/FFFDF9?text=Dispatch+Hub'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-deep/80 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-xs text-brand-gold uppercase tracking-widest font-bold">Main Dispatch Center</span>
+                            <span class="text-white text-sm font-bold mt-1">Insulated hot dispatch boxes load zone.</span>
+                            <a href="https://maps.google.com/?q=Bengaluru" target="_blank" class="text-xs text-orange-300 font-bold hover:underline mt-2 inline-flex items-center gap-1">
+                                <i class="fa-solid fa-up-right-from-square"></i> Open Coordinates Map
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-brand-creamDark shadow-premium flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-brand-deep">Drop Our Chefs a Message</h3>
+                        <p class="text-brand-gray text-sm">Fill in your requirements below for a dynamic call back or a customized subscription plan proposal.</p>
+                        
+                        <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Your Full Name</label>
+                                    <input type="text" id="contact-name" placeholder="John Doe" required class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Mobile Number</label>
+                                    <input type="tel" id="contact-phone" placeholder="9876543210" required class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Select Food Plan Category</label>
+                                <select id="contact-category" class="w-full px-4 py-3 rounded-xl border border-brand-creamDark bg-brand-cream text-brand-deep font-medium focus:border-brand-rich focus:outline-none">
+                                    <option value="Daily Insulated Tiffin Subscription">Daily Tiffin Delivery Subscription</option>
+                                    <option value="Weekly or Monthly Saver Packages">Weekly / Monthly Saver Packages</option>
+                                    <option value="Bulk Office Party or Event Catering">Bulk Corporate / Event Catering</option>
+                                    <option value="General Chef Feedback or Queries">General Queries / Feedbacks</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-xs font-black uppercase tracking-wider text-brand-deep">Your Custom Instructions</label>
+                                <textarea id="contact-message" rows="4" placeholder="Mention special requirements (e.g. non-spicy, specific drop timings, no-garlic options...)" required class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-brand-deep hover:bg-brand-rich text-brand-cream font-bold text-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-sm"></i>
+                                <span>Send Chef Proposal</span>
+                            </button>
+                        </form>
+                        
+                        <div id="contact-success" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-brand-deep text-center font-bold text-sm">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i> Message Sent successfully! Our dispatch manager will connect with you.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-brand-deep text-brand-cream pt-16 pb-24 md:pb-12 border-t border-brand-gold/20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Column 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-rich text-brand-cream border border-brand-gold flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-fire-burner text-sm"></i>
+                        </div>
+                        <span class="text-xl font-black text-white">Hot Box <span class="text-brand-gold">Kitchen</span></span>
+                    </div>
+                    <p class="text-brand-cream/70 text-sm leading-relaxed">
+                        Redefining local meal transit with innovative thermal retention technology. Enjoy pure homestyle flavors delivered piping hot daily.
+                    </p>
+                    <div class="flex items-center space-x-4 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-deep transition-all flex items-center justify-center text-sm"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-deep transition-all flex items-center justify-center text-sm"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-deep transition-all flex items-center justify-center text-sm"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest border-b border-white/10 pb-2">Quick Navigation</h4>
+                    <ul class="space-y-2 text-sm text-brand-cream/80">
+                        <li><a href="#home" class="hover:text-brand-gold transition-colors block py-1">Home</a></li>
+                        <li><a href="#menu" class="hover:text-brand-gold transition-colors block py-1">Hot Menu Specialties</a></li>
+                        <li><a href="#why-choose" class="hover:text-brand-gold transition-colors block py-1">Why Choose Us</a></li>
+                        <li><a href="#plans" class="hover:text-brand-gold transition-colors block py-1">Meal Subscriptions</a></li>
+                        <li><a href="#delivery" class="hover:text-brand-gold transition-colors block py-1">Delivery Zones</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Details -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest border-b border-white/10 pb-2">Connect Info</h4>
+                    <p class="text-brand-cream/80 text-sm leading-relaxed">
+                        Hot Box Kitchen HQ, <br>
+                        Industrial Corridor Rd, <br>
+                        Bengaluru, Karnataka.
+                    </p>
+                    <div class="pt-2 text-sm text-brand-gold font-bold">
+                        <a href="tel:+919488826723" class="hover:underline block py-1"><i class="fa-solid fa-phone mr-2"></i> +91 94888 26723</a>
+                        <a href="mailto:info@hotboxkitchen.com" class="hover:underline block py-1"><i class="fa-solid fa-envelope mr-2"></i> order@hotboxkitchen.com</a>
+                    </div>
+                </div>
+
+                <!-- Column 4: Operational Hours -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest border-b border-white/10 pb-2">Kitchen Hours</h4>
+                    <p class="text-brand-cream/80 text-sm leading-relaxed">
+                        Every Single Day:<br>
+                        Breakfast: <span class="text-brand-gold">06:30 AM - 10:30 AM</span><br>
+                        Lunch: <span class="text-brand-gold">11:30 AM - 03:30 PM</span><br>
+                        Dinner: <span class="text-brand-gold">06:45 PM - 10:00 PM</span>
+                    </p>
+                    <span class="block text-xs bg-brand-rich/40 text-brand-gold px-3 py-1.5 rounded-lg border border-brand-rich/60 font-semibold text-center uppercase tracking-widest">Open 365 Days</span>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom copyrights -->
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-cream/60 gap-4 text-center">
+                <span>&copy; 2026 Hot Box Kitchen. All Rights Reserved. Crafted with thermal protection engineering.</span>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Floating Action WhatsApp Button -->
+    <a href="https://wa.me/919488826723?text=Hi%20Hot%20Box%20Kitchen!%20I%20want%20to%20place%20an%20order%20right%20now." 
+       target="_blank" 
+       class="fixed bottom-20 md:bottom-8 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-floating transition-all duration-300 transform hover:scale-110"
+       aria-label="Order on WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Mobile Sticky Bottom Navigation Menu (Hidden on Desktop) -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-brand-cream border-t border-brand-creamDark shadow-2xl md:hidden px-4 py-3 flex items-center justify-around">
+        <a href="#home" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Home</span>
+        </a>
+        <a href="#menu" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-utensils text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Menu</span>
+        </a>
+        <a href="#plans" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-calendar-alt text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Plans</span>
+        </a>
+        <a href="#delivery" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-truck-fast text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Zones</span>
+        </a>
+        <a href="#contact" class="flex flex-col items-center justify-center text-brand-deep hover:text-brand-rich">
+            <i class="fa-solid fa-message text-lg"></i>
+            <span class="text-[10px] font-bold mt-1">Contact</span>
+        </a>
+    </div>
+
+    <!-- Custom Food Item Order Customizer Popup Modal -->
+    <div id="customizer-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl relative border border-brand-creamDark transform scale-95 transition-transform duration-300" id="modal-container">
+            
+            <!-- Header section of modal -->
+            <div class="bg-brand-deep p-6 text-brand-cream relative">
+                <button onclick="closeCustomizer()" class="absolute top-4 right-4 text-brand-cream/80 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <h3 class="text-2xl font-bold font-serif" id="custom-item-title">Customize Box</h3>
+                <p class="text-brand-cream/80 text-xs mt-1">Packed fresh and delivered steaming hot</p>
+            </div>
+
+            <!-- Body section of customizer -->
+            <div class="p-6 space-y-6">
+                <!-- Quantity selector -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">Quantity / Box Packs</label>
+                    <div class="flex items-center gap-4">
+                        <button onclick="adjustQuantity(-1)" class="w-10 h-10 rounded-xl bg-brand-cream border border-brand-creamDark flex items-center justify-center text-brand-deep hover:bg-brand-deep hover:text-white transition-colors font-bold text-lg">-</button>
+                        <span id="custom-quantity" class="text-xl font-bold text-brand-deep min-w-[20px] text-center">1</span>
+                        <button onclick="adjustQuantity(1)" class="w-10 h-10 rounded-xl bg-brand-cream border border-brand-creamDark flex items-center justify-center text-brand-deep hover:bg-brand-deep hover:text-white transition-colors font-bold text-lg">+</button>
+                    </div>
+                </div>
+
+                <!-- Spiciness preference -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">Spice Level Preference</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setSpice('Mild')" class="spice-btn px-4 py-2.5 rounded-xl border border-brand-creamDark bg-brand-cream font-semibold text-xs text-brand-deep text-center transition-all focus:outline-none">Mild (Kids)</button>
+                        <button onclick="setSpice('Medium')" class="spice-btn active px-4 py-2.5 rounded-xl border border-brand-deep bg-brand-deep font-semibold text-xs text-brand-cream text-center transition-all focus:outline-none">Medium (Normal)</button>
+                        <button onclick="setSpice('Spicy')" class="spice-btn px-4 py-2.5 rounded-xl border border-brand-creamDark bg-brand-cream font-semibold text-xs text-brand-deep text-center transition-all focus:outline-none">Hot / Spicy</button>
+                    </div>
+                </div>
+
+                <!-- Custom request text -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-black uppercase tracking-wider text-brand-rich">Special Instructions</label>
+                    <input type="text" id="custom-instructions" placeholder="e.g. Less oil, extra chutney, no coriander..." class="w-full px-4 py-3 rounded-xl border border-brand-creamDark focus:border-brand-rich focus:outline-none font-medium text-sm">
+                </div>
+            </div>
+
+            <!-- Action buttons inside modal footer -->
+            <div class="p-6 border-t border-brand-creamDark bg-brand-cream flex gap-3">
+                <button onclick="closeCustomizer()" class="flex-1 py-3.5 rounded-xl bg-white border border-brand-creamDark text-brand-deep font-bold transition-colors">Cancel</button>
+                <button onclick="submitCustomizedOrder()" class="flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Confirm Order</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Logic Javascript -->
+    <script>
+        // Global Customizer State
+        let currentItemName = '';
+        let currentSpiceLevel = 'Medium';
+        let currentQty = 1;
+
+        // Interactive Mobile Menu toggle logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.className = "fa-solid fa-xmark text-2xl";
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = "fa-solid fa-bars text-2xl";
+            }
+        });
+
+        // Close Mobile Menu on clicking links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = "fa-solid fa-bars text-2xl";
+            });
+        });
+
+        // Filtering Menu Items
+        function filterMenu(category) {
+            // Update filter buttons styling
+            const buttons = document.querySelectorAll('#menu-filters button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-deep', 'text-brand-cream', 'active');
+                btn.classList.add('bg-white', 'text-brand-deep');
+            });
+
+            // Find clicked button to toggle active theme
+            const activeBtn = Array.from(buttons).find(btn => btn.textContent.toLowerCase().includes(category === 'all' ? 'all' : category));
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-brand-deep');
+                activeBtn.classList.add('bg-brand-deep', 'text-brand-cream', 'active');
+            }
+
+            // Toggle items view
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else if (item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Customizer modal control mechanics
+        function openCustomizer(itemName) {
+            currentItemName = itemName;
+            currentQty = 1;
+            currentSpiceLevel = 'Medium';
+            document.getElementById('custom-quantity').textContent = currentQty;
+            document.getElementById('custom-instructions').value = '';
+            document.getElementById('custom-item-title').textContent = itemName;
+
+            // Reset spice buttons theme
+            setSpice('Medium');
+
+            // Open Modal
+            const modal = document.getElementById('customizer-modal');
+            const container = document.getElementById('modal-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeCustomizer() {
+            const modal = document.getElementById('customizer-modal');
+            const container = document.getElementById('modal-container');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 150);
+        }
+
+        function adjustQuantity(val) {
+            currentQty = Math.max(1, currentQty + val);
+            document.getElementById('custom-quantity').textContent = currentQty;
+        }
+
+        function setSpice(spice) {
+            currentSpiceLevel = spice;
+            const btns = document.querySelectorAll('.spice-btn');
+            btns.forEach(btn => {
+                if (btn.textContent.includes(spice)) {
+                    btn.classList.remove('bg-brand-cream', 'text-brand-deep');
+                    btn.classList.add('bg-brand-deep', 'text-brand-cream');
+                } else {
+                    btn.classList.remove('bg-brand-deep', 'text-brand-cream');
+                    btn.classList.add('bg-brand-cream', 'text-brand-deep');
+                }
+            });
+        }
+
+        function submitCustomizedOrder() {
+            const instructions = document.getElementById('custom-instructions').value;
+            const spiceDetails = `Spice: ${currentSpiceLevel}`;
+            const instructionsDetail = instructions ? `Note: ${instructions}` : '';
+            
+            const message = `Hello Hot Box Kitchen! I want to order the following item:\n\n- *${currentItemName}*\n- Box Qty: *${currentQty} Pack(s)*\n- ${spiceDetails}\n${instructionsDetail}\n\nPlease confirm dynamic availability & total cost. Thank you!`;
+            
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+            closeCustomizer();
+        }
+
+        // Instant WhatsApp order for standard selected packages
+        function orderPlan(planName) {
+            const message = `Hi Hot Box Kitchen team! I want to subscribe to your:\n\n*${planName}*\n\nPlease let me know how to finalize coordinates & process dynamic payment. Cheers!`;
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Real-time custom plan estimator logic
+        const calcMeals = document.getElementById('calc-meals');
+        const calcDuration = document.getElementById('calc-duration');
+        const calcDiet = document.getElementById('calc-diet');
+        const calcPreview = document.getElementById('calc-preview-text');
+
+        function updatePlanEstimates() {
+            const meals = calcMeals.value;
+            const duration = calcDuration.value;
+            const diet = calcDiet.value;
+            calcPreview.innerHTML = `<span class="text-brand-deep">${diet}</span> - ${meals} for <span class="text-brand-deep">${duration}</span>`;
+        }
+
+        [calcMeals, calcDuration, calcDiet].forEach(element => {
+            element.addEventListener('change', updatePlanEstimates);
+        });
+
+        function sendCalculatedPlan() {
+            const meals = calcMeals.value;
+            const duration = calcDuration.value;
+            const diet = calcDiet.value;
+
+            const message = `Hello! I calculated my custom hot tiffin subscription on your website:\n\n- Diet: *${diet}*\n- Meals: *${meals}*\n- Duration: *${duration}*\n\nPlease send me a price estimate and launch calendar. Thank you!`;
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Active Delivery Area Database
+        const activeDeliveryAreas = [
+            'indiranagar', 'whitefield', 'koramangala', 'hsr', 'hsr layout', 'jayanagar', 'mg road', 'tech park', 'it park'
+        ];
+
+        function checkDeliveryArea() {
+            const inputVal = document.getElementById('area-input').value.trim().toLowerCase();
+            const resultDiv = document.getElementById('checker-result');
+            
+            if (!inputVal) {
+                resultDiv.textContent = 'Please enter your neighborhood first!';
+                resultDiv.className = 'p-3 rounded-xl text-center text-sm font-bold bg-amber-100 text-amber-800 block';
+                return;
+            }
+
+            const isCovered = activeDeliveryAreas.some(area => inputVal.includes(area) || area.includes(inputVal));
+
+            if (isCovered) {
+                resultDiv.textContent = 'Awesome! We deliver piping hot meals directly to your coordinate!';
+                resultDiv.className = 'p-3 rounded-xl text-center text-sm font-bold bg-emerald-100 text-emerald-800 block';
+            } else {
+                resultDiv.textContent = 'We might cover this on corporate request. WhatsApp us directly to verify!';
+                resultDiv.className = 'p-3 rounded-xl text-center text-sm font-bold bg-red-100 text-red-800 block';
+            }
+        }
+
+        // FAQ Toggle Logic
+        function toggleFAQ(id) {
+            const ans = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Contact Form Callback
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const category = document.getElementById('contact-category').value;
+            const message = document.getElementById('contact-message').value;
+
+            // WhatsApp link redirection
+            const fullMsg = `Hi Hot Box Kitchen! I submitted your contact form:\n\n- Name: *${name}*\n- Phone: *${phone}*\n- Class: *${category}*\n- Query: *${message}*`;
+            const waUrl = `https://wa.me/919488826723?text=${encodeURIComponent(fullMsg)}`;
+            
+            // Show dynamic success block
+            document.getElementById('contact-success').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('contact-form').reset();
+                window.open(waUrl, '_blank');
+            }, 1000);
+        }
+
+        // Initialize estimates on load
+        window.onload = function() {
+            updatePlanEstimates();
+        };
+    </script>
+</body>
+</html>
