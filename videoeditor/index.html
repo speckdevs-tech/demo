@@ -2,8 +2,8 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website design consepts | Cinematic Filmmaker & Content Creator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Vishu Yadav | Cinematic Filmmaker & Content Creator</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Portfolio of Vishu Yadav, an award-winning filmmaker and content creator crafting visually striking cinematic experiences that inspire and convert.">
@@ -24,10 +24,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- Tailwind Config for Dark Cinematic Theme -->
     <script>
         tailwind.config = {
             theme: {
+                screens: {
+                    'xs': '375px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                },
                 extend: {
                     colors: {
                         brandBg: '#050505',
@@ -51,11 +58,10 @@
         }
     </script>
 
-    <!-- Custom styling for luxury web interactions -->
     <style>
         /* Base scrollbar styling */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
             background: #050505;
@@ -68,8 +74,14 @@
             background: #FF6B00;
         }
 
-        /* Custom Cursor styling (hidden on mobile) */
-        @media (min-width: 1024px) {
+        /* Disable user text highlights selectively for premium app feel */
+        .select-none {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        /* Custom Cursor styling - ONLY enabled on desktop pointer devices to prevent mobile glitches */
+        @media (hover: hover) and (pointer: fine) {
             .custom-cursor {
                 width: 8px;
                 height: 8px;
@@ -106,11 +118,27 @@
             }
         }
 
-        /* Glassmorphism Classes */
+        /* Ambient Fluid Glow effects */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @media (min-width: 768px) {
+            .glow-orb {
+                filter: blur(120px);
+                opacity: 0.15;
+            }
+        }
+
+        /* Glassmorphism Elements */
         .glass-nav {
-            background: rgba(5, 5, 5, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -127,24 +155,7 @@
             box-shadow: 0 10px 30px -10px rgba(255, 107, 0, 0.15);
         }
 
-        /* Ambient Glow effects */
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Custom Clip Paths & Text Masks */
-        .text-mask {
-            background: linear-gradient(135deg, #FFFFFF 30%, #A1A1AA 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Hide Scrollbar for carousel */
+        /* Hide Scrollbars completely for sliders */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -152,43 +163,46 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Touch interaction enhancements */
+        a, button, select, input, textarea {
+            touch-action: manipulation;
+        }
     </style>
 </head>
-<body class="bg-brandBg text-brandText font-sans overflow-x-hidden antialiased">
+<body class="bg-brandBg text-brandText font-sans overflow-x-hidden antialiased select-none md:select-text">
 
-    <!-- Custom Cursor DOM Elements -->
+    <!-- Custom Cursor DOM Elements (hidden on touchscreens dynamically via CSS) -->
     <div class="custom-cursor hidden lg:block" id="cursor"></div>
     <div class="custom-cursor-follower hidden lg:block" id="cursor-follower"></div>
 
-    <!-- Cinematic Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[10000] bg-brandBg flex flex-col justify-center items-center transition-all duration-1000 ease-in-out">
-        <div class="relative overflow-hidden mb-4">
-            <h1 class="text-4xl md:text-6xl font-syne font-extrabold tracking-widest text-white leading-none overflow-hidden h-[1.2em]">
+    <div id="preloader" class="fixed inset-0 z-[10000] bg-brandBg flex flex-col justify-center items-center p-4 transition-all duration-1000 ease-in-out">
+        <div class="relative overflow-hidden mb-4 max-w-full text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-syne font-extrabold tracking-widest text-white leading-none overflow-hidden h-[1.3em]">
                 <span id="loader-name" class="inline-block transform translate-y-full">VISHU YADAV</span>
             </h1>
         </div>
-        <div class="w-48 h-[2px] bg-brandBorder relative overflow-hidden">
+        <div class="w-32 xs:w-48 h-[2px] bg-brandBorder relative overflow-hidden">
             <div id="loader-bar" class="absolute top-0 left-0 h-full w-0 bg-brandAccent transition-all duration-[2000ms] ease-out"></div>
         </div>
-        <div class="mt-4 text-xs font-mono tracking-widest text-brandTextSec uppercase" id="loader-status">CREATING VISUAL STORYTELLING...</div>
+        <div class="mt-4 text-[10px] xs:text-xs font-mono tracking-widest text-brandTextSec uppercase text-center px-4" id="loader-status">CREATING VISUAL STORIES...</div>
     </div>
 
-    <!-- Ambient Glow Orbs -->
-    <div class="glow-orb w-[500px] h-[500px] bg-brandAccent top-[-100px] left-[-100px]"></div>
-    <div class="glow-orb w-[600px] h-[600px] bg-brandAccent bottom-[10%] right-[-100px]"></div>
+    <!-- Ambient Responsive Glow Orbs -->
+    <div class="glow-orb w-64 h-64 md:w-[500px] md:h-[500px] bg-brandAccent top-[-50px] left-[-50px]"></div>
+    <div class="glow-orb w-80 h-80 md:w-[600px] md:h-[600px] bg-brandAccent bottom-[15%] right-[-100px]"></div>
 
-    <!-- Header/Navbar -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 glass-nav py-4 md:py-5 px-6 lg:px-12">
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 glass-nav py-3 md:py-5 px-4 sm:px-6 lg:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#" class="flex items-center space-x-2 font-syne text-xl md:text-2xl font-black tracking-tighter hover:text-brandAccent transition-colors group">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-1.5 font-syne text-lg xs:text-xl md:text-2xl font-black tracking-tighter hover:text-brandAccent transition-colors group">
                 <span class="text-brandAccent group-hover:text-white transition-colors duration-300">V</span>
                 <span>YADAV</span>
-                <span class="w-1.5 h-1.5 bg-brandAccent rounded-full self-end mb-1"></span>
+                <span class="w-1.5 h-1.5 bg-brandAccent rounded-full mb-1"></span>
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 text-xs lg:text-sm font-medium tracking-wide">
                 <a href="#home" class="hover:text-brandAccent transition-colors text-white">Home</a>
                 <a href="#work" class="hover:text-brandAccent transition-colors text-brandTextSec">Work</a>
                 <a href="#services" class="hover:text-brandAccent transition-colors text-brandTextSec">Services</a>
@@ -198,16 +212,16 @@
             </nav>
 
             <!-- CTA / Contact Trigger -->
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="#contact" class="relative group overflow-hidden px-5 py-2.5 rounded-full border border-brandBorder hover:border-brandAccent transition-all duration-300">
-                    <span class="relative z-10 text-xs font-semibold uppercase tracking-wider group-hover:text-brandBg transition-colors duration-300">Book A Project</span>
+            <div class="hidden md:flex items-center">
+                <a href="#contact" class="relative group overflow-hidden px-4 py-2 lg:px-5 lg:py-2.5 rounded-full border border-brandBorder hover:border-brandAccent transition-all duration-300">
+                    <span class="relative z-10 text-[11px] lg:text-xs font-semibold uppercase tracking-wider group-hover:text-brandBg transition-colors duration-300">Book A Project</span>
                     <span class="absolute inset-0 bg-brandAccent transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
                 </a>
             </div>
 
-            <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white hover:text-brandAccent transition-colors focus:outline-none p-2 relative z-[101]">
-                <div class="w-6 h-5 flex flex-col justify-between items-end">
+            <!-- Mobile Hamburger Button with optimized larger touch target -->
+            <button id="mobile-menu-btn" class="md:hidden text-white hover:text-brandAccent transition-colors focus:outline-none p-3 -mr-2 relative z-[101]" aria-label="Toggle navigation menu">
+                <div class="w-6 h-4.5 flex flex-col justify-between items-end">
                     <span class="w-6 h-[2px] bg-white rounded-full transition-transform duration-300 origin-right burger-line-1"></span>
                     <span class="w-4 h-[2px] bg-white rounded-full transition-opacity duration-300 burger-line-2"></span>
                     <span class="w-6 h-[2px] bg-white rounded-full transition-transform duration-300 origin-right burger-line-3"></span>
@@ -216,192 +230,195 @@
         </div>
     </header>
 
-    <!-- Mobile Drawer Overlay Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-brandBg z-[100] transform translate-x-full transition-transform duration-500 flex flex-col justify-center px-8 md:px-16 md:hidden">
-        <div class="absolute inset-0 glow-orb w-[300px] h-[300px] bg-brandAccent top-[20%] left-[10%] opacity-20"></div>
-        <nav class="flex flex-col space-y-6 text-2xl font-syne font-bold relative z-10">
-            <a href="#home" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-4">
-                <span class="text-xs font-mono text-brandAccent">01</span><span>Home</span>
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full xs:w-[320px] sm:w-[380px] bg-brandBg/95 backdrop-blur-xl z-[100] transform translate-x-full transition-transform duration-500 ease-out flex flex-col justify-between p-6 xs:p-8 pt-24 md:hidden border-l border-brandBorder shadow-2xl">
+        <div class="absolute inset-0 glow-orb w-48 h-48 bg-brandAccent top-[25%] left-[10%] opacity-20"></div>
+        
+        <nav class="flex flex-col space-y-4 xs:space-y-5 text-xl xs:text-2xl font-syne font-bold relative z-10 overflow-y-auto no-scrollbar py-4">
+            <a href="#home" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-3 py-1">
+                <span class="text-[10px] font-mono text-brandAccent">01</span><span>Home</span>
             </a>
-            <a href="#work" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-4">
-                <span class="text-xs font-mono text-brandAccent">02</span><span>Work</span>
+            <a href="#work" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-3 py-1">
+                <span class="text-[10px] font-mono text-brandAccent">02</span><span>Work</span>
             </a>
-            <a href="#services" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-4">
-                <span class="text-xs font-mono text-brandAccent">03</span><span>Services</span>
+            <a href="#services" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-3 py-1">
+                <span class="text-[10px] font-mono text-brandAccent">03</span><span>Services</span>
             </a>
-            <a href="#about" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-4">
-                <span class="text-xs font-mono text-brandAccent">04</span><span>About</span>
+            <a href="#about" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-3 py-1">
+                <span class="text-[10px] font-mono text-brandAccent">04</span><span>About</span>
             </a>
-            <a href="#testimonials" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-4">
-                <span class="text-xs font-mono text-brandAccent">05</span><span>Reviews</span>
+            <a href="#testimonials" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-3 py-1">
+                <span class="text-[10px] font-mono text-brandAccent">05</span><span>Reviews</span>
             </a>
-            <a href="#contact" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-4">
-                <span class="text-xs font-mono text-brandAccent">06</span><span>Contact</span>
+            <a href="#contact" class="mobile-nav-link hover:text-brandAccent transition-colors flex items-center space-x-3 py-1">
+                <span class="text-[10px] font-mono text-brandAccent">06</span><span>Contact</span>
             </a>
         </nav>
-        <div class="mt-16 pt-8 border-t border-brandBorder flex flex-col space-y-4 relative z-10">
-            <span class="text-xs text-brandTextSec uppercase tracking-widest font-mono">Let's create together</span>
-            <a href="mailto:hello@vishuyadav.com" class="text-lg hover:text-brandAccent transition-colors">hello@vishuyadav.com</a>
+        
+        <div class="mt-8 pt-6 border-t border-brandBorder flex flex-col space-y-3 relative z-10 shrink-0">
+            <span class="text-[10px] text-brandTextSec uppercase tracking-widest font-mono">Let's build cinema</span>
+            <a href="mailto:hello@vishuyadav.com" class="text-base xs:text-lg hover:text-brandAccent transition-colors break-all">hello@vishuyadav.com</a>
+            <div class="flex space-x-4 pt-2">
+                <a href="#" class="text-brandTextSec hover:text-brandAccent transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="text-brandTextSec hover:text-brandAccent transition-colors" aria-label="YouTube"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                <a href="#" class="text-brandTextSec hover:text-brandAccent transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20 px-6 lg:px-12">
+    <section id="home" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-24 px-4 sm:px-6 lg:px-12">
         <!-- Background Video Loop with premium backup fallback -->
         <div class="absolute inset-0 w-full h-full overflow-hidden">
-            <!-- Dark gradient overlays for readability and movie aesthetic -->
+            <!-- Dark gradient overlays for high typography readability -->
             <div class="absolute inset-0 bg-gradient-to-t from-brandBg via-brandBg/60 to-transparent z-10"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-brandBg/90 via-transparent to-brandBg/90 z-10"></div>
-            <div class="absolute inset-0 bg-brandBg/35 z-10"></div>
+            <div class="absolute inset-0 bg-brandBg/45 z-10"></div>
             
-            <!-- High quality loop shot from Pexels showcasing premium filmmaker mood -->
-            <video autoplay muted loop playsinline class="w-full h-full object-cover scale-105 filter brightness-[0.4]" id="hero-video" onerror="this.style.display='none'">
+            <!-- High quality loop video with automatic orientation compatibility -->
+            <video autoplay muted loop playsinline class="w-full h-full object-cover scale-105 filter brightness-[0.35]" id="hero-video" onerror="this.style.display='none'">
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-recording-a-music-video-in-a-studio-41710-large.mp4" type="video/mp4">
             </video>
         </div>
 
-        <!-- Content Area -->
-        <div class="relative z-20 max-w-6xl mx-auto text-center mt-12 md:mt-0 flex flex-col items-center">
+        <!-- Content Area: Fluid and Centered -->
+        <div class="relative z-20 max-w-5xl mx-auto text-center flex flex-col items-center">
             
-            <!-- Filmmaker / Storyteller tag -->
-            <div class="inline-flex items-center space-x-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-6 transform translate-y-8 opacity-0 hero-fade">
-                <span class="w-2 h-2 rounded-full bg-brandAccent animate-pulse"></span>
-                <span class="text-xs font-mono uppercase tracking-widest text-brandText">Filmmaker • Content Creator • Visual Storyteller</span>
+            <!-- Tag: Dynamic sizes -->
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full mb-6 transform translate-y-8 opacity-0 hero-fade max-w-full">
+                <span class="w-2 h-2 rounded-full bg-brandAccent animate-pulse shrink-0"></span>
+                <span class="text-[9px] xs:text-[10px] sm:text-xs font-mono uppercase tracking-widest text-brandText truncate">Filmmaker • Creator • Storyteller</span>
             </div>
 
-            <!-- Big Impact Cinematic Headline -->
-            <h1 class="text-5xl md:text-8xl lg:text-9xl font-syne font-extrabold tracking-tighter leading-tight mb-6 transform translate-y-8 opacity-0 hero-fade">
+            <!-- Cinematic Headline: Scaled meticulously for mobile screens (No overflows!) -->
+            <h1 class="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-syne font-extrabold tracking-tighter leading-none mb-4 sm:mb-6 transform translate-y-8 opacity-0 hero-fade select-none">
                 VISHU YADAV
             </h1>
             
-            <p class="max-w-2xl text-lg md:text-xl text-brandTextSec font-light mb-10 transform translate-y-8 opacity-0 hero-fade">
-                Creating cinematic stories that connect, inspire, and convert. Crafting ultra-premium video campaigns for high-end brands.
+            <p class="max-w-xl text-sm xs:text-base sm:text-lg lg:text-xl text-brandTextSec font-light mb-8 sm:mb-10 px-2 sm:px-0 transform translate-y-8 opacity-0 hero-fade">
+                Creating cinematic stories that connect, inspire, and convert. Crafting premium video campaigns for high-end international brands.
             </p>
 
-            <!-- High Conversion Buttons -->
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 transform translate-y-8 opacity-0 hero-fade">
-                <!-- Magnetic-feel Primary CTA -->
-                <a href="#work" class="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-brandAccent hover:bg-brandAccentHover rounded-full transition-all duration-300 shadow-lg shadow-brandAccent/20 group">
-                    <span class="font-semibold text-brandBg uppercase text-sm tracking-wider">View Portfolio</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4 text-brandBg group-hover:translate-x-1.5 transition-transform"></i>
+            <!-- CTA Buttons: Auto stack on extra small mobile screens -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-xs sm:max-w-none px-4 sm:px-0 transform translate-y-8 opacity-0 hero-fade">
+                <!-- Primary CTA -->
+                <a href="#work" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-brandAccent hover:bg-brandAccentHover rounded-full transition-all duration-300 shadow-lg shadow-brandAccent/20 group">
+                    <span class="font-semibold text-brandBg uppercase text-xs tracking-wider">View Portfolio</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-brandBg group-hover:translate-x-1 transition-transform"></i>
                 </a>
                 
-                <!-- Secondary Video/Showreel Trigger CTA -->
-                <button onclick="openShowreel()" class="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-brandSecBg hover:bg-white/5 border border-brandBorder hover:border-brandAccent transition-all duration-300 rounded-full group">
+                <!-- Secondary Showreel CTA -->
+                <button onclick="openShowreel()" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-brandSecBg hover:bg-white/5 border border-brandBorder hover:border-brandAccent transition-all duration-300 rounded-full group">
                     <i data-lucide="play" class="w-4 h-4 text-brandAccent fill-brandAccent"></i>
-                    <span class="font-semibold uppercase text-sm tracking-wider">Watch Showreel</span>
+                    <span class="font-semibold uppercase text-xs tracking-wider">Watch Showreel</span>
                 </button>
             </div>
         </div>
 
-        <!-- Animated Scroll Down Prompt -->
-        <a href="#work" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center space-y-2 opacity-80 hover:opacity-100 transition-opacity">
-            <span class="text-xs font-mono tracking-widest text-brandTextSec uppercase">Scroll Down</span>
-            <div class="w-[20px] h-[35px] border-2 border-brandTextSec/40 rounded-full flex justify-center p-1">
-                <div class="w-[3px] h-[6px] bg-brandAccent rounded-full animate-bounce"></div>
+        <!-- Scroll down indicator - hidden on tiny height mobile devices -->
+        <a href="#work" class="absolute bottom-6 xs:bottom-10 left-1/2 transform -translate-x-1/2 z-20 hidden xs:flex flex-col items-center space-y-1.5 opacity-60 hover:opacity-100 transition-opacity">
+            <span class="text-[9px] font-mono tracking-widest text-brandTextSec uppercase">Scroll Down</span>
+            <div class="w-[18px] h-[30px] border border-brandTextSec/30 rounded-full flex justify-center p-0.5">
+                <div class="w-[3px] h-[5px] bg-brandAccent rounded-full animate-bounce"></div>
             </div>
         </a>
     </section>
 
-    <!-- Statistics Section -->
-    <section class="py-16 md:py-24 bg-brandSecBg border-y border-brandBorder relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
+    <section class="py-12 xs:py-16 md:py-24 bg-brandSecBg border-y border-brandBorder relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+            <!-- Responsive Grid System: Stacks vertically on small mobile, splits neatly on sm/lg breakpoints -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
+                
                 <!-- Stat 1 -->
-                <div class="flex flex-col items-center justify-center p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
-                    <div class="w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-4">
-                        <i data-lucide="eye" class="text-brandAccent w-6 h-6"></i>
+                <div class="flex flex-col items-center justify-center p-5 xs:p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
+                    <div class="w-10 h-10 xs:w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-3">
+                        <i data-lucide="eye" class="text-brandAccent w-5 h-5 xs:w-6 h-6"></i>
                     </div>
-                    <span class="text-4xl md:text-5xl lg:text-6xl font-syne font-black text-brandAccent" id="stat-views">50</span>
-                    <span class="text-sm font-mono tracking-widest text-brandTextSec uppercase mt-2">Views Generated</span>
+                    <span class="text-3xl xs:text-4xl lg:text-5xl font-syne font-black text-brandAccent" id="stat-views">0</span>
+                    <span class="text-[10px] font-mono tracking-widest text-brandTextSec uppercase mt-1">Views Generated</span>
                 </div>
 
                 <!-- Stat 2 -->
-                <div class="flex flex-col items-center justify-center p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
-                    <div class="w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-4">
-                        <i data-lucide="check-circle" class="text-brandAccent w-6 h-6"></i>
+                <div class="flex flex-col items-center justify-center p-5 xs:p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
+                    <div class="w-10 h-10 xs:w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-3">
+                        <i data-lucide="check-circle" class="text-brandAccent w-5 h-5 xs:w-6 h-6"></i>
                     </div>
-                    <span class="text-4xl md:text-5xl lg:text-6xl font-syne font-black text-white" id="stat-projects">100</span>
-                    <span class="text-sm font-mono tracking-widest text-brandTextSec uppercase mt-2">Projects Completed</span>
+                    <span class="text-3xl xs:text-4xl lg:text-5xl font-syne font-black text-white" id="stat-projects">0</span>
+                    <span class="text-[10px] font-mono tracking-widest text-brandTextSec uppercase mt-1">Projects Finished</span>
                 </div>
 
                 <!-- Stat 3 -->
-                <div class="flex flex-col items-center justify-center p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
-                    <div class="w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-4">
-                        <i data-lucide="award" class="text-brandAccent w-6 h-6"></i>
+                <div class="flex flex-col items-center justify-center p-5 xs:p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
+                    <div class="w-10 h-10 xs:w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-3">
+                        <i data-lucide="award" class="text-brandAccent w-5 h-5 xs:w-6 h-6"></i>
                     </div>
-                    <span class="text-4xl md:text-5xl lg:text-6xl font-syne font-black text-white" id="stat-years">5</span>
-                    <span class="text-sm font-mono tracking-widest text-brandTextSec uppercase mt-2">Years Experience</span>
+                    <span class="text-3xl xs:text-4xl lg:text-5xl font-syne font-black text-white" id="stat-years">0</span>
+                    <span class="text-[10px] font-mono tracking-widest text-brandTextSec uppercase mt-1">Years Experience</span>
                 </div>
 
                 <!-- Stat 4 -->
-                <div class="flex flex-col items-center justify-center p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
-                    <div class="w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-4">
-                        <i data-lucide="smile" class="text-brandAccent w-6 h-6"></i>
+                <div class="flex flex-col items-center justify-center p-5 xs:p-6 border border-white/5 bg-black/40 rounded-2xl glass-card">
+                    <div class="w-10 h-10 xs:w-12 h-12 rounded-full bg-brandAccent/10 flex items-center justify-center mb-3">
+                        <i data-lucide="smile" class="text-brandAccent w-5 h-5 xs:w-6 h-6"></i>
                     </div>
-                    <span class="text-4xl md:text-5xl lg:text-6xl font-syne font-black text-white" id="stat-satisfaction">95</span>
-                    <span class="text-sm font-mono tracking-widest text-brandTextSec uppercase mt-2">Satisfaction Rate</span>
+                    <span class="text-3xl xs:text-4xl lg:text-5xl font-syne font-black text-white" id="stat-satisfaction">0</span>
+                    <span class="text-[10px] font-mono tracking-widest text-brandTextSec uppercase mt-1">Satisfaction Rate</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Work Section -->
-    <section id="work" class="py-24 md:py-32 relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <section id="work" class="py-16 xs:py-24 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             
-            <!-- Section Header -->
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <!-- Section Header: Clean flex column on mobile, row on desktop -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 xs:mb-16">
                 <div>
-                    <span class="text-xs font-mono uppercase tracking-widest text-brandAccent block mb-3">Portfolio Showcase</span>
-                    <h2 class="text-4xl md:text-6xl font-syne font-extrabold tracking-tight">FEATURED CINEMA</h2>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-brandAccent block mb-2 sm:mb-3">Portfolio Showcase</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-6xl font-syne font-extrabold tracking-tight">FEATURED WORK</h2>
                 </div>
-                <!-- Interactive Filter Tabs -->
-                <div class="flex flex-wrap gap-2 mt-6 md:mt-0 font-medium text-sm">
-                    <button class="filter-btn active px-6 py-2.5 rounded-full bg-brandAccent text-brandBg hover:opacity-90 transition-all font-semibold" onclick="filterPortfolio('all', this)">All Projects</button>
-                    <button class="filter-btn px-6 py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold" onclick="filterPortfolio('commercial', this)">Commercials</button>
-                    <button class="filter-btn px-6 py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold" onclick="filterPortfolio('music', this)">Music Videos</button>
-                    <button class="filter-btn px-6 py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold" onclick="filterPortfolio('narrative', this)">Short Films</button>
+                <!-- Fluid scrollable Filter Tabs on mobile -->
+                <div class="flex overflow-x-auto no-scrollbar w-full md:w-auto gap-2 mt-6 md:mt-0 py-1 -mx-4 px-4 sm:mx-0 sm:px-0 font-medium text-xs">
+                    <button class="filter-btn active shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-brandAccent text-brandBg hover:opacity-90 transition-all font-semibold" onclick="filterPortfolio('all', this)">All</button>
+                    <button class="filter-btn shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold" onclick="filterPortfolio('commercial', this)">Commercials</button>
+                    <button class="filter-btn shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold" onclick="filterPortfolio('music', this)">Music Videos</button>
+                    <button class="filter-btn shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold" onclick="filterPortfolio('narrative', this)">Short Films</button>
                 </div>
             </div>
 
-            <!-- Dynamic Work Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12" id="portfolio-grid">
+            <!-- Dynamic Work Grid: Perfectly responsive spacing -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12" id="portfolio-grid">
                 
-                <!-- Project Card 1: Brand/Commercial -->
-                <div class="group relative overflow-hidden rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-2 hover:border-brandAccent/40 portfolio-item" data-category="commercial">
-                    <div class="aspect-video w-full relative overflow-hidden">
-                        <!-- Simulated Cinematic Static Thumbnail with Pexels Preview Video Hover -->
-                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200" alt="Nike Campaign" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Cinematic+Campaign'">
+                <!-- Project Card 1 -->
+                <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-1 hover:border-brandAccent/40 portfolio-item" data-category="commercial">
+                    <div class="aspect-video w-full relative overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200" alt="Nike Campaign" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Cinematic+Campaign'">
                         
-                        <!-- Hover Video Playback Simulation -->
+                        <!-- Hover Video Playback: Automatically loops, only plays inline for active performance -->
                         <video loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-urban-runner-shot-from-the-front-slow-motion-42583-large.mp4" type="video/mp4">
                         </video>
 
                         <div class="absolute inset-0 bg-gradient-to-t from-brandBg to-transparent opacity-60"></div>
-                        <!-- Play/Detail Quick Action Hover Icon -->
+                        <!-- Play trigger overlay -->
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="w-16 h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-70 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
-                                <i data-lucide="play" class="w-6 h-6 fill-brandBg ml-1"></i>
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
+                                <i data-lucide="play" class="w-5 h-5 sm:w-6 sm:h-6 fill-brandBg ml-0.5"></i>
                             </div>
                         </div>
                     </div>
-                    <!-- Details Block -->
-                    <div class="p-8 relative">
+                    <div class="p-5 xs:p-6 sm:p-8 relative">
                         <div class="flex justify-between items-center mb-3">
-                            <span class="px-3.5 py-1 text-xs font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Nike Campaign</span>
-                            <span class="text-xs text-brandTextSec font-semibold">2025</span>
+                            <span class="px-2.5 py-0.5 text-[10px] font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Nike Campaign</span>
+                            <span class="text-[10px] text-brandTextSec font-semibold">2026</span>
                         </div>
-                        <h3 class="text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Overcome Boundaries</h3>
-                        <p class="text-brandTextSec text-sm">A highly cinematic brand commercial detailing the journey of urban runners testing their limits.</p>
+                        <h3 class="text-lg xs:text-xl sm:text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Overcome Boundaries</h3>
+                        <p class="text-brandTextSec text-xs sm:text-sm">A highly cinematic brand commercial detailing the journey of urban runners testing their limits.</p>
                     </div>
                 </div>
 
-                <!-- Project Card 2: Music Video -->
-                <div class="group relative overflow-hidden rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-2 hover:border-brandAccent/40 portfolio-item" data-category="music">
-                    <div class="aspect-video w-full relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=1200" alt="Neon Dreams" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Music+Video'">
+                <!-- Project Card 2 -->
+                <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-1 hover:border-brandAccent/40 portfolio-item" data-category="music">
+                    <div class="aspect-video w-full relative overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=1200" alt="Neon Beats" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Music+Video'">
                         
                         <video loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-dj-mixing-music-on-soundboard-at-nightclub-42544-large.mp4" type="video/mp4">
@@ -409,25 +426,25 @@
 
                         <div class="absolute inset-0 bg-gradient-to-t from-brandBg to-transparent opacity-60"></div>
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="w-16 h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-70 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
-                                <i data-lucide="play" class="w-6 h-6 fill-brandBg ml-1"></i>
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
+                                <i data-lucide="play" class="w-5 h-5 sm:w-6 sm:h-6 fill-brandBg ml-0.5"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8 relative">
+                    <div class="p-5 xs:p-6 sm:p-8 relative">
                         <div class="flex justify-between items-center mb-3">
-                            <span class="px-3.5 py-1 text-xs font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Music Video</span>
-                            <span class="text-xs text-brandTextSec font-semibold">2025</span>
+                            <span class="px-2.5 py-0.5 text-[10px] font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Music Video</span>
+                            <span class="text-[10px] text-brandTextSec font-semibold">2026</span>
                         </div>
-                        <h3 class="text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Neon Beats</h3>
-                        <p class="text-brandTextSec text-sm">Visually striking cyber-themed music video featuring high contrast lighting and quick energetic cuts.</p>
+                        <h3 class="text-lg xs:text-xl sm:text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Neon Beats</h3>
+                        <p class="text-brandTextSec text-xs sm:text-sm">Visually striking cyber-themed music video featuring high contrast lighting and quick energetic cuts.</p>
                     </div>
                 </div>
 
-                <!-- Project Card 3: Short Film / Narrative -->
-                <div class="group relative overflow-hidden rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-2 hover:border-brandAccent/40 portfolio-item" data-category="narrative">
-                    <div class="aspect-video w-full relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1200" alt="Shadows of Silence" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Short+Film'">
+                <!-- Project Card 3 -->
+                <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-1 hover:border-brandAccent/40 portfolio-item" data-category="narrative">
+                    <div class="aspect-video w-full relative overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1200" alt="Shadows of Silence" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Short+Film'">
                         
                         <video loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-mysterious-woman-walking-through-dark-forest-42582-large.mp4" type="video/mp4">
@@ -435,25 +452,25 @@
 
                         <div class="absolute inset-0 bg-gradient-to-t from-brandBg to-transparent opacity-60"></div>
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="w-16 h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-70 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
-                                <i data-lucide="play" class="w-6 h-6 fill-brandBg ml-1"></i>
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
+                                <i data-lucide="play" class="w-5 h-5 sm:w-6 sm:h-6 fill-brandBg ml-0.5"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8 relative">
+                    <div class="p-5 xs:p-6 sm:p-8 relative">
                         <div class="flex justify-between items-center mb-3">
-                            <span class="px-3.5 py-1 text-xs font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Short Film</span>
-                            <span class="text-xs text-brandTextSec font-semibold">2024</span>
+                            <span class="px-2.5 py-0.5 text-[10px] font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Short Film</span>
+                            <span class="text-[10px] text-brandTextSec font-semibold">2025</span>
                         </div>
-                        <h3 class="text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Shadows of Silence</h3>
-                        <p class="text-brandTextSec text-sm">An award-winning atmospheric short film focusing on raw human emotions and environmental storytelling.</p>
+                        <h3 class="text-lg xs:text-xl sm:text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Shadows of Silence</h3>
+                        <p class="text-brandTextSec text-xs sm:text-sm">An award-winning atmospheric short film focusing on raw human emotions and environmental storytelling.</p>
                     </div>
                 </div>
 
-                <!-- Project Card 4: Brand/Commercial -->
-                <div class="group relative overflow-hidden rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-2 hover:border-brandAccent/40 portfolio-item" data-category="commercial">
-                    <div class="aspect-video w-full relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" alt="Luxury Real Estate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Corporate+Film'">
+                <!-- Project Card 4 -->
+                <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg/60 transition-all duration-500 hover:-translate-y-1 hover:border-brandAccent/40 portfolio-item" data-category="commercial">
+                    <div class="aspect-video w-full relative overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" alt="Luxury Real Estate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115" onerror="this.src='https://placehold.co/1200x675/050505/ffffff?text=Corporate+Film'">
                         
                         <video loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-living-room-interior-32785-large.mp4" type="video/mp4">
@@ -461,18 +478,18 @@
 
                         <div class="absolute inset-0 bg-gradient-to-t from-brandBg to-transparent opacity-60"></div>
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="w-16 h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-70 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
-                                <i data-lucide="play" class="w-6 h-6 fill-brandBg ml-1"></i>
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brandAccent/90 hover:bg-brandAccent text-brandBg rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300 pointer-events-none">
+                                <i data-lucide="play" class="w-5 h-5 sm:w-6 sm:h-6 fill-brandBg ml-0.5"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8 relative">
+                    <div class="p-5 xs:p-6 sm:p-8 relative">
                         <div class="flex justify-between items-center mb-3">
-                            <span class="px-3.5 py-1 text-xs font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Commercial</span>
-                            <span class="text-xs text-brandTextSec font-semibold">2024</span>
+                            <span class="px-2.5 py-0.5 text-[10px] font-mono uppercase bg-brandAccent/10 text-brandAccent rounded-full tracking-wider">Commercial</span>
+                            <span class="text-[10px] text-brandTextSec font-semibold">2025</span>
                         </div>
-                        <h3 class="text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Vanguard Corporate</h3>
-                        <p class="text-brandTextSec text-sm">Showcasing architectural marvels and premium commercial structures for high-profile investors.</p>
+                        <h3 class="text-lg xs:text-xl sm:text-2xl font-syne font-bold mb-2 group-hover:text-brandAccent transition-colors">Vanguard Corporate</h3>
+                        <p class="text-brandTextSec text-xs sm:text-sm">Showcasing architectural marvels and premium commercial structures for high-profile investors.</p>
                     </div>
                 </div>
 
@@ -480,144 +497,143 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 md:py-32 bg-brandSecBg/50 relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <section id="services" class="py-16 xs:py-24 md:py-32 bg-brandSecBg/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             
-            <!-- Section Title -->
-            <div class="text-center max-w-2xl mx-auto mb-20">
-                <span class="text-xs font-mono uppercase tracking-widest text-brandAccent block mb-3">What We Deliver</span>
-                <h2 class="text-4xl md:text-6xl font-syne font-extrabold tracking-tight">PREMIUM SERVICES</h2>
-                <p class="text-brandTextSec mt-4">Elevating visual campaigns through precision editing, masterclass lighting, and modern digital storytelling structure.</p>
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-20">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-brandAccent block mb-2 sm:mb-3">What We Deliver</span>
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-syne font-extrabold tracking-tight">PREMIUM SERVICES</h2>
+                <p class="text-brandTextSec text-xs sm:text-sm md:text-base mt-3">Elevating brand campaigns through precision cinematography, modern sound design, and narrative pacing.</p>
             </div>
 
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Responsive Grid Structure: Beautiful columns across all widths -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 
-                <!-- Service 1: Brand Films -->
-                <div class="group relative p-8 md:p-10 rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-8 border border-brandAccent/20 group-hover:scale-110 transition-transform">
-                        <i data-lucide="clapperboard" class="text-brandAccent w-7 h-7"></i>
+                <!-- Card 1 -->
+                <div class="group relative p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-6 sm:mb-8 border border-brandAccent/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="clapperboard" class="text-brandAccent w-6 h-6 sm:w-7 sm:h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-syne font-bold mb-4 group-hover:text-brandAccent transition-colors">Brand Films</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">High-concept storytelling movies that anchor brand identity, emotional hooks, and high-conversion client pitches.</p>
+                    <h3 class="text-lg xs:text-xl font-syne font-bold mb-3 sm:mb-4 group-hover:text-brandAccent transition-colors">Brand Films</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">High-concept stories that anchor absolute brand identity, secure emotional hooks, and drive higher conversions.</p>
                 </div>
 
-                <!-- Service 2: Commercial Shoots -->
-                <div class="group relative p-8 md:p-10 rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-8 border border-brandAccent/20 group-hover:scale-110 transition-transform">
-                        <i data-lucide="video" class="text-brandAccent w-7 h-7"></i>
+                <!-- Card 2 -->
+                <div class="group relative p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-6 sm:mb-8 border border-brandAccent/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="video" class="text-brandAccent w-6 h-6 sm:w-7 sm:h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-syne font-bold mb-4 group-hover:text-brandAccent transition-colors">Commercial Shoots</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Premium advertising visuals optimized for media, TV networks, platforms, and target audience alignment.</p>
+                    <h3 class="text-lg xs:text-xl font-syne font-bold mb-3 sm:mb-4 group-hover:text-brandAccent transition-colors">Commercial Shoots</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Premium product visual ads optimized for modern streaming networks, TV platforms, and social campaign budgets.</p>
                 </div>
 
-                <!-- Service 3: Music Videos -->
-                <div class="group relative p-8 md:p-10 rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-8 border border-brandAccent/20 group-hover:scale-110 transition-transform">
-                        <i data-lucide="music" class="text-brandAccent w-7 h-7"></i>
+                <!-- Card 3 -->
+                <div class="group relative p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-6 sm:mb-8 border border-brandAccent/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="music" class="text-brandAccent w-6 h-6 sm:w-7 sm:h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-syne font-bold mb-4 group-hover:text-brandAccent transition-colors">Music Videos</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Artistically raw music visuals utilizing bespoke set lighting, heavy rhythm synchronization, and rich styling.</p>
+                    <h3 class="text-lg xs:text-xl font-syne font-bold mb-3 sm:mb-4 group-hover:text-brandAccent transition-colors">Music Videos</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Artistic music visuals utilizing curated lighting setups, high-fidelity sound sync, and distinct color styles.</p>
                 </div>
 
-                <!-- Service 4: Reels Production -->
-                <div class="group relative p-8 md:p-10 rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-8 border border-brandAccent/20 group-hover:scale-110 transition-transform">
-                        <i data-lucide="smartphone" class="text-brandAccent w-7 h-7"></i>
+                <!-- Card 4 -->
+                <div class="group relative p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-6 sm:mb-8 border border-brandAccent/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="smartphone" class="text-brandAccent w-6 h-6 sm:w-7 sm:h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-syne font-bold mb-4 group-hover:text-brandAccent transition-colors">Reels Production</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Viral-centric 9:16 high-impact short-form video creation designed to capture immediately in first 3 seconds.</p>
+                    <h3 class="text-lg xs:text-xl font-syne font-bold mb-3 sm:mb-4 group-hover:text-brandAccent transition-colors">Reels Production</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Viral-centric 9:16 high-impact portrait videos designed to capture audience attention inside the first 3 seconds.</p>
                 </div>
 
-                <!-- Service 5: Wedding Films -->
-                <div class="group relative p-8 md:p-10 rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-8 border border-brandAccent/20 group-hover:scale-110 transition-transform">
-                        <i data-lucide="heart" class="text-brandAccent w-7 h-7"></i>
+                <!-- Card 5 -->
+                <div class="group relative p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-6 sm:mb-8 border border-brandAccent/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="heart" class="text-brandAccent w-6 h-6 sm:w-7 sm:h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-syne font-bold mb-4 group-hover:text-brandAccent transition-colors">Wedding Films</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Luxurious cinematic documentations of intimate stories with elite color palettes and elegant structure.</p>
+                    <h3 class="text-lg xs:text-xl font-syne font-bold mb-3 sm:mb-4 group-hover:text-brandAccent transition-colors">Wedding Films</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Luxurious cinematic documentations of intimate personal love stories using premium aesthetic color grading.</p>
                 </div>
 
-                <!-- Service 6: Post Production -->
-                <div class="group relative p-8 md:p-10 rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-8 border border-brandAccent/20 group-hover:scale-110 transition-transform">
-                        <i data-lucide="sliders" class="text-brandAccent w-7 h-7"></i>
+                <!-- Card 6 -->
+                <div class="group relative p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-brandBorder bg-brandSecBg hover:bg-black/80 transition-all duration-500 overflow-hidden transform hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brandAccent/5 rounded-full filter blur-xl group-hover:bg-brandAccent/20 transition-all duration-500"></div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-brandAccent/10 flex items-center justify-center mb-6 sm:mb-8 border border-brandAccent/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="sliders" class="text-brandAccent w-6 h-6 sm:w-7 sm:h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-syne font-bold mb-4 group-hover:text-brandAccent transition-colors">Post Production</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Precision high-end grading, masterful sound design (foley & mixing), visual FX integration, and rhythm edit workflows.</p>
+                    <h3 class="text-lg xs:text-xl font-syne font-bold mb-3 sm:mb-4 group-hover:text-brandAccent transition-colors">Post Production</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Precision HDR color grading, immersive sound foley effects, rhythmic montage editing, and high-quality rendering.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 md:py-32 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <section id="about" class="py-16 xs:py-24 md:py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-20 items-center">
                 
-                <!-- Left Portrait with frame decoration -->
-                <div class="lg:col-span-5 relative group">
-                    <div class="absolute inset-0 bg-brandAccent rounded-3xl transform translate-x-3 translate-y-3 -z-10 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5 opacity-40"></div>
-                    <div class="relative overflow-hidden rounded-3xl aspect-[3/4] border border-brandBorder group-hover:border-brandAccent/40 transition-colors duration-500">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Vishu Yadav Portfolio" class="w-full h-full object-cover filter saturate-50 hover:saturate-100 transition-all duration-700 hover:scale-105" onerror="this.src='https://placehold.co/800x1066/050505/ffffff?text=Vishu+Yadav'">
-                        <!-- Absolute overlay detailing name -->
-                        <div class="absolute bottom-6 left-6 right-6 p-4 glass-card rounded-2xl">
-                            <h4 class="font-syne font-bold text-lg">Vishu Yadav</h4>
-                            <p class="text-xs text-brandAccent tracking-wider uppercase mt-1">Founding Director</p>
+                <!-- Left Portrait with frame decoration: Beautiful fluid aspect control -->
+                <div class="lg:col-span-5 relative group w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto">
+                    <div class="absolute inset-0 bg-brandAccent rounded-2xl sm:rounded-3xl transform translate-x-2 translate-y-2 xs:translate-x-3 xs:translate-y-3 -z-10 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4 opacity-30"></div>
+                    <div class="relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-[3/4] border border-brandBorder group-hover:border-brandAccent/40 transition-colors duration-500 bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Vishu Yadav Portrait" class="w-full h-full object-cover filter saturate-50 hover:saturate-100 transition-all duration-700 hover:scale-102" onerror="this.src='https://placehold.co/800x1066/050505/ffffff?text=Vishu+Yadav'">
+                        
+                        <!-- Floating Identity Badge -->
+                        <div class="absolute bottom-4 left-4 right-4 xs:bottom-6 xs:left-6 xs:right-6 p-3 sm:p-4 glass-card rounded-xl xs:rounded-2xl">
+                            <h4 class="font-syne font-bold text-base xs:text-lg">Vishu Yadav</h4>
+                            <p class="text-[10px] sm:text-xs text-brandAccent tracking-wider uppercase mt-1">Creative Director & Founder</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Brand Pitch -->
-                <div class="lg:col-span-7">
-                    <span class="text-xs font-mono uppercase tracking-widest text-brandAccent block mb-3">About The Creator</span>
-                    <h2 class="text-4xl md:text-5xl font-syne font-extrabold tracking-tight mb-6">MORE THAN A FILMMAKER</h2>
-                    <p class="text-brandTextSec text-base md:text-lg leading-relaxed mb-8">
-                        I create premium visual experiences that help brands, high-profile creators, and modern corporate structures stand out in a hyper-crowded digital landscape. By combining cinematic lighting theories with direct-response editing styles, we build videos that don't just win eyes, but secure action.
+                <div class="lg:col-span-7 mt-6 lg:mt-0">
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-brandAccent block mb-2 xs:mb-3">About The Creator</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-syne font-extrabold tracking-tight mb-4 sm:mb-6">MORE THAN A FILMMAKER</h2>
+                    <p class="text-brandTextSec text-xs sm:text-sm md:text-base leading-relaxed mb-6 sm:mb-8">
+                        I create premium visual experiences that help international brands, creative agencies, and modern businesses stand out in a hyper-crowded digital landscape. By combining classic Hollywood framing theories with high-conversion short-form formatting, we craft visual content that demands attention.
                     </p>
 
-                    <!-- Interactive Experience/Career Timeline -->
-                    <div class="space-y-6">
-                        <h3 class="text-xl font-syne font-bold text-white border-b border-brandBorder pb-3">EXPERIENCE TIMELINE</h3>
+                    <!-- Interactive Experience Timeline: Solid stack layout on mobile -->
+                    <div class="space-y-4 sm:space-y-6">
+                        <h3 class="text-lg font-syne font-bold text-white border-b border-brandBorder pb-2 xs:pb-3">CAREER TIMELINE</h3>
                         
-                        <div class="relative pl-6 border-l-2 border-brandBorder space-y-8">
+                        <div class="relative pl-5 xs:pl-6 border-l-2 border-brandBorder space-y-6 xs:space-y-8">
                             <!-- Timeline Entry 1 -->
                             <div class="relative">
-                                <!-- Bullet marker -->
-                                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-brandBg border-2 border-brandAccent"></div>
-                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                    <h4 class="text-lg font-bold text-white">Lead Creative Director</h4>
-                                    <span class="text-xs font-mono text-brandAccent font-bold">2023 - PRESENT</span>
+                                <!-- Styled absolute bullets with adjusted offsets to prevent alignment issues -->
+                                <div class="absolute -left-[27.5px] xs:-left-[31px] top-1.5 w-3.5 h-3.5 xs:w-4.5 xs:h-4.5 rounded-full bg-brandBg border-2 border-brandAccent"></div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="text-sm xs:text-base font-bold text-white">Lead Creative Director</h4>
+                                    <span class="text-[10px] font-mono text-brandAccent font-bold">2023 - PRESENT</span>
                                 </div>
-                                <p class="text-xs text-brandTextSec mt-1">Yadav Creative Labs — Partnered with elite firms globally delivering high-tier web and TV video ads.</p>
+                                <p class="text-xs text-brandTextSec mt-1">Yadav Visuals — Partnered with premium clients to deliver worldwide visual assets.</p>
                             </div>
 
                             <!-- Timeline Entry 2 -->
                             <div class="relative">
-                                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-brandBg border-2 border-brandBorder hover:border-brandAccent transition-colors"></div>
-                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                    <h4 class="text-lg font-bold text-white">Senior Video Specialist</h4>
-                                    <span class="text-xs font-mono text-brandAccent font-bold">2021 - 2023</span>
+                                <div class="absolute -left-[27.5px] xs:-left-[31px] top-1.5 w-3.5 h-3.5 xs:w-4.5 xs:h-4.5 rounded-full bg-brandBg border-2 border-brandBorder"></div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="text-sm xs:text-base font-bold text-white">Senior Video Specialist</h4>
+                                    <span class="text-[10px] font-mono text-brandAccent font-bold">2021 - 2023</span>
                                 </div>
-                                <p class="text-xs text-brandTextSec mt-1">Mediahouse Elite — Directed high-speed narrative films, commercials, and brand campaign documentaries.</p>
+                                <p class="text-xs text-brandTextSec mt-1">Mediahouse Elite — Directed high-end narrative music videos and brand campaign edits.</p>
                             </div>
 
                             <!-- Timeline Entry 3 -->
                             <div class="relative">
-                                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-brandBg border-2 border-brandBorder hover:border-brandAccent transition-colors"></div>
-                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                    <h4 class="text-lg font-bold text-white">Independent Content Producer</h4>
-                                    <span class="text-xs font-mono text-brandAccent font-bold">2019 - 2021</span>
+                                <div class="absolute -left-[27.5px] xs:-left-[31px] top-1.5 w-3.5 h-3.5 xs:w-4.5 xs:h-4.5 rounded-full bg-brandBg border-2 border-brandBorder"></div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="text-sm xs:text-base font-bold text-white">Independent Producer</h4>
+                                    <span class="text-[10px] font-mono text-brandAccent font-bold">2019 - 2021</span>
                                 </div>
-                                <p class="text-xs text-brandTextSec mt-1">Freelance Global — Curated narrative music edits, architectural visuals, and social-first viral video scripts.</p>
+                                <p class="text-xs text-brandTextSec mt-1">Freelance Global — Engineered creative social content formats yielding millions of views.</p>
                             </div>
                         </div>
 
@@ -628,134 +644,131 @@
         </div>
     </section>
 
-    <!-- Custom Video Showreel Block -->
-    <section class="py-24 md:py-32 bg-brandSecBg border-y border-brandBorder relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+    <section class="py-16 xs:py-24 md:py-32 bg-brandSecBg border-y border-brandBorder relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
             
-            <span class="text-xs font-mono uppercase tracking-widest text-brandAccent block mb-3">Immersive Experience</span>
-            <h2 class="text-4xl md:text-6xl font-syne font-extrabold tracking-tight mb-12">THE SHOWREEL</h2>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-brandAccent block mb-2 sm:mb-3">Immersive Experience</span>
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-syne font-extrabold tracking-tight mb-8 sm:mb-12">THE SHOWREEL</h2>
 
-            <!-- Immersive Player Card -->
-            <div class="relative max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-black group border border-brandBorder">
-                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1600" alt="Cinematic Showreel Preview" class="w-full h-auto min-h-[300px] max-h-[500px] object-cover filter brightness-[0.6] group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1600x900/050505/ffffff?text=Play+Showreel'">
+            <!-- Video Player Cover: Fluid layout and relative margins -->
+            <div class="relative max-w-4xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-black/80 group border border-brandBorder">
+                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1600" alt="Showreel Cover" class="w-full h-auto min-h-[220px] max-h-[500px] object-cover filter brightness-[0.5] group-hover:scale-102 transition-transform duration-700" onerror="this.src='https://placehold.co/1600x900/050505/ffffff?text=Play+Showreel'">
                 
-                <!-- Play Overlay Layer -->
-                <div class="absolute inset-0 bg-brandBg/40 flex flex-col justify-center items-center p-6 cursor-pointer" onclick="openShowreel()">
-                    <!-- Ring Pulse Visualizer -->
+                <!-- Play Interactive Overlay layer -->
+                <div class="absolute inset-0 bg-brandBg/30 flex flex-col justify-center items-center p-4 cursor-pointer" onclick="openShowreel()">
+                    <!-- Ring Pulse Effect -->
                     <div class="relative flex items-center justify-center">
-                        <div class="absolute w-24 h-24 rounded-full border border-brandAccent/60 animate-ping"></div>
-                        <div class="absolute w-20 h-20 rounded-full border border-brandAccent/80 animate-pulse-slow"></div>
-                        <div class="relative w-16 h-16 bg-brandAccent rounded-full flex items-center justify-center hover:bg-white hover:text-brandAccent transition-all duration-300">
-                            <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1 group-hover:scale-110 transition-transform"></i>
+                        <div class="absolute w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 rounded-full border border-brandAccent/60 animate-ping"></div>
+                        <div class="absolute w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 rounded-full border border-brandAccent/85 animate-pulse-slow"></div>
+                        <div class="relative w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 bg-brandAccent rounded-full flex items-center justify-center hover:bg-white hover:text-brandAccent transition-all duration-300">
+                            <i data-lucide="play" class="w-5 h-5 sm:w-8 sm:h-8 text-white fill-current ml-0.5 sm:ml-1"></i>
                         </div>
                     </div>
-                    <span class="mt-8 text-sm font-mono uppercase tracking-widest text-white/95 group-hover:text-brandAccent transition-colors">WATCH SHOWREEL REEL (3:14 Min)</span>
+                    <span class="mt-4 sm:mt-8 text-[9px] xs:text-[10px] sm:text-xs font-mono uppercase tracking-widest text-white/90">WATCH SHOWREEL REEL (3:14 MIN)</span>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Testimonials Slider Section -->
-    <section id="testimonials" class="py-24 md:py-32 relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <section id="testimonials" class="py-16 xs:py-24 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             
-            <!-- Title -->
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <!-- Section Title & Buttons: Dynamic Alignment on mobile -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 xs:mb-16">
                 <div>
-                    <span class="text-xs font-mono uppercase tracking-widest text-brandAccent block mb-3">Client Feedback</span>
-                    <h2 class="text-4xl md:text-6xl font-syne font-extrabold tracking-tight">TRUSTED COLLABORATORS</h2>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-brandAccent block mb-2 xs:mb-3">Client Feedback</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-6xl font-syne font-extrabold tracking-tight">TRUSTED PARTNERS</h2>
                 </div>
-                <!-- Navigation Dots -->
-                <div class="flex space-x-3 mt-6 md:mt-0">
-                    <button onclick="prevTestimonial()" class="w-12 h-12 rounded-full border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-white transition-all">
-                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                <!-- Navigation Arrows: Kept clean and easy to tap -->
+                <div class="flex space-x-2 mt-6 md:mt-0">
+                    <button onclick="prevTestimonial()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-white transition-all" aria-label="Previous testimonial">
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                     </button>
-                    <button onclick="nextTestimonial()" class="w-12 h-12 rounded-full border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-white transition-all">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    <button onclick="nextTestimonial()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-white transition-all" aria-label="Next testimonial">
+                        <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Carousel Wrapper -->
-            <div class="relative overflow-hidden w-full">
-                <div id="testimonial-track" class="flex transition-transform duration-700 ease-in-out gap-6" style="transform: translateX(0px);">
+            <!-- Swipe/Touch Interactive Carousel Track Container -->
+            <div class="relative overflow-hidden w-full cursor-grab active:cursor-grabbing" id="testimonial-container">
+                <div id="testimonial-track" class="flex transition-transform duration-700 ease-out gap-4 sm:gap-6" style="transform: translateX(0px);">
                     
                     <!-- Card 1 -->
-                    <div class="w-full md:w-[48%] lg:w-[32%] shrink-0 p-8 rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Client 1" class="w-12 h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=A'">
+                    <div class="w-[280px] xs:w-[320px] sm:w-[45%] lg:w-[31.5%] shrink-0 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
+                        <div class="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Alexander Chen" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=A'">
                             <div>
-                                <h4 class="font-syne font-bold text-white">Alexander Chen</h4>
-                                <p class="text-xs text-brandTextSec">Creative VP, Hyperion</p>
+                                <h4 class="font-syne font-bold text-white text-sm sm:text-base">Alexander Chen</h4>
+                                <p class="text-[10px] sm:text-xs text-brandTextSec">Creative VP, Hyperion</p>
                             </div>
                         </div>
-                        <!-- Stars -->
-                        <div class="flex text-brandAccent mb-4 space-x-1">
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
+                        <div class="flex text-brandAccent mb-3 sm:mb-4 space-x-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
                         </div>
-                        <p class="text-brandTextSec text-sm leading-relaxed italic">"Vishu has completely transformed our brand output. His cinematic vision and attention to pacing took our digital campaign to 12M+ organic views."</p>
+                        <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed italic">"Vishu has completely transformed our video output. His cinematic vision took our product launch to 12M+ organic views."</p>
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="w-full md:w-[48%] lg:w-[32%] shrink-0 p-8 rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Client 2" class="w-12 h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=M'">
+                    <div class="w-[280px] xs:w-[320px] sm:w-[45%] lg:w-[31.5%] shrink-0 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
+                        <div class="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Maya Rodriguez" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=M'">
                             <div>
-                                <h4 class="font-syne font-bold text-white">Maya Rodriquez</h4>
-                                <p class="text-xs text-brandTextSec">Pop Artist & Musician</p>
+                                <h4 class="font-syne font-bold text-white text-sm sm:text-base">Maya Rodriguez</h4>
+                                <p class="text-[10px] sm:text-xs text-brandTextSec">Pop Vocalist & Musician</p>
                             </div>
                         </div>
-                        <div class="flex text-brandAccent mb-4 space-x-1">
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
+                        <div class="flex text-brandAccent mb-3 sm:mb-4 space-x-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
                         </div>
-                        <p class="text-brandTextSec text-sm leading-relaxed italic">"We needed a moody, intense narrative look for my debut single. Vishu delivered a visual masterpiece that was perfectly synchronized to every beat."</p>
+                        <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed italic">"We needed a moody, atmospheric narrative look for my visual single. Vishu delivered a masterclass in set lighting."</p>
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="w-full md:w-[48%] lg:w-[32%] shrink-0 p-8 rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" alt="Client 3" class="w-12 h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=J'">
+                    <div class="w-[280px] xs:w-[320px] sm:w-[45%] lg:w-[31.5%] shrink-0 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
+                        <div class="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" alt="Jordan Vance" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=J'">
                             <div>
-                                <h4 class="font-syne font-bold text-white">Jordan Vance</h4>
-                                <p class="text-xs text-brandTextSec">Director, Vance Studio</p>
+                                <h4 class="font-syne font-bold text-white text-sm sm:text-base">Jordan Vance</h4>
+                                <p class="text-[10px] sm:text-xs text-brandTextSec">Agency Director, Vance Studio</p>
                             </div>
                         </div>
-                        <div class="flex text-brandAccent mb-4 space-x-1">
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
+                        <div class="flex text-brandAccent mb-3 sm:mb-4 space-x-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
                         </div>
-                        <p class="text-brandTextSec text-sm leading-relaxed italic">"The process was flawlessly streamlined. From initial script to the final coloring pass, Yadav's team held exceptional professionalism and communication."</p>
+                        <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed italic">"The pipeline was clean and structured. From visual script layout to the final grading pass, Yadav's crew held total quality control."</p>
                     </div>
 
                     <!-- Card 4 -->
-                    <div class="w-full md:w-[48%] lg:w-[32%] shrink-0 p-8 rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="Client 4" class="w-12 h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=S'">
+                    <div class="w-[280px] xs:w-[320px] sm:w-[45%] lg:w-[31.5%] shrink-0 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-brandSecBg border border-brandBorder glass-card">
+                        <div class="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="Sarah Jenkins" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-brandAccent" onerror="this.src='https://placehold.co/150x150/ff6b00/ffffff?text=S'">
                             <div>
-                                <h4 class="font-syne font-bold text-white">Sarah Jenkins</h4>
-                                <p class="text-xs text-brandTextSec">Founder, Blossom Co.</p>
+                                <h4 class="font-syne font-bold text-white text-sm sm:text-base">Sarah Jenkins</h4>
+                                <p class="text-[10px] sm:text-xs text-brandTextSec">Founder, Blossom Co.</p>
                             </div>
                         </div>
-                        <div class="flex text-brandAccent mb-4 space-x-1">
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brandAccent"></i>
+                        <div class="flex text-brandAccent mb-3 sm:mb-4 space-x-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brandAccent"></i>
                         </div>
-                        <p class="text-brandTextSec text-sm leading-relaxed italic">"Our wedding film was nothing short of a Hollywood romance. Every shot captured the subtle emotions of our special day beautifully."</p>
+                        <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed italic">"Our boutique campaign looked like a high-budget Hollywood production. It immediately elevated our brand authority."</p>
                     </div>
 
                 </div>
@@ -764,57 +777,56 @@
         </div>
     </section>
 
-    <!-- Production Process Section -->
-    <section class="py-24 md:py-32 bg-brandSecBg/60 relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <section class="py-16 xs:py-24 md:py-32 bg-brandSecBg/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             
-            <!-- Header -->
-            <div class="text-center max-w-2xl mx-auto mb-20">
-                <span class="text-xs font-mono uppercase tracking-widest text-brandAccent block mb-3">Our Framework</span>
-                <h2 class="text-4xl md:text-5xl font-syne font-extrabold tracking-tight">PRODUCTION PIPELINE</h2>
-                <p class="text-brandTextSec mt-4">An award-winning system that delivers top tier production efficiency without losing visual identity.</p>
+            <!-- Process Header -->
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-20">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-brandAccent block mb-2 sm:mb-3">Our Framework</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-syne font-extrabold tracking-tight">PRODUCTION PIPELINE</h2>
+                <p class="text-brandTextSec text-xs sm:text-sm mt-3">An elite development process delivering structural speed without compromising aesthetic values.</p>
             </div>
 
-            <!-- Steps Grid -->
+            <!-- Steps Grid: Responsive Stacking with connecting visual lines -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
                 
-                <!-- Connection bar (hidden on mobile) -->
-                <div class="hidden lg:block absolute top-[68px] left-[10%] right-[10%] h-[2px] bg-brandBorder -z-10"></div>
+                <!-- Horizontal connecting bar (Desktop Only) -->
+                <div class="hidden lg:block absolute top-[44px] left-[10%] right-[10%] h-[1px] bg-brandBorder -z-10"></div>
 
                 <!-- Step 1 -->
-                <div class="relative flex flex-col items-center text-center p-6 rounded-3xl group">
-                    <div class="w-16 h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-xl text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-6 relative z-10 shadow-lg">
+                <div class="relative flex flex-col items-center md:items-start lg:items-center text-center md:text-left lg:text-center p-4 rounded-2xl group">
+                    <div class="w-12 h-12 xs:w-16 xs:h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-base xs:text-lg text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-4 sm:mb-6 relative z-10 shadow-lg shrink-0">
                         01
                     </div>
-                    <h3 class="text-xl font-syne font-bold mb-3 text-white">Discovery</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">We extract your unique identity, core message targets, target audience alignment, and references.</p>
+                    <h3 class="text-lg font-syne font-bold mb-2 sm:mb-3 text-white">Discovery</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Extracting your visual references, conceptual targets, business objectives, and creative timeline goals.</p>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="relative flex flex-col items-center text-center p-6 rounded-3xl group">
-                    <div class="w-16 h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-xl text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-6 relative z-10 shadow-lg">
+                <div class="relative flex flex-col items-center md:items-start lg:items-center text-center md:text-left lg:text-center p-4 rounded-2xl group">
+                    <div class="w-12 h-12 xs:w-16 xs:h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-base xs:text-lg text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-4 sm:mb-6 relative z-10 shadow-lg shrink-0">
                         02
                     </div>
-                    <h3 class="text-xl font-syne font-bold mb-3 text-white">Planning</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Drafting visual scripts, storyboard design, set location planning, mood-boards, and audio scoring maps.</p>
+                    <h3 class="text-lg font-syne font-bold mb-2 sm:mb-3 text-white">Planning</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Drafting complete scripts, visual storyboards, color references, sound maps, and locations scouting.</p>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="relative flex flex-col items-center text-center p-6 rounded-3xl group">
-                    <div class="w-16 h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-xl text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-6 relative z-10 shadow-lg">
+                <div class="relative flex flex-col items-center md:items-start lg:items-center text-center md:text-left lg:text-center p-4 rounded-2xl group">
+                    <div class="w-12 h-12 xs:w-16 xs:h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-base xs:text-lg text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-4 sm:mb-6 relative z-10 shadow-lg shrink-0">
                         03
                     </div>
-                    <h3 class="text-xl font-syne font-bold mb-3 text-white">Production</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Executing on set. Masterclass camera angles, sound recording, high dynamic lighting capture, and professional crew coordination.</p>
+                    <h3 class="text-lg font-syne font-bold mb-2 sm:mb-3 text-white">Production</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Execution on set. Advanced camera angles, sound foley captures, master lighting, and director control.</p>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="relative flex flex-col items-center text-center p-6 rounded-3xl group">
-                    <div class="w-16 h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-xl text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-6 relative z-10 shadow-lg">
+                <div class="relative flex flex-col items-center md:items-start lg:items-center text-center md:text-left lg:text-center p-4 rounded-2xl group">
+                    <div class="w-12 h-12 xs:w-16 xs:h-16 rounded-full bg-brandBg border-2 border-brandBorder group-hover:border-brandAccent flex items-center justify-center font-syne font-black text-base xs:text-lg text-brandTextSec group-hover:text-brandAccent transition-all duration-300 mb-4 sm:mb-6 relative z-10 shadow-lg shrink-0">
                         04
                     </div>
-                    <h3 class="text-xl font-syne font-bold mb-3 text-white">Delivery</h3>
-                    <p class="text-brandTextSec text-sm leading-relaxed">Professional color correction grade, dynamic pacing cuts, immersive sound SFX, formatting, and file exports.</p>
+                    <h3 class="text-lg font-syne font-bold mb-2 sm:mb-3 text-white">Delivery</h3>
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed">Premium video editing, modern grading lookup tables, audio mastering, rendering, and master transfers.</p>
                 </div>
 
             </div>
@@ -822,70 +834,69 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 md:py-32 relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+    <section id="contact" class="py-16 xs:py-24 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-20">
                 
-                <!-- Contact Info left -->
+                <!-- Contact Info: Text stacks and scales cleanly -->
                 <div class="lg:col-span-5 flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-mono uppercase tracking-widest text-brandAccent block mb-3">Begin the Journey</span>
-                        <h2 class="text-4xl md:text-6xl font-syne font-extrabold tracking-tight mb-6">LET'S CAPTURE SOMETHING RAW.</h2>
-                        <p class="text-brandTextSec text-base md:text-lg mb-10 leading-relaxed">
-                            Have an exciting brand film, commercial, or creative video concept? Send details over, and we'll engineer the creative scope together.
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-brandAccent block mb-2 xs:mb-3">Begin the Journey</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-syne font-extrabold tracking-tight mb-4 sm:mb-6 leading-tight">LET'S CAPTURE SOMETHING RAW.</h2>
+                        <p class="text-brandTextSec text-xs sm:text-sm md:text-base mb-8 sm:mb-10 leading-relaxed">
+                            Have an exciting cinematic film idea, product campaign, or corporate video project? Send us your brief, and we'll develop the initial plan together.
                         </p>
                     </div>
 
-                    <!-- Direct Connect Details -->
-                    <div class="space-y-6">
-                        <a href="mailto:hello@vishuyadav.com" class="flex items-center space-x-4 p-4 rounded-2xl bg-brandSecBg border border-brandBorder hover:border-brandAccent transition-all group">
-                            <div class="w-12 h-12 rounded-xl bg-brandAccent/10 flex items-center justify-center text-brandAccent">
+                    <!-- Direct Connect Badges -->
+                    <div class="space-y-4">
+                        <a href="mailto:hello@vishuyadav.com" class="flex items-center space-x-3 xs:space-x-4 p-4 rounded-xl xs:rounded-2xl bg-brandSecBg border border-brandBorder hover:border-brandAccent transition-all group">
+                            <div class="w-10 h-10 xs:w-12 h-12 rounded-lg xs:rounded-xl bg-brandAccent/10 flex items-center justify-center text-brandAccent shrink-0">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
-                            <div>
-                                <span class="text-xs font-mono text-brandTextSec uppercase">Direct Mail</span>
-                                <p class="text-sm font-bold text-white group-hover:text-brandAccent transition-colors">hello@vishuyadav.com</p>
+                            <div class="overflow-hidden">
+                                <span class="text-[9px] font-mono text-brandTextSec uppercase block">Direct Mail</span>
+                                <p class="text-xs sm:text-sm font-bold text-white group-hover:text-brandAccent transition-colors truncate">hello@vishuyadav.com</p>
                             </div>
                         </a>
 
-                        <a href="tel:+919876543210" class="flex items-center space-x-4 p-4 rounded-2xl bg-brandSecBg border border-brandBorder hover:border-brandAccent transition-all group">
-                            <div class="w-12 h-12 rounded-xl bg-brandAccent/10 flex items-center justify-center text-brandAccent">
+                        <a href="tel:+919876543210" class="flex items-center space-x-3 xs:space-x-4 p-4 rounded-xl xs:rounded-2xl bg-brandSecBg border border-brandBorder hover:border-brandAccent transition-all group">
+                            <div class="w-10 h-10 xs:w-12 h-12 rounded-lg xs:rounded-xl bg-brandAccent/10 flex items-center justify-center text-brandAccent shrink-0">
                                 <i data-lucide="phone" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <span class="text-xs font-mono text-brandTextSec uppercase">Call Studio</span>
-                                <p class="text-sm font-bold text-white group-hover:text-brandAccent transition-colors">+91 98765 43210</p>
+                                <span class="text-[9px] font-mono text-brandTextSec uppercase block">Call Studio</span>
+                                <p class="text-xs sm:text-sm font-bold text-white group-hover:text-brandAccent transition-colors">+91 98765 43210</p>
                             </div>
                         </a>
                     </div>
                 </div>
 
-                <!-- Premium Form Right -->
-                <div class="lg:col-span-7 p-8 md:p-12 rounded-3xl bg-brandSecBg/80 border border-brandBorder glass-card">
-                    <form id="inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                <!-- Premium Form Container: Fully optimized margins and fields -->
+                <div class="lg:col-span-7 p-5 xs:p-8 sm:p-12 rounded-2xl sm:rounded-3xl bg-brandSecBg/80 border border-brandBorder glass-card mt-6 lg:mt-0">
+                    <form id="inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-4 sm:space-y-6">
                         
                         <!-- Row 1 -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                             <div>
-                                <label for="name" class="block text-xs font-mono uppercase tracking-wider text-brandTextSec mb-2">Your Name *</label>
-                                <input type="text" id="name" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                                <label for="name" class="block text-[10px] font-mono uppercase tracking-wider text-brandTextSec mb-1.5 xs:mb-2">Your Name *</label>
+                                <input type="text" id="name" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-lg xs:rounded-xl px-4 py-3 text-white text-xs sm:text-sm outline-none transition-all">
                             </div>
                             <div>
-                                <label for="email" class="block text-xs font-mono uppercase tracking-wider text-brandTextSec mb-2">Email Address *</label>
-                                <input type="email" id="email" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                                <label for="email" class="block text-[10px] font-mono uppercase tracking-wider text-brandTextSec mb-1.5 xs:mb-2">Email Address *</label>
+                                <input type="email" id="email" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-lg xs:rounded-xl px-4 py-3 text-white text-xs sm:text-sm outline-none transition-all">
                             </div>
                         </div>
 
                         <!-- Row 2 -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                             <div>
-                                <label for="phone" class="block text-xs font-mono uppercase tracking-wider text-brandTextSec mb-2">Phone / WhatsApp</label>
-                                <input type="tel" id="phone" class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                                <label for="phone" class="block text-[10px] font-mono uppercase tracking-wider text-brandTextSec mb-1.5 xs:mb-2">Phone / WhatsApp</label>
+                                <input type="tel" id="phone" class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-lg xs:rounded-xl px-4 py-3 text-white text-xs sm:text-sm outline-none transition-all">
                             </div>
                             <div>
-                                <label for="project-type" class="block text-xs font-mono uppercase tracking-wider text-brandTextSec mb-2">Project Type *</label>
-                                <select id="project-type" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-xl px-4 py-3 text-white text-sm outline-none transition-all appearance-none cursor-pointer">
+                                <label for="project-type" class="block text-[10px] font-mono uppercase tracking-wider text-brandTextSec mb-1.5 xs:mb-2">Project Type *</label>
+                                <select id="project-type" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-lg xs:rounded-xl px-4 py-3 text-white text-xs sm:text-sm outline-none transition-all appearance-none cursor-pointer">
                                     <option value="" disabled selected class="bg-brandBg">Select service category</option>
                                     <option value="brand" class="bg-brandBg">Brand Campaign Film</option>
                                     <option value="commercial" class="bg-brandBg">Commercial Shoot</option>
@@ -898,28 +909,28 @@
 
                         <!-- Row 3: Project Budget Slider -->
                         <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <label for="budget" class="block text-xs font-mono uppercase tracking-wider text-brandTextSec">Estimated Budget</label>
-                                <span class="text-brandAccent font-mono text-sm" id="budget-value">₹50,000 - ₹1,00,000</span>
+                            <div class="flex justify-between items-center mb-1.5 xs:mb-2">
+                                <label for="budget" class="block text-[10px] font-mono uppercase tracking-wider text-brandTextSec">Estimated Budget</label>
+                                <span class="text-brandAccent font-mono text-xs sm:text-sm" id="budget-value">₹50,000 - ₹1,00,000</span>
                             </div>
-                            <input type="range" id="budget" min="1" max="5" value="2" class="w-full accent-brandAccent cursor-pointer h-1.5 bg-brandBorder rounded-lg appearance-none" oninput="updateBudgetText(this.value)">
+                            <input type="range" id="budget" min="1" max="5" value="2" class="w-full accent-brandAccent cursor-pointer h-1 bg-brandBorder rounded-lg appearance-none" oninput="updateBudgetText(this.value)">
                         </div>
 
                         <!-- Message -->
                         <div>
-                            <label for="message" class="block text-xs font-mono uppercase tracking-wider text-brandTextSec mb-2">Creative Vision / Description *</label>
-                            <textarea id="message" rows="4" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-xl px-4 py-4 text-white text-sm outline-none transition-all placeholder:text-brandTextSec/35" placeholder="Tell us briefly about your brand and what story you want to write..."></textarea>
+                            <label for="message" class="block text-[10px] font-mono uppercase tracking-wider text-brandTextSec mb-1.5 xs:mb-2">Creative Vision / Description *</label>
+                            <textarea id="message" rows="4" required class="w-full bg-black/40 border border-brandBorder focus:border-brandAccent rounded-lg xs:rounded-xl px-4 py-3 text-white text-xs sm:text-sm outline-none transition-all placeholder:text-brandTextSec/35" placeholder="Tell us briefly about your brand goals and visual ideas..."></textarea>
                         </div>
 
-                        <!-- Action buttons -->
-                        <div class="pt-4 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                            <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-brandAccent hover:bg-brandAccentHover rounded-full transition-all text-brandBg font-bold uppercase text-xs tracking-wider flex items-center justify-center space-x-2">
+                        <!-- Action buttons: Stack nicely on phone, horizontal on sm screen up -->
+                        <div class="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                            <button type="submit" class="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 bg-brandAccent hover:bg-brandAccentHover rounded-full transition-all text-brandBg font-bold uppercase text-xs tracking-wider flex items-center justify-center space-x-2">
                                 <span>Book Project</span>
                                 <i data-lucide="arrow-right" class="w-4 h-4 text-brandBg"></i>
                             </button>
 
-                            <!-- Social Direct buttons -->
-                            <a href="https://wa.me/919876543210" target="_blank" class="w-full sm:w-auto px-6 py-4 bg-green-600/10 hover:bg-green-600/20 border border-green-600/30 hover:border-green-600/60 rounded-full transition-all text-green-400 font-bold uppercase text-xs tracking-wider flex items-center justify-center space-x-2">
+                            <!-- Social WhatsApp fallback direct connect -->
+                            <a href="https://wa.me/919876543210" target="_blank" class="w-full sm:w-auto px-5 py-3.5 sm:px-6 sm:py-4 bg-green-600/10 hover:bg-green-600/20 border border-green-600/25 hover:border-green-600/50 rounded-full transition-all text-green-400 font-bold uppercase text-xs tracking-wider flex items-center justify-center space-x-2">
                                 <i data-lucide="message-square" class="w-4 h-4"></i>
                                 <span>WhatsApp Us</span>
                             </a>
@@ -931,75 +942,74 @@
         </div>
     </section>
 
-    <!-- Large Premium Editorial Footer -->
-    <footer class="bg-brandSecBg border-t border-brandBorder relative pt-20 pb-8 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <footer class="bg-brandSecBg border-t border-brandBorder relative pt-16 sm:pt-20 pb-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
             
-            <!-- Super Headline -->
-            <div class="border-b border-brandBorder pb-12 mb-12">
-                <h2 class="text-5xl md:text-8xl font-syne font-extrabold tracking-tighter text-center select-none opacity-20 hover:opacity-100 transition-opacity duration-700 cursor-default">
+            <!-- Large Super Headline: Responsive scaled carefully to avoid letter overflow -->
+            <div class="border-b border-brandBorder pb-10 sm:pb-12 mb-10 sm:mb-12">
+                <h2 class="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-syne font-extrabold tracking-tighter text-center select-none opacity-20 hover:opacity-100 transition-opacity duration-700 cursor-default">
                     LET'S CREATE HISTORY.
                 </h2>
             </div>
 
-            <!-- Footer Columns Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <!-- Columns Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 sm:mb-16">
                 
-                <!-- Logo Block -->
-                <div>
-                    <a href="#" class="inline-flex items-center space-x-2 font-syne text-2xl font-black tracking-tighter hover:text-brandAccent transition-colors group mb-4">
+                <!-- Brand Info Block -->
+                <div class="flex flex-col items-start">
+                    <a href="#" class="inline-flex items-center space-x-2 font-syne text-xl sm:text-2xl font-black tracking-tighter hover:text-brandAccent transition-colors group mb-4">
                         <span class="text-brandAccent">V</span>
                         <span>YADAV</span>
-                        <span class="w-1.5 h-1.5 bg-brandAccent rounded-full self-end mb-1"></span>
+                        <span class="w-1.5 h-1.5 bg-brandAccent rounded-full mb-1"></span>
                     </a>
-                    <p class="text-brandTextSec text-sm leading-relaxed mt-4 pr-4">
-                        Crafting high-end luxury assets, cinema-grade commercials, and social content structures that capture millions of global views.
+                    <p class="text-brandTextSec text-xs sm:text-sm leading-relaxed pr-2">
+                        Crafting high-end creative visual campaigns, commercials, music video packages, and short-form assets for clients worldwide.
                     </p>
                 </div>
 
                 <!-- Navigation Quick Links -->
                 <div>
-                    <h4 class="font-syne font-bold text-white mb-4 uppercase tracking-wider text-xs font-mono">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-brandTextSec">
+                    <h4 class="font-syne font-bold text-white mb-3 sm:mb-4 uppercase tracking-wider text-[10px] font-mono">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm text-brandTextSec">
                         <li><a href="#home" class="hover:text-brandAccent transition-colors">Home</a></li>
-                        <li><a href="#work" class="hover:text-brandAccent transition-colors">Cinema Portfolio</a></li>
+                        <li><a href="#work" class="hover:text-brandAccent transition-colors">Featured Cinema</a></li>
                         <li><a href="#services" class="hover:text-brandAccent transition-colors">Premium Services</a></li>
-                        <li><a href="#about" class="hover:text-brandAccent transition-colors">About Storyteller</a></li>
+                        <li><a href="#about" class="hover:text-brandAccent transition-colors">About Vishu</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact & Studio Info -->
+                <!-- Studio Locations -->
                 <div>
-                    <h4 class="font-syne font-bold text-white mb-4 uppercase tracking-wider text-xs font-mono">Location & Connect</h4>
-                    <p class="text-sm text-brandTextSec leading-relaxed mb-4">
-                        Yadav Visual Labs<br>
-                        Creative HQ, Jaipur, India
+                    <h4 class="font-syne font-bold text-white mb-3 sm:mb-4 uppercase tracking-wider text-[10px] font-mono">Location & Connect</h4>
+                    <p class="text-xs sm:text-sm text-brandTextSec leading-relaxed mb-3">
+                        Yadav Creative Labs<br>
+                        Visual Arts HQ, Jaipur, India
                     </p>
-                    <p class="text-sm text-brandText">hello@vishuyadav.com</p>
+                    <p class="text-xs sm:text-sm text-white font-bold">hello@vishuyadav.com</p>
                 </div>
 
-                <!-- Modern Newsletter Connect -->
+                <!-- Social links -->
                 <div>
-                    <h4 class="font-syne font-bold text-white mb-4 uppercase tracking-wider text-xs font-mono">Social Networks</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-brandBg hover:bg-brandAccent border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-brandBg transition-all duration-300">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                    <h4 class="font-syne font-bold text-white mb-3 sm:mb-4 uppercase tracking-wider text-[10px] font-mono">Social Networks</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-brandBg hover:bg-brandAccent border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-brandBg transition-all duration-300" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-full bg-brandBg hover:bg-brandAccent border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-brandBg transition-all duration-300">
-                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brandBg hover:bg-brandAccent border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-brandBg transition-all duration-300" aria-label="YouTube">
+                            <i data-lucide="youtube" class="w-4.5 h-4.5"></i>
                         </a>
-                        <a href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-full bg-brandBg hover:bg-brandAccent border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-brandBg transition-all duration-300">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brandBg hover:bg-brandAccent border border-brandBorder hover:border-brandAccent flex items-center justify-center text-brandTextSec hover:text-brandBg transition-all duration-300" aria-label="Twitter">
+                            <i data-lucide="twitter" class="w-4.5 h-4.5"></i>
                         </a>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Copyright and bottom status bar -->
-            <div class="pt-8 border-t border-brandBorder flex flex-col md:flex-row justify-between items-center text-xs text-brandTextSec space-y-4 md:space-y-0">
+            <!-- Bottom Copyright bar -->
+            <div class="pt-6 sm:pt-8 border-t border-brandBorder flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs text-brandTextSec space-y-4 md:space-y-0">
                 <p>&copy; 2026 Vishu Yadav Studio. All Rights Reserved.</p>
-                <div class="flex space-x-6">
+                <div class="flex space-x-4 sm:space-x-6">
                     <a href="#" class="hover:text-brandAccent transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-brandAccent transition-colors">Terms of Service</a>
                 </div>
@@ -1008,66 +1018,70 @@
         </div>
     </footer>
 
-    <!-- Custom Video Player Lightbox / Showreel Modal -->
-    <div id="showreel-modal" class="fixed inset-0 z-[11000] bg-black/95 hidden flex justify-center items-center p-4">
-        <button onclick="closeShowreel()" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-brandBg/60 border border-brandBorder hover:border-brandAccent flex items-center justify-center text-white hover:text-brandAccent transition-colors z-[11002]">
-            <i data-lucide="x" class="w-6 h-6"></i>
+    <div id="showreel-modal" class="fixed inset-0 z-[11000] bg-black/95 hidden flex justify-center items-center p-3 xs:p-4 sm:p-6">
+        <!-- Close overlay trigger -->
+        <div class="absolute inset-0 cursor-pointer" onclick="closeShowreel()"></div>
+        
+        <!-- Modal close button -->
+        <button onclick="closeShowreel()" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brandBg/80 border border-brandBorder hover:border-brandAccent flex items-center justify-center text-white hover:text-brandAccent transition-colors z-[11002]" aria-label="Close modal video">
+            <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
         </button>
-        <!-- Full-screen Responsive Cinematic Frame Container -->
-        <div class="relative w-full max-w-5xl aspect-video bg-brandBg rounded-2xl overflow-hidden border border-brandBorder z-[11001]">
+        
+        <!-- Video Box Container -->
+        <div class="relative w-full max-w-4xl aspect-video bg-brandBg rounded-xl sm:rounded-2xl overflow-hidden border border-brandBorder z-[11001] shadow-2xl">
             <iframe id="modal-video-iframe" class="w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- Toast Success Popup DOM (Replaces native alerts) -->
-    <div id="success-toast" class="fixed bottom-6 right-6 z-[12000] hidden transform translate-y-20 opacity-0 transition-all duration-500 max-w-md">
-        <div class="flex items-center space-x-3 p-5 rounded-2xl bg-brandSecBg border border-green-500/30 shadow-lg shadow-black">
-            <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
+    <!-- Toast Success Popup Box -->
+    <div id="success-toast" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[12000] hidden transform translate-y-10 opacity-0 transition-all duration-500 w-full max-w-[320px] sm:max-w-md px-3 xs:px-0">
+        <div class="flex items-center space-x-3 p-4 sm:p-5 rounded-xl xs:rounded-2xl bg-brandSecBg border border-green-500/30 shadow-2xl shadow-black">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-500 shrink-0">
                 <i data-lucide="check" class="w-5 h-5"></i>
             </div>
             <div>
-                <h4 class="font-syne font-bold text-white text-sm">Campaign Booked!</h4>
-                <p class="text-xs text-brandTextSec mt-0.5">Vishu Yadav Studio will reach out within 12 hours.</p>
+                <h4 class="font-syne font-bold text-white text-xs sm:text-sm">Inquiry Booked!</h4>
+                <p class="text-[10px] sm:text-xs text-brandTextSec mt-0.5">Vishu Yadav Studio will contact you inside 12 hours.</p>
             </div>
         </div>
     </div>
 
 
-    <!-- Script Operations -->
     <script>
-        // Init Lucide Icons
+        // Init Lucide Icons dynamically
         lucide.createIcons();
 
-        // Custom Cursor movement tracking logic
+        // Custom Cursor movement tracking logic (Only active on pointer devices)
         const cursor = document.getElementById('cursor');
         const follower = document.getElementById('cursor-follower');
         
-        document.addEventListener('mousemove', (e) => {
-            if (cursor && follower) {
-                // Instantly move the small internal dot
-                cursor.style.left = `${e.clientX}px`;
-                cursor.style.top = `${e.clientY}px`;
-                
-                // Animate lagging smooth circle follower using CSS transitions or quick positioning
-                setTimeout(() => {
-                    follower.style.left = `${e.clientX}px`;
-                    follower.style.top = `${e.clientY}px`;
-                }, 40);
-            }
-        });
-
-        // Add Hover classes to Cursor for all interactive Elements
-        const interactives = document.querySelectorAll('a, button, input, select, textarea, [onclick]');
-        interactives.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                document.body.classList.add('hover-active');
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                if (cursor && follower) {
+                    cursor.style.left = `${e.clientX}px`;
+                    cursor.style.top = `${e.clientY}px`;
+                    
+                    // Lagging outer follow ring
+                    setTimeout(() => {
+                        follower.style.left = `${e.clientX}px`;
+                        follower.style.top = `${e.clientY}px`;
+                    }, 40);
+                }
             });
-            element.addEventListener('mouseleave', () => {
-                document.body.classList.remove('hover-active');
-            });
-        });
 
-        // Cinematic Loading sequence control
+            // Bind mouse hover states for premium buttons
+            const interactives = document.querySelectorAll('a, button, input, select, textarea, [onclick]');
+            interactives.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    document.body.classList.add('hover-active');
+                });
+                element.addEventListener('mouseleave', () => {
+                    document.body.classList.remove('hover-active');
+                });
+            });
+        }
+
+        // Preloader Complete logic
         window.addEventListener('load', () => {
             const loaderName = document.getElementById('loader-name');
             const loaderBar = document.getElementById('loader-bar');
@@ -1078,23 +1092,21 @@
             if(loaderBar) loaderBar.style.width = '100%';
 
             setTimeout(() => {
-                if(loaderStatus) loaderStatus.innerText = 'ESTABLISHING CINEMA SYNERGY...';
-            }, 1000);
+                if(loaderStatus) loaderStatus.innerText = 'PREPARING PRESETS...';
+            }, 800);
 
-            // Hide preloader complete
             setTimeout(() => {
                 if(preloader) {
                     preloader.style.opacity = '0';
                     setTimeout(() => {
                         preloader.style.display = 'none';
-                        // Run Hero animations after preloader clears
                         triggerHeroAnimations();
                     }, 1000);
                 }
-            }, 2000);
+            }, 1800);
         });
 
-        // Trigger Hero Text and Overlay entry transition animations
+        // Intro Hero Sequence
         function triggerHeroAnimations() {
             const fades = document.querySelectorAll('.hero-fade');
             fades.forEach((element, index) => {
@@ -1102,67 +1114,69 @@
                     element.style.transition = 'opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
-                }, index * 200);
+                }, index * 150);
             });
 
-            // Trigger dynamic statistic counters automatically after load
-            triggerStatCounters();
+            // Start stat counters automatically
+            setTimeout(triggerStatCounters, 500);
         }
 
-        // Navigation Blur Transition control on window scroll
+        // Navigation Scroll Behavior
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.paddingTop = '12px';
-                header.style.paddingBottom = '12px';
+            if (window.scrollY > 40) {
+                header.style.paddingTop = '8px';
+                header.style.paddingBottom = '8px';
             } else {
-                header.style.paddingTop = '20px';
-                header.style.paddingBottom = '20px';
+                header.style.paddingTop = '16px';
+                header.style.paddingBottom = '16px';
             }
         });
 
-        // Hamburger Menu Controller
+        // Hamburger Mobile Menu Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const burgerLine1 = document.querySelector('.burger-line-1');
         const burgerLine2 = document.querySelector('.burger-line-2');
         const burgerLine3 = document.querySelector('.burger-line-3');
 
-        menuBtn.addEventListener('click', () => {
+        function toggleMobileMenu() {
             const isOpen = !mobileMenu.classList.contains('translate-x-full');
             if (isOpen) {
                 mobileMenu.classList.add('translate-x-full');
                 burgerLine1.style.transform = 'none';
                 burgerLine2.style.opacity = '1';
                 burgerLine3.style.transform = 'none';
+                document.body.style.overflow = '';
             } else {
                 mobileMenu.classList.remove('translate-x-full');
-                burgerLine1.style.transform = 'rotate(-45deg) translate(-4px, 5px)';
+                burgerLine1.style.transform = 'rotate(-45deg) translate(-4px, 4.5px)';
                 burgerLine2.style.opacity = '0';
-                burgerLine3.style.transform = 'rotate(45deg) translate(-4px, -5px)';
+                burgerLine3.style.transform = 'rotate(45deg) translate(-4px, -4.5px)';
+                document.body.style.overflow = 'hidden'; // Lock scrolling
             }
-        });
+        }
 
-        // Close Mobile Menu on clicking links
+        menuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Auto close drawer menu when clicking links
         document.querySelectorAll('.mobile-nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('translate-x-full');
                 burgerLine1.style.transform = 'none';
                 burgerLine2.style.opacity = '1';
                 burgerLine3.style.transform = 'none';
+                document.body.style.overflow = '';
             });
         });
 
-        // Dynamic Portfolio Filter categories
+        // Portfolio Category Filter system
         function filterPortfolio(category, button) {
-            // Remove active classes on buttons
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.className = 'filter-btn px-6 py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold';
+                btn.className = 'filter-btn shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-brandSecBg border border-brandBorder text-brandTextSec hover:border-brandAccent hover:text-white transition-all font-semibold';
             });
-            // Highlight selected button
-            button.className = 'filter-btn active px-6 py-2.5 rounded-full bg-brandAccent text-brandBg hover:opacity-90 transition-all font-semibold';
+            button.className = 'filter-btn active shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-brandAccent text-brandBg hover:opacity-90 transition-all font-semibold';
 
-            // Filter portfolio item layout
             const items = document.querySelectorAll('.portfolio-item');
             items.forEach(item => {
                 if (category === 'all' || item.getAttribute('data-category') === category) {
@@ -1173,7 +1187,7 @@
                     }, 50);
                 } else {
                     item.style.opacity = '0';
-                    item.style.transform = 'scale(0.95)';
+                    item.style.transform = 'scale(0.96)';
                     setTimeout(() => {
                         item.style.display = 'none';
                     }, 300);
@@ -1181,7 +1195,7 @@
             });
         }
 
-        // Animated Statistics Counter triggers
+        // Stats counter triggers
         function triggerStatCounters() {
             animateNumber('stat-views', 0, 50, 1500, 'M+');
             animateNumber('stat-projects', 0, 100, 1500, '+');
@@ -1204,17 +1218,17 @@
             window.requestAnimationFrame(step);
         }
 
-        // Cinematic Lightbox Player Showreel Controls
+        // Lightbox Showreel player controls
         function openShowreel() {
             const modal = document.getElementById('showreel-modal');
             const iframe = document.getElementById('modal-video-iframe');
             
-            // Loop backing showcase video URL (Vimeo or YouTube embedding structure)
-            const demoReelEmbed = 'https://www.youtube.com/embed/S_8q0O5F4Yk?autoplay=1&mute=0'; // Real cinema-look nature visual
+            // Loop backing visual nature cinema asset
+            const demoReelEmbed = 'https://www.youtube.com/embed/S_8q0O5F4Yk?autoplay=1&mute=0';
             
             iframe.src = demoReelEmbed;
             modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Stop scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeShowreel() {
@@ -1223,14 +1237,15 @@
             
             iframe.src = '';
             modal.classList.add('hidden');
-            document.body.style.overflow = ''; // Allow scrolling again
+            document.body.style.overflow = '';
         }
 
-        // Testimonial Carousel Track Slider logic
+        // Testimonial Carousel sliding logic
         let currentTestimonialIndex = 0;
+        
         function getSlidesPerView() {
             if (window.innerWidth >= 1024) return 3;
-            if (window.innerWidth >= 768) return 2;
+            if (window.innerWidth >= 640) return 2;
             return 1;
         }
 
@@ -1245,7 +1260,7 @@
             if (currentTestimonialIndex < 0) currentTestimonialIndex = 0;
 
             const slideWidth = slides[0].offsetWidth;
-            const gap = 24; // Tailwind gap-6 is 24px
+            const gap = window.innerWidth >= 640 ? 24 : 16; // gap values matches Tailwind sm:gap-6 (24) / gap-4 (16)
             const offset = currentTestimonialIndex * (slideWidth + gap);
             track.style.transform = `translateX(-${offset}px)`;
         }
@@ -1256,7 +1271,7 @@
             if (currentTestimonialIndex < maxIndex) {
                 currentTestimonialIndex++;
             } else {
-                currentTestimonialIndex = 0; // Infinite cycle
+                currentTestimonialIndex = 0;
             }
             updateTestimonialSlider();
         }
@@ -1271,61 +1286,83 @@
             updateTestimonialSlider();
         }
 
-        // Handle window resizing to keep the slide offsets correct
-        window.addEventListener('resize', () => {
-            updateTestimonialSlider();
+        // Touch Swipe Event Support: Implemented for flawless tactile gesture control on mobile screens
+        const container = document.getElementById('testimonial-container');
+        let startX = 0;
+        let isDragging = false;
+        let scrollOffset = 0;
+
+        container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        container.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const currentX = e.touches[0].clientX;
+            scrollOffset = startX - currentX;
+        }, { passive: true });
+
+        container.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            // Slide transition threshold
+            if (scrollOffset > 50) {
+                nextTestimonial();
+            } else if (scrollOffset < -50) {
+                prevTestimonial();
+            }
+            scrollOffset = 0;
         });
 
-        // Auto slide testimonials cycle
-        let autoSlideTimer = setInterval(nextTestimonial, 6000);
+        // Redraw slider on resize events to avoid layout shifts
+        window.addEventListener('resize', updateTestimonialSlider);
+
+        // Auto sliding interval loop
+        let autoSlideTimer = setInterval(nextTestimonial, 7000);
         
-        // Reset auto slide on user navigation click
         document.querySelectorAll('#testimonials button').forEach(button => {
             button.addEventListener('click', () => {
                 clearInterval(autoSlideTimer);
-                autoSlideTimer = setInterval(nextTestimonial, 8000);
+                autoSlideTimer = setInterval(nextTestimonial, 9000);
             });
         });
 
-        // Budget Slider Live text calculation feedback
+        // Budget live update slider feedback
         function updateBudgetText(val) {
             const text = document.getElementById('budget-value');
             if(val == 1) text.innerText = 'Under ₹50,000';
             else if(val == 2) text.innerText = '₹50,000 - ₹1,00,000';
             else if(val == 3) text.innerText = '₹1,00,000 - ₹2,50,000';
             else if(val == 4) text.innerText = '₹2,50,000 - ₹5,00,000';
-            else if(val == 5) text.innerText = '₹5,00,000+ (Cinema Level)';
+            else if(val == 5) text.innerText = '₹5,00,000+ (Cinema Project)';
         }
 
-        // Custom Contact Form Submission Workflow
+        // Form submission action workflow (Replaces browser popup alerts with sleek toast element)
         function handleFormSubmit(event) {
             event.preventDefault();
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const category = document.getElementById('project-type').value;
-            const description = document.getElementById('message').value;
 
-            // Log submission details securely or transmit to CRM (simulated)
-            console.log("Inquiry Submitted:", { name, email, category, description });
+            console.log("Inquiry Logged:", { name, email, category });
 
-            // Display Beautiful Success Toast Alert
+            // Toast Alert Animation Trigger
             const toast = document.getElementById('success-toast');
             toast.classList.remove('hidden');
             
-            // Trigger animation in
             setTimeout(() => {
                 toast.style.transform = 'translateY(0)';
                 toast.style.opacity = '1';
             }, 50);
 
-            // Clear Form Inputs
+            // Clean Form Fields
             document.getElementById('inquiry-form').reset();
-            updateBudgetText(2); // Reset budget visual label
+            updateBudgetText(2);
 
-            // Animate toast out
             setTimeout(() => {
-                toast.style.transform = 'translateY(20px)';
+                toast.style.transform = 'translateY(10px)';
                 toast.style.opacity = '0';
                 setTimeout(() => {
                     toast.classList.add('hidden');
