@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTBOX CLOUD KITCHEN | Crafted For The Night</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0A0A0A',
+                        charcoal: '#141414',
+                        signatureOrange: '#FF6B00',
+                        warmWhite: '#FFF8F2',
+                        mutedGray: '#BDBDBD',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF6B00;
+        }
+        ::selection {
+            background-color: #FF6B00;
+            color: #0A0A0A;
+        }
+
+        /* Custom Glassmorphism Utility */
+        .luxury-glass {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .luxury-glass-bright {
+            background: rgba(255, 107, 0, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 107, 0, 0.15);
+        }
+
+        /* Custom typography utility for Clash Display feel */
+        .clash-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        /* Custom Cursor styling */
+        .custom-cursor {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(255, 107, 0, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+            mix-blend-mode: difference;
+        }
+
+        .custom-cursor-glow {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, rgba(255, 107, 0, 0) 70%);
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            border-radius: 50%;
+        }
+
+        /* Text mask for elegant GSAP reveal animations */
+        .reveal-mask {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        /* Ambient subtle pulse animations */
+        @keyframes subtleGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.15); }
+        }
+        .ambient-glow-pulse {
+            animation: subtleGlow 8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-warmWhite font-sans overflow-x-hidden relative">
+
+    <div class="custom-cursor hidden lg:block" id="cursor"></div>
+    <div class="custom-cursor-glow hidden lg:block" id="cursor-glow"></div>
+
+    <!-- Ambient Glow BG elements -->
+    <div class="absolute top-[10vh] left-1/4 w-[400px] h-[400px] bg-signatureOrange/10 rounded-full blur-[150px] ambient-glow-pulse pointer-events-none -z-10"></div>
+    <div class="absolute top-[150vh] right-10 w-[500px] h-[500px] bg-signatureOrange/5 rounded-full blur-[180px] ambient-glow-pulse pointer-events-none -z-10" style="animation-delay: 2s;"></div>
+    <div class="absolute top-[350vh] left-10 w-[600px] h-[600px] bg-signatureOrange/5 rounded-full blur-[200px] ambient-glow-pulse pointer-events-none -z-10" style="animation-delay: 4s;"></div>
+
+    <div id="preloader" class="fixed inset-0 bg-darkBg z-[99999] flex flex-col justify-between p-8 md:p-16">
+        <div class="flex justify-between items-center w-full">
+            <span class="clash-text text-xl tracking-wider text-signatureOrange">H B</span>
+            <span class="font-mono text-sm tracking-widest text-mutedGray">LUXURY NIGHTLIFT SYSTEM</span>
+        </div>
+        <div class="flex flex-col gap-6 max-w-4xl">
+            <div class="overflow-hidden reveal-mask">
+                <h2 id="preloader-title" class="clash-text text-4xl md:text-7xl leading-none">CRAFTED FOR THE NIGHT</h2>
+            </div>
+            <div class="w-full bg-charcoal h-[2px] relative overflow-hidden">
+                <div id="preloader-progress" class="absolute left-0 top-0 h-full w-0 bg-signatureOrange transition-all ease-out"></div>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="font-mono text-sm tracking-widest text-mutedGray">EST. 7 PM — 4 AM</span>
+                <span id="preloader-count" class="font-mono text-4xl text-signatureOrange">00%</span>
+            </div>
+        </div>
+        <div class="text-xs text-mutedGray flex justify-between">
+            <span>© 2026 HOTBOX CLOUD KITCHEN</span>
+            <span>PREPARING SYSTEM AMBIENCE...</span>
+        </div>
+    </div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 py-6 px-6 md:px-12 flex justify-between items-center transition-all duration-500 border-b border-white/0" id="main-nav">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group">
+            <div class="bg-signatureOrange text-darkBg w-10 h-10 rounded-xl flex items-center justify-center font-black tracking-tighter text-lg shadow-[0_0_20px_rgba(255,107,0,0.3)] group-hover:scale-105 transition-transform">
+                HB
+            </div>
+            <span class="clash-text text-xl md:text-2xl tracking-tight text-warmWhite group-hover:text-signatureOrange transition-colors">
+                HOTBOX<span class="text-signatureOrange font-normal">.</span>
+            </span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex items-center gap-10 text-sm font-medium tracking-wide">
+            <a href="#story" class="text-mutedGray hover:text-warmWhite transition-colors">Our Story</a>
+            <a href="#collection" class="text-mutedGray hover:text-warmWhite transition-colors">Signature Menu</a>
+            <a href="#why-hotbox" class="text-mutedGray hover:text-warmWhite transition-colors">Philosophy</a>
+            <a href="#testimonials" class="text-mutedGray hover:text-warmWhite transition-colors">Cravings Ecosystem</a>
+        </div>
+
+        <!-- Right Side: Ambience Control & CTA -->
+        <div class="flex items-center gap-4">
+            <!-- Dynamic Lo-Fi Audio Ambience Trigger -->
+            <button id="soundwave-btn" class="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 hover:border-signatureOrange/50 hover:bg-signatureOrange/5 transition-all group" title="Toggle late-night vinyl crackle crackle background">
+                <div class="flex items-center gap-[3px] h-3">
+                    <span class="soundbar w-[2px] h-3 bg-mutedGray rounded-full group-hover:bg-signatureOrange transition-colors origin-bottom"></span>
+                    <span class="soundbar w-[2px] h-1 bg-mutedGray rounded-full group-hover:bg-signatureOrange transition-colors origin-bottom"></span>
+                    <span class="soundbar w-[2px] h-4 bg-mutedGray rounded-full group-hover:bg-signatureOrange transition-colors origin-bottom"></span>
+                    <span class="soundbar w-[2px] h-2 bg-mutedGray rounded-full group-hover:bg-signatureOrange transition-colors origin-bottom"></span>
+                </div>
+                <span class="text-xs font-mono tracking-widest text-mutedGray group-hover:text-warmWhite transition-colors uppercase" id="soundwave-text">Lofi Ambient Off</span>
+            </button>
+
+            <!-- Order Buttons -->
+            <div class="hidden md:flex items-center gap-2">
+                <a href="https://www.zomato.com" target="_blank" class="luxury-glass text-xs uppercase tracking-wider font-semibold py-3 px-5 rounded-full hover:bg-signatureOrange hover:text-darkBg transition-all duration-300">Zomato</a>
+                <a href="https://www.swiggy.com" target="_blank" class="bg-signatureOrange text-darkBg text-xs uppercase tracking-wider font-semibold py-3 px-5 rounded-full hover:shadow-[0_0_25px_rgba(255,107,0,0.4)] hover:scale-105 transition-all duration-300">Swiggy</a>
+            </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button class="lg:hidden w-10 h-10 flex flex-col justify-center gap-[6px] items-end px-2 group" id="mobile-menu-btn">
+                <span class="w-6 h-[2px] bg-warmWhite group-hover:bg-signatureOrange transition-colors"></span>
+                <span class="w-4 h-[2px] bg-warmWhite group-hover:bg-signatureOrange transition-colors"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-drawer" class="fixed inset-0 bg-darkBg z-40 translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-between p-8 pt-32">
+        <div class="flex flex-col gap-8">
+            <a href="#story" class="clash-text text-3xl text-mutedGray hover:text-signatureOrange transition-colors" onclick="toggleMobileMenu()">Our Story</a>
+            <a href="#collection" class="clash-text text-3xl text-mutedGray hover:text-signatureOrange transition-colors" onclick="toggleMobileMenu()">Signature Menu</a>
+            <a href="#why-hotbox" class="clash-text text-3xl text-mutedGray hover:text-signatureOrange transition-colors" onclick="toggleMobileMenu()">Philosophy</a>
+            <a href="#testimonials" class="clash-text text-3xl text-mutedGray hover:text-signatureOrange transition-colors" onclick="toggleMobileMenu()">Testimonials</a>
+            <a href="#hours" class="clash-text text-3xl text-mutedGray hover:text-signatureOrange transition-colors" onclick="toggleMobileMenu()">Working Hours</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <p class="text-xs text-mutedGray tracking-widest uppercase">Direct Delivery Portals</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="https://www.zomato.com" target="_blank" class="luxury-glass py-4 rounded-xl flex items-center justify-center font-bold text-center border border-white/10 hover:border-signatureOrange/40">Zomato</a>
+                <a href="https://www.swiggy.com" target="_blank" class="bg-signatureOrange text-darkBg py-4 rounded-xl flex items-center justify-center font-bold text-center hover:scale-105 transition-transform">Swiggy</a>
+            </div>
+            <div class="text-xs text-center text-mutedGray mt-4">
+                Open Daily 7:00 PM — 4:00 AM
+            </div>
+        </div>
+    </div>
+
+    <section id="hero" class="min-h-screen relative flex flex-col justify-center items-center px-6 md:px-12 pt-32 pb-16 overflow-hidden">
+        <!-- Cinematic Background visual with slow zoom & Sparks -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-darkBg/60 via-darkBg/80 to-darkBg z-10"></div>
+            <!-- High-end Food Image with Ken Burns animation -->
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1920" alt="Cinematic Chef Sparks" class="w-full h-full object-cover scale-110 object-center transition-transform duration-1000 ease-out" id="hero-bg-img" style="filter: brightness(0.22) contrast(1.1) saturate(0.85);">
+            <!-- CSS spark particle animation canvas overlay -->
+            <canvas id="sparks-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-[11] opacity-70"></canvas>
+        </div>
+
+        <div class="container mx-auto relative z-20 flex flex-col items-center justify-center text-center h-full max-w-6xl">
+            <!-- Floating Status Badge -->
+            <div class="mb-8 inline-flex items-center gap-3 px-5 py-2 rounded-full border border-signatureOrange/20 bg-charcoal/40 luxury-glass hover:scale-105 transition-all duration-300" id="hero-badge">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-signatureOrange opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-signatureOrange"></span>
+                </span>
+                <span class="font-mono text-xs tracking-widest text-warmWhite uppercase">OPEN NOW : SERVING HUNGER SINCE SUNSET</span>
+            </div>
+
+            <!-- Massive Cinematic Headline -->
+            <div class="overflow-hidden mb-6 reveal-mask">
+                <h1 id="hero-title" class="clash-text text-5xl sm:text-7xl lg:text-9xl tracking-tight leading-none text-warmWhite">
+                    CRAFTED FOR <br class="hidden md:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-signatureOrange via-orange-400 to-warmWhite">THE NIGHT.</span>
+                </h1>
+            </div>
+
+            <!-- Premium Subheadline -->
+            <p id="hero-subtitle" class="text-lg md:text-2xl text-mutedGray max-w-3xl mb-12 font-light leading-relaxed">
+                Premium comfort food designed specifically for the late-night ecosystem. Freshly prepared, hygienically packed, and delivered blazing fast from <span class="text-signatureOrange font-semibold font-mono">7 PM to 4 AM</span>.
+            </p>
+
+            <!-- Magnetic CTA Buttons -->
+            <div id="hero-ctas" class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
+                <a href="https://www.swiggy.com" target="_blank" class="w-full sm:w-auto bg-signatureOrange text-darkBg py-4 px-10 rounded-full font-bold uppercase tracking-wider text-sm flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,107,0,0.3)] hover:shadow-[0_0_60px_rgba(255,107,0,0.5)] hover:scale-105 hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-motorcycle text-lg"></i>
+                    Order on Swiggy
+                </a>
+                <a href="https://www.zomato.com" target="_blank" class="w-full sm:w-auto bg-transparent text-warmWhite border border-white/20 hover:border-signatureOrange hover:bg-signatureOrange/5 py-4 px-10 rounded-full font-bold uppercase tracking-wider text-sm flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1">
+                    <i class="fa-solid fa-fire text-lg text-signatureOrange"></i>
+                    Order on Zomato
+                </a>
+            </div>
+        </div>
+
+        <!-- Tiny scroll indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-60">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-mutedGray">SCROLL TO EXPERIENCE</span>
+            <div class="w-[2px] h-10 bg-white/10 relative overflow-hidden rounded-full">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-signatureOrange rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="statement" class="py-32 md:py-48 bg-darkBg border-y border-white/5 relative overflow-hidden flex items-center justify-center">
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-gradient-to-r from-signatureOrange/5 to-transparent blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="container mx-auto px-6 md:px-12 text-center max-w-6xl">
+            <!-- Animated Big Typo -->
+            <h2 id="statement-scroll-text" class="clash-text text-4xl sm:text-7xl lg:text-[7rem] leading-none text-warmWhite opacity-20 transition-all duration-700 ease-out uppercase tracking-tighter max-w-5xl mx-auto mb-16">
+                WE DON'T CLOSE WHEN THE CITY SLEEPS.
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-left max-w-4xl mx-auto border-t border-white/10 pt-16">
+                <div>
+                    <h4 class="font-mono text-signatureOrange mb-2">01 / GAMERS</h4>
+                    <p class="text-mutedGray text-sm">Long mid-raid gaming sessions fueled correctly.</p>
+                </div>
+                <div>
+                    <h4 class="font-mono text-signatureOrange mb-2">02 / CREATORS</h4>
+                    <p class="text-mutedGray text-sm">Midnight editing or writing flows, uninterrupted.</p>
+                </div>
+                <div>
+                    <h4 class="font-mono text-signatureOrange mb-2">03 / STUDENTS</h4>
+                    <p class="text-mutedGray text-sm">Exam cram-nights with warm brain comfort food.</p>
+                </div>
+                <div>
+                    <h4 class="font-mono text-signatureOrange mb-2">04 / NIGHT OWLS</h4>
+                    <p class="text-mutedGray text-sm">Because late night craving deserves absolute luxury.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="py-24 md:py-36 px-6 md:px-12 bg-charcoal relative overflow-hidden">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Content column -->
+                <div class="lg:col-span-5 flex flex-col justify-center space-y-8">
+                    <span class="font-mono text-xs tracking-widest text-signatureOrange uppercase">MORE THAN A CLOUD KITCHEN</span>
+                    <h3 class="clash-text text-4xl md:text-6xl text-warmWhite leading-tight">
+                        Curing Midnight Monotony.
+                    </h3>
+                    <p class="text-mutedGray text-lg font-light leading-relaxed">
+                        Every single night, standard restaurant kitchens pull their shutters down by 11 PM. What remains? Reheated leftovers or cold snacks.
+                    </p>
+                    <div class="p-6 luxury-glass rounded-3xl border border-white/5 space-y-4">
+                        <p class="text-warmWhite italic">
+                            "We set up Hotbox specifically to bridge the culinary quality gap of the late hours. Why should midnight dining feel like a compromise?"
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-[2px] bg-signatureOrange"></div>
+                            <span class="font-mono text-xs tracking-widest text-mutedGray">FOUNDER, HOTBOX CO.</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-4 border-t border-white/5">
+                        <div class="flex items-start gap-4">
+                            <span class="text-signatureOrange text-xl"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <h4 class="font-bold text-warmWhite">Hygienic Assembly Lines</h4>
+                                <p class="text-mutedGray text-sm">No secondary cross-contaminations. Professional standards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Column (Parallax food layers) -->
+                <div class="lg:col-span-7 grid grid-cols-12 gap-4 relative">
+                    <!-- Layer 1 -->
+                    <div class="col-span-8 overflow-hidden rounded-[2rem] aspect-[4/5] shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-white/10 group">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=1000" alt="Hot Burger Assembly" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s]" id="parallax-img-1">
+                    </div>
+                    <!-- Layer 2 (Overlapping offset parallax) -->
+                    <div class="col-span-4 self-end -ml-12 mb-12 overflow-hidden rounded-2xl aspect-square shadow-[0_20px_40px_rgba(255,107,0,0.15)] border border-signatureOrange/20 group">
+                        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&q=80&w=600" alt="Fresh Fries Container" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s]" id="parallax-img-2">
+                    </div>
+                    <!-- Absolute glow tag -->
+                    <div class="absolute -bottom-6 left-12 luxury-glass-bright px-6 py-4 rounded-2xl border border-signatureOrange/30 shadow-[0_15px_30px_rgba(255,107,0,0.15)] max-w-xs">
+                        <span class="font-mono text-xl text-signatureOrange font-bold">100% FRESH</span>
+                        <p class="text-xs text-mutedGray">Prepared immediately upon receiving orders. Never pre-baked.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="py-24 bg-darkBg border-b border-white/5 relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+                <div>
+                    <span class="font-mono text-xs tracking-widest text-signatureOrange uppercase">SIGNATURE SELECTIONS</span>
+                    <h3 class="clash-text text-4xl md:text-6xl text-warmWhite">Midnight Masterpieces.</h3>
+                </div>
+                <p class="text-mutedGray max-w-md font-light">
+                    Every dish is custom designed to withstand dispatch logistics. Zero soggy crusts, maximum structural and temperature preservation.
+                </p>
+            </div>
+
+            <!-- Horizontal Carousel container (Swipeable on touch, animated smoothly) -->
+            <div class="flex gap-8 overflow-x-auto pb-12 pt-4 px-2 snap-x snap-mandatory" id="signature-slider">
+                <!-- Card 1 -->
+                <div class="snap-start flex-shrink-0 w-full sm:w-[450px] bg-charcoal/40 rounded-[2.5rem] border border-white/5 overflow-hidden group hover:border-signatureOrange/30 hover:shadow-[0_25px_50px_rgba(255,107,0,0.1)] transition-all duration-500 flex flex-col justify-between">
+                    <div class="relative overflow-hidden aspect-[1.2]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal to-transparent z-10 opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800" alt="The Loaded Beast" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[2.5s]">
+                        <span class="absolute top-6 right-6 z-20 font-mono text-xs tracking-widest bg-signatureOrange text-darkBg px-3 py-1 rounded-full font-bold">BEST SELLER</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="clash-text text-2xl text-warmWhite">The Loaded Beast</h4>
+                            <span class="font-mono text-xl text-signatureOrange">₹299</span>
+                        </div>
+                        <p class="text-mutedGray text-sm leading-relaxed mb-6">
+                            Three ultra-sizzling layers of hand-pressed smash chicken patties, melted artisanal cheese, and our signature dark-room glaze inside custom toasted brioche.
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://www.swiggy.com" target="_blank" class="flex-1 text-center bg-transparent border border-white/10 text-warmWhite hover:bg-signatureOrange hover:text-darkBg hover:border-signatureOrange transition-all py-3 rounded-2xl font-bold text-xs uppercase tracking-wider">Swiggy</a>
+                            <a href="https://www.zomato.com" target="_blank" class="flex-1 text-center bg-transparent border border-white/10 text-warmWhite hover:bg-signatureOrange hover:text-darkBg hover:border-signatureOrange transition-all py-3 rounded-2xl font-bold text-xs uppercase tracking-wider">Zomato</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="snap-start flex-shrink-0 w-full sm:w-[450px] bg-charcoal/40 rounded-[2.5rem] border border-white/5 overflow-hidden group hover:border-signatureOrange/30 hover:shadow-[0_25px_50px_rgba(255,107,0,0.1)] transition-all duration-500 flex flex-col justify-between">
+                    <div class="relative overflow-hidden aspect-[1.2]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal to-transparent z-10 opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&q=80&w=800" alt="Midnight Fries" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[2.5s]">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="clash-text text-2xl text-warmWhite">Midnight Fries</h4>
+                            <span class="font-mono text-xl text-signatureOrange">₹189</span>
+                        </div>
+                        <p class="text-mutedGray text-sm leading-relaxed mb-6">
+                            Hand-cut skin-on golden potatoes, seasoned with secret nocturnal chili powder blend, dressed in signature rich cheddar cascade. Dangerously addictive.
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://www.swiggy.com" target="_blank" class="flex-1 text-center bg-transparent border border-white/10 text-warmWhite hover:bg-signatureOrange hover:text-darkBg hover:border-signatureOrange transition-all py-3 rounded-2xl font-bold text-xs uppercase tracking-wider">Swiggy</a>
+                            <a href="https://www.zomato.com" target="_blank" class="flex-1 text-center bg-transparent border border-white/10 text-warmWhite hover:bg-signatureOrange hover:text-darkBg hover:border-signatureOrange transition-all py-3 rounded-2xl font-bold text-xs uppercase tracking-wider">Zomato</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="snap-start flex-shrink-0 w-full sm:w-[450px] bg-charcoal/40 rounded-[2.5rem] border border-white/5 overflow-hidden group hover:border-signatureOrange/30 hover:shadow-[0_25px_50px_rgba(255,107,0,0.1)] transition-all duration-500 flex flex-col justify-between">
+                    <div class="relative overflow-hidden aspect-[1.2]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal to-transparent z-10 opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1626700051175-6518c4793f0f?auto=format&fit=crop&q=80&w=800" alt="Firecracker Wrap" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[2.5s]">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="clash-text text-2xl text-warmWhite">Firecracker Wrap</h4>
+                            <span class="font-mono text-xl text-signatureOrange">₹249</span>
+                        </div>
+                        <p class="text-mutedGray text-sm leading-relaxed mb-6">
+                            Crispy golden chicken tenders tossed in blazing fire sauce, rolled in a flaky room-toasted tortilla wrap with fresh garden herbs and blue-cheese aioli.
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://www.swiggy.com" target="_blank" class="flex-1 text-center bg-transparent border border-white/10 text-warmWhite hover:bg-signatureOrange hover:text-darkBg hover:border-signatureOrange transition-all py-3 rounded-2xl font-bold text-xs uppercase tracking-wider">Swiggy</a>
+                            <a href="https://www.zomato.com" target="_blank" class="flex-1 text-center bg-transparent border border-white/10 text-warmWhite hover:bg-signatureOrange hover:text-darkBg hover:border-signatureOrange transition-all py-3 rounded-2xl font-bold text-xs uppercase tracking-wider">Zomato</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom scrollbar/progress indicators for slider styling -->
+            <div class="flex justify-between items-center mt-6">
+                <span class="font-mono text-xs text-mutedGray">SWIPE OR SCROLL TO DISCOVER</span>
+                <div class="flex gap-2">
+                    <button onclick="document.getElementById('signature-slider').scrollBy({left: -300, behavior: 'smooth'})" class="w-12 h-12 rounded-full border border-white/10 hover:border-signatureOrange flex items-center justify-center hover:bg-signatureOrange/10 text-warmWhite transition-all"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="document.getElementById('signature-slider').scrollBy({left: 300, behavior: 'smooth'})" class="w-12 h-12 rounded-full border border-white/10 hover:border-signatureOrange flex items-center justify-center hover:bg-signatureOrange/10 text-warmWhite transition-all"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-hotbox" class="py-24 md:py-36 bg-charcoal px-6 md:px-12 relative overflow-hidden">
+        <div class="container mx-auto max-w-7xl">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="font-mono text-xs tracking-widest text-signatureOrange uppercase">THE HOTBOX PHILOSOPHY</span>
+                <h3 class="clash-text text-4xl md:text-6xl text-warmWhite leading-none">Why We Rule The Night.</h3>
+                <p class="text-mutedGray font-light">
+                    Every cloud kitchen is quick, but we're the only ones obsessed with absolute culinary prestige in the late hours.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="luxury-glass p-8 rounded-[2rem] border border-white/5 hover:border-signatureOrange/20 transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-signatureOrange/5 border border-signatureOrange/15 flex items-center justify-center text-signatureOrange text-2xl group-hover:bg-signatureOrange group-hover:text-darkBg transition-all duration-300">
+                            <i class="fa-solid fa-fire-burner"></i>
+                        </div>
+                        <h4 class="clash-text text-2xl text-warmWhite">Freshly Prepared</h4>
+                        <p class="text-mutedGray text-sm leading-relaxed">
+                            Every meal is fired up only after your Swiggy or Zomato request lands. Zero storage of premade meals.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="luxury-glass p-8 rounded-[2rem] border border-white/5 hover:border-signatureOrange/20 transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-signatureOrange/5 border border-signatureOrange/15 flex items-center justify-center text-signatureOrange text-2xl group-hover:bg-signatureOrange group-hover:text-darkBg transition-all duration-300">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <h4 class="clash-text text-2xl text-warmWhite">Late-Night Specialists</h4>
+                        <p class="text-mutedGray text-sm leading-relaxed">
+                            Serving from 7 PM to 4 AM daily. We are built natively for nocturnal lifecycles, and only run at peak late window.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="luxury-glass p-8 rounded-[2rem] border border-white/5 hover:border-signatureOrange/20 transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-signatureOrange/5 border border-signatureOrange/15 flex items-center justify-center text-signatureOrange text-2xl group-hover:bg-signatureOrange group-hover:text-darkBg transition-all duration-300">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </div>
+                        <h4 class="clash-text text-2xl text-warmWhite">Hygienic Kitchen</h4>
+                        <p class="text-mutedGray text-sm leading-relaxed">
+                            Ultra-sterile kitchen layout with continuous professional sanitization, automated monitoring, and pure ingredients.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="luxury-glass p-8 rounded-[2rem] border border-white/5 hover:border-signatureOrange/20 transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-signatureOrange/5 border border-signatureOrange/15 flex items-center justify-center text-signatureOrange text-2xl group-hover:bg-signatureOrange group-hover:text-darkBg transition-all duration-300">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4 class="clash-text text-2xl text-warmWhite">Express Logistics</h4>
+                        <p class="text-mutedGray text-sm leading-relaxed">
+                            Optimized packaging geometries keep food piping-hot, steam vents prevent sogginess, and tracking works immediately.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-darkBg border-y border-white/5 relative overflow-hidden flex items-center justify-center min-h-[80vh]">
+        <!-- Full Overlay with large scale glowing orange background orb -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] bg-signatureOrange/[0.04] blur-[150px] rounded-full pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 md:px-12 text-center max-w-5xl relative z-10">
+            <span class="font-mono text-xs tracking-widest text-signatureOrange uppercase mb-8 block">THE MANIFESTO</span>
+            <div class="space-y-6">
+                <p class="clash-text text-3xl sm:text-5xl lg:text-7xl leading-tight text-warmWhite text-center select-none" id="manifesto-text">
+                    FOR THE CREATORS. <br>
+                    FOR THE GAMERS. <br>
+                    FOR THE DREAMERS. <br>
+                    FOR THE WORKERS. <br>
+                    <span class="text-signatureOrange">FOR EVERYONE AWAKE WHEN THE CITY SLEEPS.</span>
+                </p>
+            </div>
+            <p class="mt-12 text-mutedGray max-w-xl mx-auto font-light text-lg">
+                Hotbox is designed natively for you. No compromises, no stale meals, no waiting. Crafted with absolute midnight devotion.
+            </p>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 md:py-36 bg-charcoal px-6 md:px-12 relative overflow-hidden">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Left -->
+                <div class="lg:col-span-4 space-y-6">
+                    <span class="font-mono text-xs tracking-widest text-signatureOrange uppercase">THE NOCTURNAL VERDICT</span>
+                    <h3 class="clash-text text-4xl md:text-6xl text-warmWhite leading-tight">Cravings Confessions.</h3>
+                    <p class="text-mutedGray font-light leading-relaxed">
+                        Read what programmers, content creators, and competitive gamers say about how Hotbox keeps their energy intact.
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <span class="text-signatureOrange text-2xl font-bold font-mono">4.8★</span>
+                        <span class="text-xs text-mutedGray tracking-wider font-mono uppercase">AVERAGE USER RATING OVER 50K+ ORDERS</span>
+                    </div>
+                </div>
+
+                <!-- Swiper/Interactive Slider Right -->
+                <div class="lg:col-span-8 relative">
+                    <div class="absolute -top-12 -left-12 text-8xl text-signatureOrange/10 font-serif">“</div>
+                    <div class="overflow-hidden" id="testimonial-container">
+                        <!-- We will have a beautiful fading luxury card with absolute transitions -->
+                        <div class="luxury-glass p-8 md:p-12 rounded-[2.5rem] border border-white/5 space-y-6 relative transition-all duration-500 transform scale-100" id="active-testimonial-card">
+                            <p class="text-lg md:text-2xl text-warmWhite font-light leading-relaxed italic" id="testimonial-quote">
+                                "The Cheese Pull on the Loaded Beast at 2:30 AM is honestly life-changing. It arrives steaming hot, and Swiggy gets it to me in literally 18 minutes."
+                            </p>
+                            <div class="flex items-center justify-between border-t border-white/5 pt-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-signatureOrange/10 border border-signatureOrange/20 flex items-center justify-center font-bold text-signatureOrange text-lg" id="testimonial-initial">
+                                        V
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-warmWhite text-sm" id="testimonial-author">Vikram R.</h4>
+                                        <p class="text-mutedGray text-xs" id="testimonial-role">Competitive Esports Athlete</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-1 text-signatureOrange">
+                                    <i class="fa-solid fa-star text-xs"></i>
+                                    <i class="fa-solid fa-star text-xs"></i>
+                                    <i class="fa-solid fa-star text-xs"></i>
+                                    <i class="fa-solid fa-star text-xs"></i>
+                                    <i class="fa-solid fa-star text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Controls -->
+                    <div class="flex gap-4 mt-8 justify-end">
+                        <button onclick="prevTestimonial()" class="w-12 h-12 rounded-full border border-white/10 hover:border-signatureOrange flex items-center justify-center hover:bg-signatureOrange/10 text-warmWhite transition-all"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button onclick="nextTestimonial()" class="w-12 h-12 rounded-full border border-white/10 hover:border-signatureOrange flex items-center justify-center hover:bg-signatureOrange/10 text-warmWhite transition-all"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-darkBg border-y border-white/5 px-6 relative overflow-hidden">
+        <div class="container mx-auto max-w-5xl text-center space-y-12">
+            <span class="font-mono text-xs tracking-widest text-mutedGray uppercase">DELIVERED DIRECTLY TO YOUR DOORSTEP VIA</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center max-w-3xl mx-auto">
+                <!-- Swiggy -->
+                <a href="https://www.swiggy.com" target="_blank" class="luxury-glass p-8 rounded-3xl border border-white/5 hover:border-signatureOrange/30 hover:bg-signatureOrange/5 hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-4 group">
+                    <span class="font-display font-extrabold text-3xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-signatureOrange group-hover:scale-110 transition-transform">SWIGGY</span>
+                    <span class="text-xs font-mono tracking-wider text-mutedGray uppercase">Instant late delivery & tracker integration</span>
+                </a>
+                <!-- Zomato -->
+                <a href="https://www.zomato.com" target="_blank" class="luxury-glass p-8 rounded-3xl border border-white/5 hover:border-signatureOrange/30 hover:bg-signatureOrange/5 hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-4 group">
+                    <span class="font-display font-extrabold text-3xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 group-hover:scale-110 transition-transform">ZOMATO</span>
+                    <span class="text-xs font-mono tracking-wider text-mutedGray uppercase">Premium foodie ratings & swift dispatch</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="hours" class="py-24 md:py-36 bg-charcoal px-6 md:px-12 relative overflow-hidden">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Left -->
+                <div class="lg:col-span-6 space-y-8">
+                    <span class="font-mono text-xs tracking-widest text-signatureOrange uppercase">THE OPERATING CIRCLE</span>
+                    <h3 class="clash-text text-4xl md:text-6xl text-warmWhite">Open Daily <br><span class="text-signatureOrange">7 PM — 4 AM</span></h3>
+                    <p class="text-mutedGray text-lg font-light leading-relaxed">
+                        Our culinary crew fires up the grills exactly as twilight kicks in, remaining operational all through the deepest night hours.
+                    </p>
+                    <div class="p-6 luxury-glass rounded-2xl border border-white/5 inline-block">
+                        <span class="font-mono text-xs text-mutedGray">INTERACTIVE TIMELINE INDICATOR</span>
+                        <p class="text-warmWhite font-semibold mt-1">Select time phase to view kitchen readiness status:</p>
+                        <div class="flex gap-2 mt-4 flex-wrap" id="clock-timeline-btns">
+                            <button onclick="updateKitchenStatus('7pm')" class="px-3 py-1 text-xs font-mono rounded bg-signatureOrange text-darkBg uppercase tracking-widest">7 PM (Open)</button>
+                            <button onclick="updateKitchenStatus('11pm')" class="px-3 py-1 text-xs font-mono rounded bg-white/5 text-mutedGray hover:text-warmWhite uppercase tracking-widest">11 PM (Peak Rush)</button>
+                            <button onclick="updateKitchenStatus('2am')" class="px-3 py-1 text-xs font-mono rounded bg-white/5 text-mutedGray hover:text-warmWhite uppercase tracking-widest">2 AM (Graveyard Flow)</button>
+                            <button onclick="updateKitchenStatus('4am')" class="px-3 py-1 text-xs font-mono rounded bg-white/5 text-mutedGray hover:text-warmWhite uppercase tracking-widest">4 AM (Close down)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clock Canvas & Graphics Right -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center relative">
+                    <!-- Subtle Glow -->
+                    <div class="absolute w-80 h-80 bg-signatureOrange/10 rounded-full blur-[80px]"></div>
+                    <!-- Luxury CSS Clock -->
+                    <div class="w-72 h-72 rounded-full border-2 border-white/10 relative flex items-center justify-center p-4 backdrop-blur-md bg-darkBg/30 shadow-[0_0_50px_rgba(255,107,0,0.05)]">
+                        <!-- Clock markings -->
+                        <span class="absolute top-4 font-mono text-xs text-mutedGray">12</span>
+                        <span class="absolute right-4 font-mono text-xs text-mutedGray">3</span>
+                        <span class="absolute bottom-4 font-mono text-xs text-mutedGray">6</span>
+                        <span class="absolute left-4 font-mono text-xs text-mutedGray">9</span>
+                        <!-- Hour hand -->
+                        <div id="hour-hand" class="w-[4px] h-16 bg-warmWhite rounded-full absolute origin-bottom bottom-1/2 transition-transform duration-1000 ease-out" style="transform: rotate(210deg);"></div>
+                        <!-- Minute hand -->
+                        <div id="minute-hand" class="w-[2px] h-24 bg-signatureOrange rounded-full absolute origin-bottom bottom-1/2 transition-transform duration-1000 ease-out" style="transform: rotate(0deg);"></div>
+                        <!-- Core Pin -->
+                        <div class="w-3 h-3 rounded-full bg-signatureOrange z-10"></div>
+                    </div>
+                    <p class="font-mono text-xs tracking-widest text-mutedGray uppercase mt-8" id="kitchen-status-desc">STATUS: Grills are screaming hot. Prepared with maximum freshness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order-section" class="py-32 bg-gradient-to-b from-darkBg via-charcoal to-[#000000] px-6 md:px-12 relative overflow-hidden flex flex-col items-center justify-center">
+        <!-- Huge glowing orange vector sphere behind content -->
+        <div class="absolute -bottom-48 w-[90vw] h-[90vw] bg-signatureOrange/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="container mx-auto max-w-4xl text-center space-y-10 relative z-10">
+            <span class="font-mono text-xs tracking-widest text-signatureOrange uppercase">THE ABSOLUTE RESOLUTION</span>
+            <h2 class="clash-text text-5xl sm:text-7xl lg:text-9xl tracking-tight leading-none text-warmWhite">
+                HUNGER <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-signatureOrange via-orange-400 to-warmWhite">DOESN'T WAIT.</span>
+            </h2>
+            <p class="text-mutedGray text-lg md:text-2xl max-w-2xl mx-auto font-light leading-relaxed">
+                Neither should you. Experience Hotbox tonight and taste comfort food crafted specifically for late-night perfection.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+                <a href="https://www.swiggy.com" target="_blank" class="w-full sm:w-auto bg-signatureOrange text-darkBg py-5 px-12 rounded-full font-bold uppercase tracking-wider text-sm flex items-center justify-center gap-3 shadow-[0_0_50px_rgba(255,107,0,0.4)] hover:shadow-[0_0_80px_rgba(255,107,0,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-motorcycle text-lg"></i>
+                    ORDER ON SWIGGY
+                </a>
+                <a href="https://www.zomato.com" target="_blank" class="w-full sm:w-auto bg-transparent text-warmWhite border border-white/20 hover:border-signatureOrange hover:bg-signatureOrange/5 py-5 px-12 rounded-full font-bold uppercase tracking-wider text-sm flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1">
+                    <i class="fa-solid fa-fire text-lg text-signatureOrange"></i>
+                    ORDER ON ZOMATO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-16 px-6 md:px-12 border-t border-white/5 text-mutedGray">
+        <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="space-y-6">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-signatureOrange text-darkBg w-10 h-10 rounded-xl flex items-center justify-center font-black tracking-tighter text-lg">
+                        HB
+                    </div>
+                    <span class="clash-text text-2xl tracking-tight text-warmWhite">
+                        HOTBOX<span class="text-signatureOrange font-normal">.</span>
+                    </span>
+                </div>
+                <p class="text-xs leading-relaxed max-w-xs">
+                    Premium culinary system engineered for the late-night lifecycle. Hand-pressed patties, curated seasoning, fast logistics.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-signatureOrange hover:text-signatureOrange transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-signatureOrange hover:text-signatureOrange transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="font-mono text-xs tracking-widest text-warmWhite uppercase">Direct Portals</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="https://www.swiggy.com" target="_blank" class="hover:text-signatureOrange transition-colors">Swiggy Delivery Hub</a></li>
+                    <li><a href="https://www.zomato.com" target="_blank" class="hover:text-signatureOrange transition-colors">Zomato Kitchen Portal</a></li>
+                    <li><a href="#collection" class="hover:text-signatureOrange transition-colors">Signature Midnight Menu</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="font-mono text-xs tracking-widest text-warmWhite uppercase">The Philosophy</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#story" class="hover:text-signatureOrange transition-colors">Our Origin Story</a></li>
+                    <li><a href="#why-hotbox" class="hover:text-signatureOrange transition-colors">Safety & Sanitization standards</a></li>
+                    <li><a href="#testimonials" class="hover:text-signatureOrange transition-colors">Community Confessions</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="font-mono text-xs tracking-widest text-warmWhite uppercase">Nocturnal Contact</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><span class="text-warmWhite font-medium">Headquarters:</span> Jaipur, Rajasthan, India</li>
+                    <li><span class="text-warmWhite font-medium">Nocturnal Support:</span> +91 9999 888 777</li>
+                    <li><span class="text-warmWhite font-medium">Operational Window:</span> Daily 7:00 PM - 4:00 AM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container mx-auto max-w-7xl pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-[10px] tracking-widest font-mono uppercase gap-4">
+            <span>© 2026 HOTBOX CO. ALL RIGHTS RESERVED.</span>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-signatureOrange transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-signatureOrange transition-colors">Terms of Ambience</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Audio ambience synthesizer (Web Audio API) to avoid external loading errors!
+        let audioCtx;
+        let isLofiPlaying = false;
+        let lofiNode1, lofiNode2;
+
+        function startLofiAmbience() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            // Create highly authentic late-night vinyl crackle crackle sound completely synthesized on the fly
+            const bufferSize = audioCtx.sampleRate * 2; // 2 seconds of noise
+            const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+
+            // Generate crackles & pink noise
+            for (let i = 0; i < bufferSize; i++) {
+                let r1 = Math.random() * 2 - 1;
+                // Add pop crackle impulse randomly
+                let crackle = 0;
+                if (Math.random() > 0.9998) {
+                    crackle = (Math.random() > 0.5 ? 1 : -1) * (0.1 + Math.random() * 0.3);
+                }
+                output[i] = r1 * 0.005 + crackle;
+            }
+
+            // Loop pop generation node
+            lofiNode1 = audioCtx.createBufferSource();
+            lofiNode1.buffer = noiseBuffer;
+            lofiNode1.loop = true;
+
+            // Lowpass filter to emulate late night lofi warm tone
+            const filterNode = audioCtx.createBiquadFilter();
+            filterNode.type = 'lowpass';
+            filterNode.frequency.setValueAtTime(320, audioCtx.currentTime);
+
+            // Low frequency synthesizer drone for relaxing atmosphere
+            lofiNode2 = audioCtx.createOscillator();
+            lofiNode2.type = 'triangle';
+            lofiNode2.frequency.setValueAtTime(55, audioCtx.currentTime); // low G drone
+
+            const droneGain = audioCtx.createGain();
+            droneGain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+
+            const vinylGain = audioCtx.createGain();
+            vinylGain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+
+            // Connect nodes
+            lofiNode1.connect(filterNode);
+            filterNode.connect(vinylGain);
+            vinylGain.connect(audioCtx.destination);
+
+            lofiNode2.connect(droneGain);
+            droneGain.connect(audioCtx.destination);
+
+            lofiNode1.start();
+            lofiNode2.start();
+            isLofiPlaying = true;
+        }
+
+        function stopLofiAmbience() {
+            if (lofiNode1) lofiNode1.stop();
+            if (lofiNode2) lofiNode2.stop();
+            isLofiPlaying = false;
+        }
+
+        // Toggle Audio Ambient trigger UI click handler
+        const soundwaveBtn = document.getElementById('soundwave-btn');
+        const soundwaveText = document.getElementById('soundwave-text');
+        const soundbars = document.querySelectorAll('.soundbar');
+
+        soundwaveBtn.addEventListener('click', () => {
+            if (isLofiPlaying) {
+                stopLofiAmbience();
+                soundwaveText.innerText = "Lofi Ambient Off";
+                soundbars.forEach(bar => {
+                    bar.style.animation = 'none';
+                });
+            } else {
+                startLofiAmbience();
+                soundwaveText.innerText = "Lofi Ambient On";
+                // simple inline animation for sound waves
+                soundbars.forEach((bar, index) => {
+                    bar.style.animation = `bounce 0.8s infinite alternate ease-in-out`;
+                    bar.style.animationDelay = `${index * 0.15}s`;
+                });
+            }
+        });
+
+        // Simple bounce CSS insertion dynamically for sound waves
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes bounce {
+                0% { transform: scaleY(0.3); }
+                100% { transform: scaleY(1); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+
+        window.addEventListener('DOMContentLoaded', () => {
+            let count = 0;
+            const progress = document.getElementById('preloader-progress');
+            const countLabel = document.getElementById('preloader-count');
+            const preloader = document.getElementById('preloader');
+
+            const timer = setInterval(() => {
+                count += Math.floor(Math.random() * 8) + 3;
+                if (count >= 100) {
+                    count = 100;
+                    clearInterval(timer);
+                    // Fade out loader with high-end luxury clip-path slide
+                    gsap.to(preloader, {
+                        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+                        duration: 1.2,
+                        ease: 'power4.inOut',
+                        onComplete: () => {
+                            preloader.style.display = 'none';
+                            // Fire Hero animations immediately on completion
+                            triggerHeroAnimations();
+                        }
+                    });
+                }
+                progress.style.width = count + '%';
+                countLabel.innerText = count.toString().padStart(2, '0') + '%';
+            }, 60);
+        });
+
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        function triggerHeroAnimations() {
+            const tl = gsap.timeline();
+
+            tl.fromTo('#hero-badge', {
+                opacity: 0,
+                y: 30
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+
+            tl.fromTo('#hero-title', {
+                opacity: 0,
+                y: 80
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power4.out'
+            }, "-=0.7");
+
+            tl.fromTo('#hero-subtitle', {
+                opacity: 0,
+                y: 20
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }, "-=0.6");
+
+            tl.fromTo('#hero-ctas', {
+                opacity: 0,
+                y: 20
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }, "-=0.5");
+        }
+
+
+
+        // Title scale reveal in Statement section
+        gsap.fromTo('#statement-scroll-text', 
+            { opacity: 0.1, scale: 0.95 },
+            {
+                opacity: 1,
+                scale: 1,
+                ease: 'power1.out',
+                scrollTrigger: {
+                    trigger: '#statement',
+                    start: 'top 70%',
+                    end: 'bottom 40%',
+                    scrub: true,
+                }
+            }
+        );
+
+        // Parallax image scrolling animation in Brand Story Section
+        gsap.fromTo('#parallax-img-1', 
+            { y: 50 },
+            {
+                y: -50,
+                scrollTrigger: {
+                    trigger: '#story',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            }
+        );
+
+        gsap.fromTo('#parallax-img-2', 
+            { y: -30 },
+            {
+                y: 30,
+                scrollTrigger: {
+                    trigger: '#story',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            }
+        );
+
+
+        const clockData = {
+            '7pm': {
+                hour: 210, // 7 PM position on 12-hour clock (7 * 30deg = 210deg)
+                minute: 0,
+                desc: 'STATUS: Grills are screaming hot. Prepared with maximum freshness.'
+            },
+            '11pm': {
+                hour: 330, // 11 PM position (11 * 30deg = 330deg)
+                minute: 120, // 11:20 PM rush (20 mins * 6deg = 120deg)
+                desc: 'STATUS: Peak Midnight rush. Standard prep queues are operating at extreme efficiency.'
+            },
+            '2am': {
+                hour: 60, // 2 AM position
+                minute: 270, // 2:45 AM marathons (45 mins * 6deg = 270deg)
+                desc: 'STATUS: Night owl flows are peaking. Zero lag times. Delivering to all dark sectors.'
+            },
+            '4am': {
+                hour: 120, // 4 AM position
+                minute: 0,
+                desc: 'STATUS: Final culinary order dispatching. Sanitizing assembly bays.'
+            }
+        };
+
+        function updateKitchenStatus(phase) {
+            const data = clockData[phase];
+            // Rotate clock hands via GSAP smoothly
+            gsap.to('#hour-hand', { rotation: data.hour, duration: 1, ease: 'back.out(1.5)' });
+            gsap.to('#minute-hand', { rotation: data.minute, duration: 1.2, ease: 'back.out(1.5)' });
+            // Update status text
+            document.getElementById('kitchen-status-desc').innerText = data.desc;
+
+            // Highlight button UI
+            const buttons = document.querySelectorAll('#clock-timeline-btns button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-signatureOrange', 'text-darkBg');
+                btn.classList.add('bg-white/5', 'text-mutedGray');
+            });
+
+            // Find current clicked button and highlight
+            event.target.classList.remove('bg-white/5', 'text-mutedGray');
+            event.target.classList.add('bg-signatureOrange', 'text-darkBg');
+        }
+
+
+        const testimonials = [
+            {
+                quote: "The Cheese Pull on the Loaded Beast at 2:30 AM is honestly life-changing. It arrives steaming hot, and Swiggy gets it to me in literally 18 minutes.",
+                author: "Vikram R.",
+                role: "Competitive Esports Athlete",
+                initial: "V"
+            },
+            {
+                quote: "I produce podcasts all night. Finding a premium brand that packs hot burgers in premium vents rather than soggy foils was a revelation. Absolute respect.",
+                author: "Ananya M.",
+                role: "Digital Content Producer",
+                initial: "A"
+            },
+            {
+                quote: "Midnight study breaks used to mean mediocre packet noodles. Now, my entire squad orders Firecracker wraps twice a week. Pure, clean flavor profiles.",
+                author: "Pranav S.",
+                role: "Senior Engineering Undergrad",
+                initial: "P"
+            }
+        ];
+
+        let currentTestimonialIndex = 0;
+
+        function updateTestimonialUI() {
+            const card = document.getElementById('active-testimonial-card');
+            const data = testimonials[currentTestimonialIndex];
+
+            // Elegant fading GSAP animation transition
+            gsap.to(card, {
+                opacity: 0,
+                y: 10,
+                duration: 0.3,
+                onComplete: () => {
+                    document.getElementById('testimonial-quote').innerText = `"${data.quote}"`;
+                    document.getElementById('testimonial-author').innerText = data.author;
+                    document.getElementById('testimonial-role').innerText = data.role;
+                    document.getElementById('testimonial-initial').innerText = data.initial;
+
+                    gsap.to(card, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.4,
+                        ease: 'power2.out'
+                    });
+                }
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+            updateTestimonialUI();
+        }
+
+        function prevTestimonial() {
+            currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+            updateTestimonialUI();
+        }
+
+        // Auto slide testimonials every 10 seconds
+        setInterval(nextTestimonial, 10000);
+
+
+        const cursor = document.getElementById('cursor');
+        const cursorGlow = document.getElementById('cursor-glow');
+
+        if (window.innerWidth >= 1024) {
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(cursor, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.1,
+                    ease: 'power2.out'
+                });
+                gsap.to(cursorGlow, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.3,
+                    ease: 'power3.out'
+                });
+            });
+
+            // Magnify hover effects for interactive elements
+            const linksAndButtons = document.querySelectorAll('a, button');
+            linksAndButtons.forEach(elem => {
+                elem.addEventListener('mouseenter', () => {
+                    cursor.style.width = '48px';
+                    cursor.style.height = '48px';
+                    cursor.style.borderColor = '#FF6B00';
+                    cursor.style.backgroundColor = 'rgba(255, 107, 0, 0.1)';
+                });
+                elem.addEventListener('mouseleave', () => {
+                    cursor.style.width = '24px';
+                    cursor.style.height = '24px';
+                    cursor.style.borderColor = 'rgba(255, 107, 0, 0.5)';
+                    cursor.style.backgroundColor = 'transparent';
+                });
+            });
+        }
+
+
+        const canvas = document.getElementById('sparks-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class SparkParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 20;
+                this.size = Math.random() * 2 + 1;
+                this.speedY = -(Math.random() * 1.5 + 0.5);
+                this.speedX = (Math.random() * 2 - 1) * 0.5;
+                this.alpha = Math.random() * 0.7 + 0.3;
+                this.decay = Math.random() * 0.005 + 0.002;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 107, 0, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function spawnSparks() {
+            if (particles.length < 60) {
+                particles.push(new SparkParticle());
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+
+                if (p.alpha <= 0 || p.y < 0) {
+                    particles.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(spawnSparks);
+        }
+
+        window.onload = function() {
+            spawnSparks();
+        };
+
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        let isMobileMenuOpen = false;
+
+        function toggleMobileMenu() {
+            isMobileMenuOpen = !isMobileMenuOpen;
+            if (isMobileMenuOpen) {
+                mobileDrawer.classList.remove('translate-x-full');
+                mobileMenuBtn.querySelector('span:first-child').style.transform = 'translateY(4px) rotate(45deg)';
+                mobileMenuBtn.querySelector('span:last-child').style.transform = 'translateY(-4px) rotate(-45deg)';
+            } else {
+                mobileDrawer.classList.add('translate-x-full');
+                mobileMenuBtn.querySelector('span:first-child').style.transform = 'none';
+                mobileMenuBtn.querySelector('span:last-child').style.transform = 'none';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Sticky Navbar opacity control on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-darkBg/90', 'backdrop-blur-md', 'border-white/5');
+            } else {
+                nav.classList.remove('bg-darkBg/90', 'backdrop-blur-md', 'border-white/5');
+            }
+        });
+    </script>
+</body>
+</html>
