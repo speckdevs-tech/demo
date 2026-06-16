@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cataract & Cornea Clinic | Dr. Nitish Kathuria</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome for sleek line-icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clinic: {
+                            deep: '#03152d',      // Rich Luxury Navy from flyer
+                            blue: '#113fc2',      // Deep Royal Vision Blue
+                            teal: '#0a9396',      // Advanced Clinical Teal
+                            gold: '#bf8f30',      // Premium Champagne Gold
+                            goldLight: '#fdf8ec', // Warm Gold Tint
+                            slateLight: '#f4f7fa' // Crisp High-end Background
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(3, 21, 45, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(3, 21, 45, 0.05);
+        }
+        .text-glow-teal {
+            text-shadow: 0 0 20px rgba(10, 147, 150, 0.2);
+        }
+        /* Perfect split image slider styles */
+        .slider-container {
+            position: relative;
+            user-select: none;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(3, 21, 45, 0.15);
+        }
+        .slider-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+        }
+        .slider-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #bf8f30;
+            cursor: ew-resize;
+            z-index: 30;
+            box-shadow: 0 0 10px rgba(191, 143, 48, 0.5);
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background-color: #03152d;
+            border: 2px solid #bf8f30;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bf8f30;
+            box-shadow: 0 4px 20px rgba(3, 21, 45, 0.3);
+            transition: all 0.2s ease;
+        }
+        .slider-handle:hover .slider-button {
+            background-color: #bf8f30;
+            color: #03152d;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f4f7fa;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-900 bg-white antialiased overflow-x-hidden">
+
+    <div class="bg-clinic-deep text-white/90 text-[11px] sm:text-xs py-2.5 px-4 border-b border-clinic-gold/15 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-1">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-clinic-gold text-xs"></i> Udaipur, Rajasthan</span>
+                <span class="hidden sm:inline-flex items-center gap-1.5"><i class="fa-solid fa-clock text-clinic-teal text-xs"></i> Mon - Sat: 10:00 AM - 7:00 PM</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+919928123232" class="hover:text-clinic-gold transition duration-150 flex items-center gap-1.5 font-semibold">
+                    <i class="fa-solid fa-phone text-[10px]"></i> +91 99281 23232
+                </a>
+                <span class="hidden xs:inline-block h-3 w-[1px] bg-white/20"></span>
+                <span class="bg-gradient-to-r from-clinic-gold/20 to-clinic-gold/10 px-2.5 py-0.5 rounded text-[10px] uppercase tracking-widest text-clinic-gold font-bold border border-clinic-gold/20">
+                    Sutureless & Painless Surgery
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <!-- Brand Logo Frame -->
+            <a href="#" class="flex items-center gap-3 group focus:outline-none">
+                <div class="relative w-11 h-11 flex items-center justify-center bg-clinic-deep rounded-xl border border-clinic-gold/20 shadow-md transition-all duration-300 group-hover:border-clinic-gold/50">
+                    <svg class="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    <div class="absolute inset-[3px] border border-dashed border-clinic-gold/30 rounded-lg pointer-events-none"></div>
+                </div>
+                <div>
+                    <span class="block text-base font-extrabold tracking-tight text-clinic-deep leading-none">Cataract & Cornea</span>
+                    <span class="block text-[9px] tracking-widest uppercase text-clinic-teal font-bold mt-1">Advanced Eye Care • Udaipur</span>
+                </div>
+            </a>
+
+            <!-- Modern Minimal Nav Menu -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#about" class="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-clinic-blue transition duration-150">Surgeon</a>
+                <a href="#treatments" class="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-clinic-blue transition duration-150">Treatments</a>
+                <a href="#why-choose-us" class="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-clinic-blue transition duration-150">Standards</a>
+                <a href="#simulator" class="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-clinic-blue transition duration-150 flex items-center gap-1.5">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-clinic-teal opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-clinic-teal"></span>
+                    </span>
+                    Interactive Tool
+                </a>
+                <a href="#diagnosis" class="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-clinic-blue transition duration-150">Diagnosis</a>
+                <a href="#faqs" class="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-clinic-blue transition duration-150">FAQ</a>
+            </nav>
+
+            <!-- Navigation Actions -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/919928123232" target="_blank" class="flex items-center gap-2 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition duration-200 border border-emerald-200">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                </a>
+                <button onclick="openBookingModal()" class="px-5 py-2.5 bg-gradient-to-r from-clinic-deep to-slate-900 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg shadow-clinic-deep/15 hover:shadow-xl hover:from-clinic-blue hover:to-clinic-deep transition duration-200">
+                    Book Consult
+                </button>
+            </div>
+
+            <!-- Mobile Menu Control -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-700 hover:text-clinic-blue focus:outline-none rounded-lg">
+                <i id="menuIcon" class="fa-solid fa-bars-staggered text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-sm font-bold uppercase tracking-wider text-slate-700 hover:text-clinic-blue">Dr. Nitish Kathuria</a>
+            <a href="#treatments" onclick="toggleMobileMenu()" class="block text-sm font-bold uppercase tracking-wider text-slate-700 hover:text-clinic-blue">Treatments</a>
+            <a href="#why-choose-us" onclick="toggleMobileMenu()" class="block text-sm font-bold uppercase tracking-wider text-slate-700 hover:text-clinic-blue">Clinic Standards</a>
+            <a href="#simulator" onclick="toggleMobileMenu()" class="block text-sm font-bold uppercase tracking-wider text-slate-700 hover:text-clinic-blue">Vision Simulator</a>
+            <a href="#diagnosis" onclick="toggleMobileMenu()" class="block text-sm font-bold uppercase tracking-wider text-slate-700 hover:text-clinic-blue">Symptom Diagnostic Check</a>
+            <a href="#faqs" onclick="toggleMobileMenu()" class="block text-sm font-bold uppercase tracking-wider text-slate-700 hover:text-clinic-blue">FAQ Desk</a>
+            <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
+                <a href="https://wa.me/919928123232" target="_blank" class="w-full text-center py-3 text-emerald-700 bg-emerald-50 rounded-xl text-xs font-bold uppercase tracking-wider border border-emerald-200">
+                    <i class="fa-brands fa-whatsapp mr-1.5"></i> WhatsApp Consultation
+                </a>
+                <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full py-3 bg-clinic-deep text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative bg-gradient-to-b from-[#f8fafc] to-white overflow-hidden py-16 lg:py-28">
+        <!-- Modern Grid & Blur Accents -->
+        <div class="absolute right-0 top-0 w-[600px] h-[600px] bg-clinic-blue/5 rounded-full blur-3xl pointer-events-none -mr-48 -mt-20"></div>
+        <div class="absolute left-10 bottom-10 w-96 h-96 bg-clinic-teal/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Narrative Block -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-clinic-goldLight text-clinic-gold rounded-full text-[11px] font-bold uppercase tracking-widest border border-clinic-gold/15 shadow-sm">
+                        <i class="fa-solid fa-medal"></i> Premium Eye Surgeon in Udaipur
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-clinic-deep leading-[1.1] font-serif">
+                        Advanced Eye Care.<br>
+                        <span class="text-clinic-blue bg-gradient-to-r from-clinic-blue to-clinic-teal bg-clip-text text-transparent">Trusted Vision Experts.</span>
+                    </h1>
+                    
+                    <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Specialized Cataract, Cornea & Vision Care with modern Technology and Personalized Treatment. Restore your natural vision depth and color brightness under world-class parameters.
+                    </p>
+
+                    <!-- Interactive CTAs -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 bg-clinic-deep hover:bg-clinic-blue text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-xl shadow-clinic-deep/15 hover:shadow-clinic-blue/20 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calendar-check text-sm text-clinic-gold"></i> Book Appointment
+                        </button>
+                        <a href="https://wa.me/919928123232" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-xl shadow-emerald-600/10 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Consultation
+                        </a>
+                    </div>
+
+                    <!-- Bento-styled Trust Indicators -->
+                    <div class="pt-8 border-t border-slate-100 max-w-lg mx-auto lg:mx-0">
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="space-y-1">
+                                <div class="text-clinic-teal text-lg"><i class="fa-solid fa-user-doctor"></i></div>
+                                <h4 class="text-xs font-bold text-slate-800">Expertise</h4>
+                                <p class="text-[10px] text-slate-500">Dr. Nitish Kathuria (MD)</p>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-clinic-teal text-lg"><i class="fa-solid fa-laptop-medical"></i></div>
+                                <h4 class="text-xs font-bold text-slate-800">Advanced Tech</h4>
+                                <p class="text-[10px] text-slate-500">Precision Diagnostics</p>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-clinic-teal text-lg"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                                <h4 class="text-xs font-bold text-slate-800">Personal Care</h4>
+                                <p class="text-[10px] text-slate-500">Tailored Procedures</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Hero Block -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <!-- Elegant Asymmetric Glow Backdrop -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-clinic-gold/10 to-clinic-blue/5 rounded-3xl blur-2xl transform rotate-6 scale-95 pointer-events-none"></div>
+                    
+                    <!-- Main Medical Card Frame -->
+                    <div class="relative bg-white rounded-[32px] p-5 shadow-2xl border border-slate-100/80 max-w-sm w-full transition-all duration-300 hover:shadow-3xl">
+                        
+                        <!-- Premium floating tag matching Dr. Nitish Kathuria branding -->
+                        <div class="absolute -top-4 -right-4 bg-gradient-to-r from-clinic-gold to-amber-600 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-xl shadow-lg z-20 animate-float">
+                            Verified Expert
+                        </div>
+                        
+                        <!-- Doctor Graphic/Portrait Container -->
+                        <div class="relative bg-clinic-deep rounded-2xl overflow-hidden aspect-[4/5] flex flex-col justify-end group">
+                            <!-- Premium Radial overlay matching flyer background theme -->
+                            <div class="absolute inset-0 bg-radial-glow opacity-95 transition-opacity duration-300 group-hover:opacity-90" style="background: radial-gradient(circle at 60% 30%, #1c365c 0%, #03152d 100%);"></div>
+                            
+                            <!-- Displaying reference portrait: image_3b976a.jpg -->
+                            <img src="image_3b976a.jpg" alt="Dr. Nitish Kathuria" onerror="this.src='https://placehold.co/400x500/03152d/ffffff?text=Dr.+Nitish+Kathuria';" class="absolute inset-0 w-full h-full object-cover object-top mix-blend-normal transition-transform duration-700 group-hover:scale-105 z-10" />
+                            
+                            <!-- Content Frame Overlay -->
+                            <div class="relative z-20 p-6 bg-gradient-to-t from-clinic-deep via-clinic-deep/80 to-transparent pt-16 text-center border-t border-white/5">
+                                <h3 class="text-xl font-bold text-white tracking-wide font-serif">Dr. Nitish Kathuria</h3>
+                                <p class="text-[10px] font-bold text-clinic-gold tracking-widest uppercase mt-1">Phacorefractive & Cornea Specialist</p>
+                                <p class="text-[11px] text-slate-300 mt-2 italic leading-relaxed">Specialist in Cataract, Cornea & Refractive Surgeries</p>
+                            </div>
+                        </div>
+
+                        <!-- Mini Interactive Footer Stats on Portrait Card -->
+                        <div class="mt-4 flex items-center justify-between px-2 pt-1">
+                            <div class="flex items-center gap-2">
+                                <span class="relative flex h-2 w-2">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                <span class="text-[11px] font-medium text-slate-500">Udaipur Clinic Open Today</span>
+                            </div>
+                            <a href="#about" class="text-[11px] font-bold text-clinic-blue hover:text-clinic-gold transition duration-150 uppercase tracking-wider">Bio Profile <i class="fa-solid fa-arrow-right text-[9px] ml-0.5"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick stats badge -->
+                    <div class="absolute -bottom-6 -left-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3 z-20">
+                        <div class="w-10 h-10 bg-clinic-gold/10 text-clinic-gold rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-eye-low-vision text-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Quality Index</p>
+                            <p class="text-sm font-extrabold text-clinic-deep">ISO 9001:2026</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#03152d] text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-clinic-blue/10 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-clinic-gold/20 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-center">
+                
+                <div class="space-y-1 group">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-clinic-gold tracking-tight group-hover:scale-105 transition duration-300">
+                        25,000+
+                    </div>
+                    <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Patients Treated</div>
+                    <p class="text-[11px] text-slate-500">In Udaipur and Mewar Region</p>
+                </div>
+
+                <div class="space-y-1 group">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-clinic-gold tracking-tight group-hover:scale-105 transition duration-300">
+                        15+
+                    </div>
+                    <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Years Experience</div>
+                    <p class="text-[11px] text-slate-500">Post Graduate Surgical Quality</p>
+                </div>
+
+                <div class="space-y-1 group">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-clinic-gold tracking-tight group-hover:scale-105 transition duration-300">
+                        15,000+
+                    </div>
+                    <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Successful Procedures</div>
+                    <p class="text-[11px] text-slate-500">Phaco & Laser Corrective Surgeries</p>
+                </div>
+
+                <div class="space-y-1 group">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-clinic-gold tracking-tight group-hover:scale-105 transition duration-300">
+                        100%
+                    </div>
+                    <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Patient Satisfaction</div>
+                    <p class="text-[11px] text-slate-500">Committed Post-Operative Safety</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="simulator" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <span class="text-xs font-bold text-clinic-teal uppercase tracking-widest bg-clinic-teal/10 px-3.5 py-1.5 rounded-full">Interactive Vision Tool</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-clinic-deep mt-4 font-serif leading-tight">Visualizing Cataract Blur & Golden Restoration</h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base">Drag the gold comparative divider to see what life looks like with severe cataracts versus the crisp, bright, perfect focus restored by Dr. Nitish Kathuria.</p>
+            </div>
+
+            <!-- Premium Slider Card -->
+            <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-[32px] shadow-xl border border-slate-100">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    
+                    <!-- Controller/Details side -->
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-clinic-deep font-serif">Comparison Control</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Adjusting your vision level manually gives families a realistic perspective of early diagnostic indicators.</p>
+                        </div>
+
+                        <!-- Custom Gauge indicator linked to comparison slider -->
+                        <div class="bg-clinic-goldLight p-4 rounded-2xl border border-clinic-gold/15 space-y-3">
+                            <div class="flex justify-between text-xs font-bold text-slate-700">
+                                <span>SIMULATOR STATUS</span>
+                                <span id="statusLabel" class="text-clinic-gold uppercase">Restored Vision</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+                                <div id="statusIndicatorBar" class="h-full bg-clinic-gold transition-all duration-300" style="width: 50%;"></div>
+                            </div>
+                            <p id="statusDescription" class="text-[11px] text-slate-500">Drag slide bar to test levels.</p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-2.5 text-xs text-slate-600">
+                                <span class="text-emerald-500 mt-0.5"><i class="fa-solid fa-circle-check"></i></span>
+                                <span>Restores optimal natural light focus</span>
+                            </div>
+                            <div class="flex items-start gap-2.5 text-xs text-slate-600">
+                                <span class="text-emerald-500 mt-0.5"><i class="fa-solid fa-circle-check"></i></span>
+                                <span>Highly elevated depth & color clarity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Split visual component side -->
+                    <div class="lg:col-span-8">
+                        <div class="slider-container" id="splitSliderContainer">
+                            <!-- Base Image (Clean View of Udaipur Lake) -->
+                            <img src="https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&q=80&w=1200" alt="Priscilla Lake City" class="slider-img">
+                            
+                            <!-- Blurred Overlay Div (representing Cataract View) -->
+                            <div class="slider-overlay" id="blurredVisualLayer">
+                                <img src="https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&q=80&w=1200" alt="Cataract City Preview" class="slider-img max-w-none" style="filter: blur(12px) contrast(0.8) brightness(0.9) sepia(20%); width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            
+                            <!-- Slide Comparative Handle -->
+                            <div class="slider-handle" id="splitSliderHandle">
+                                <div class="slider-button">
+                                    <i class="fa-solid fa-arrows-left-right text-xs"></i>
+                                </div>
+                            </div>
+
+                            <!-- Overlaid tags -->
+                            <div class="absolute top-4 left-4 bg-emerald-500 text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-md">
+                                Clear Vision Post-Surg
+                            </div>
+                            <div class="absolute top-4 right-4 bg-rose-600 text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-lg z-10 shadow-md">
+                                Cloudy Cataract View
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="treatments" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-xs font-bold text-clinic-teal uppercase tracking-widest bg-clinic-teal/10 px-3.5 py-1.5 rounded-full">Clinical Specialties</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-clinic-deep mt-4 font-serif">Comprehensive Treatment Excellence</h2>
+                <p class="text-slate-500 mt-2 text-sm sm:text-base">Harnessing advanced German diagnostics and sutureless micro-incision technology for superior visual outcomes.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Treatment Card 1 -->
+                <div class="group bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:border-clinic-blue/10 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-clinic-slateLight rounded-2xl flex items-center justify-center text-clinic-blue group-hover:bg-clinic-blue group-hover:text-white transition-all duration-300 mb-6">
+                            <i class="fa-solid fa-eye-low-vision text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-clinic-deep mb-3 font-serif">Micro-Incision Cataract (MICS)</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Ultra-modern sutureless phacoemulsification technique utilizing premium foldable intraocular lenses. Completely painless recovery within 15 mins.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-clinic-teal">Premium Lens Options</span>
+                        <button onclick="openBookingModal('Cataract Surgery')" class="text-xs font-bold text-clinic-blue hover:text-clinic-gold transition duration-150 uppercase tracking-wider">Book Consult <i class="fa-solid fa-chevron-right ml-1 text-[9px]"></i></button>
+                    </div>
+                </div>
+
+                <!-- Treatment Card 2 -->
+                <div class="group bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:border-clinic-blue/10 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-clinic-slateLight rounded-2xl flex items-center justify-center text-clinic-blue group-hover:bg-clinic-blue group-hover:text-white transition-all duration-300 mb-6">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-clinic-deep mb-3 font-serif">Advanced Cornea Care</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Specialized management of Keratoconus with C3R, treatment of progressive corneal ulcers, dystrophies, and modern corneal transplant procedures.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-clinic-teal">Transplant Expert</span>
+                        <button onclick="openBookingModal('Cornea Treatment')" class="text-xs font-bold text-clinic-blue hover:text-clinic-gold transition duration-150 uppercase tracking-wider">Book Consult <i class="fa-solid fa-chevron-right ml-1 text-[9px]"></i></button>
+                    </div>
+                </div>
+
+                <!-- Treatment Card 3 -->
+                <div class="group bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:border-clinic-blue/10 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-clinic-slateLight rounded-2xl flex items-center justify-center text-clinic-blue group-hover:bg-clinic-blue group-hover:text-white transition-all duration-300 mb-6">
+                            <i class="fa-solid fa-laser-cutter text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-clinic-deep mb-3 font-serif">LASIK & Laser Specs Removal</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Customized Contoura Vision LASIK solutions. Safely correct nearsightedness, farsightedness, and astigmatism for freedom from glasses.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-clinic-teal">Specs Free Life</span>
+                        <button onclick="openBookingModal('LASIK Surgery')" class="text-xs font-bold text-clinic-blue hover:text-clinic-gold transition duration-150 uppercase tracking-wider">Book Consult <i class="fa-solid fa-chevron-right ml-1 text-[9px]"></i></button>
+                    </div>
+                </div>
+
+                <!-- Treatment Card 4 -->
+                <div class="group bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:border-clinic-blue/10 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-clinic-slateLight rounded-2xl flex items-center justify-center text-clinic-blue group-hover:bg-clinic-blue group-hover:text-white transition-all duration-300 mb-6">
+                            <i class="fa-solid fa-droplet text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-clinic-deep mb-3 font-serif">Advanced Dry Eye Therapy</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Accurate tear-film analysis and clinical relief plans designed for intense screen-time users and chronic dryness sufferers.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-clinic-teal">Tear Film Mapping</span>
+                        <button onclick="openBookingModal('Dry Eye treatment')" class="text-xs font-bold text-clinic-blue hover:text-clinic-gold transition duration-150 uppercase tracking-wider">Book Consult <i class="fa-solid fa-chevron-right ml-1 text-[9px]"></i></button>
+                    </div>
+                </div>
+
+                <!-- Treatment Card 5 -->
+                <div class="group bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:border-clinic-blue/10 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-clinic-slateLight rounded-2xl flex items-center justify-center text-clinic-blue group-hover:bg-clinic-blue group-hover:text-white transition-all duration-300 mb-6">
+                            <i class="fa-solid fa-network-wired text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-clinic-deep mb-3 font-serif">Computerized Diagnostics</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Total ocular parameters checks, tracking internal pressure (non-contact tonometry), glaucoma testing, and custom visual field mapping.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-clinic-teal">Preventative Screening</span>
+                        <button onclick="openBookingModal('Routine Examination')" class="text-xs font-bold text-clinic-blue hover:text-clinic-gold transition duration-150 uppercase tracking-wider">Book Consult <i class="fa-solid fa-chevron-right ml-1 text-[9px]"></i></button>
+                    </div>
+                </div>
+
+                <!-- Treatment Card 6 -->
+                <div class="group bg-white p-8 rounded-3xl border border-rose-100 shadow-sm hover:shadow-2xl hover:border-rose-600/10 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all duration-300 mb-6">
+                            <i class="fa-solid fa-truck-medical text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-clinic-deep mb-3 font-serif">Emergency Eye Trauma</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Immediate medical attention for urgent foreign particles extraction, accidental cornea tears, chemical splashes, and sudden visual blockages.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-rose-100 flex justify-between items-center">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600">Immediate Assist</span>
+                        <a href="tel:+919928123232" class="text-xs font-bold text-rose-600 hover:underline">Emergency Line <i class="fa-solid fa-phone ml-1 text-[9px]"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnosis" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Info Section -->
+                <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                    <span class="text-xs font-bold text-clinic-gold uppercase tracking-widest bg-clinic-goldLight px-3.5 py-1.5 rounded-full border border-clinic-gold/20">Self Diagnosis</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-clinic-deep font-serif leading-tight">Identify Cataract Symptoms Early</h2>
+                    <p class="text-slate-600 text-sm">
+                        Cataracts commonly progress gradually. Select any experienced symptoms on the interactive board to run Dr. Nitish Kathuria's clinical priority evaluation.
+                    </p>
+                    
+                    <div class="bg-[#03152d] text-white p-6 rounded-2xl border border-clinic-gold/15 shadow-lg relative overflow-hidden">
+                        <div class="absolute -right-12 -bottom-12 w-32 h-32 bg-clinic-gold/10 rounded-full blur-xl pointer-events-none"></div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-clinic-gold text-2xl mt-0.5"><i class="fa-solid fa-circle-exclamation"></i></span>
+                            <div class="space-y-1">
+                                <h4 class="text-xs font-bold text-clinic-gold uppercase tracking-widest">Immediate Referral Advisory</h4>
+                                <p class="text-[11px] text-slate-300 leading-relaxed">If symptoms have persisted for over 6 months, an in-person slit-lamp diagnostic evaluation at our Meera Nagar clinic is strongly suggested.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checker Interface (Bento Grid Applet) -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[32px] shadow-xl border border-slate-100">
+                    <div class="space-y-6">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <h3 class="text-base font-bold text-clinic-deep uppercase tracking-wider">Clinical Symptoms Board</h3>
+                            <span class="text-[11px] text-slate-400">Select all that apply</span>
+                        </div>
+
+                        <!-- Grid -->
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <button onclick="toggleDiagnosisSymptom(this, 'Blurred Vision', 30)" class="diag-btn flex items-center justify-between p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-slate-100/50 hover:border-clinic-gold/30 text-left transition duration-200">
+                                <span class="text-xs font-semibold text-slate-700">Blurred or Cloudy Vision</span>
+                                <i class="fa-regular fa-square text-slate-300 text-base"></i>
+                            </button>
+                            <button onclick="toggleDiagnosisSymptom(this, 'Night Vision Deficit', 25)" class="diag-btn flex items-center justify-between p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-slate-100/50 hover:border-clinic-gold/30 text-left transition duration-200">
+                                <span class="text-xs font-semibold text-slate-700">Difficulty Seeing at Night</span>
+                                <i class="fa-regular fa-square text-slate-300 text-base"></i>
+                            </button>
+                            <button onclick="toggleDiagnosisSymptom(this, 'Glare Sensitivity', 20)" class="diag-btn flex items-center justify-between p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-slate-100/50 hover:border-clinic-gold/30 text-left transition duration-200">
+                                <span class="text-xs font-semibold text-slate-700">Sensitivity to Light & Glare</span>
+                                <i class="fa-regular fa-square text-slate-300 text-base"></i>
+                            </button>
+                            <button onclick="toggleDiagnosisSymptom(this, 'Reading Light Strain', 15)" class="diag-btn flex items-center justify-between p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-slate-100/50 hover:border-clinic-gold/30 text-left transition duration-200">
+                                <span class="text-xs font-semibold text-slate-700">Need Brighter Light to Read</span>
+                                <i class="fa-regular fa-square text-slate-300 text-base"></i>
+                            </button>
+                            <button onclick="toggleDiagnosisSymptom(this, 'Frequent Power Changes', 20)" class="diag-btn flex items-center justify-between p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-slate-100/50 hover:border-clinic-gold/30 text-left transition duration-200">
+                                <span class="text-xs font-semibold text-slate-700">Frequent Changes in Glasses</span>
+                                <i class="fa-regular fa-square text-slate-300 text-base"></i>
+                            </button>
+                            <button onclick="toggleDiagnosisSymptom(this, 'Faded Colors', 20)" class="diag-btn flex items-center justify-between p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-slate-100/50 hover:border-clinic-gold/30 text-left transition duration-200">
+                                <span class="text-xs font-semibold text-slate-700">Faded Colors or Yellowish Tint</span>
+                                <i class="fa-regular fa-square text-slate-300 text-base"></i>
+                            </button>
+                        </div>
+
+                        <!-- Severity Index Progress -->
+                        <div class="pt-6 border-t border-slate-100 space-y-3">
+                            <div class="flex justify-between items-center text-xs font-bold text-slate-700">
+                                <span>INDICATED SEVERITY FACTOR</span>
+                                <span id="severityPercentLabel" class="text-clinic-blue">0%</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div id="severityBar" class="h-full bg-gradient-to-r from-clinic-blue via-clinic-teal to-rose-600 transition-all duration-300" style="width: 0%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- dynamic diagnostic outcome -->
+                        <div id="diagnosticOutcomeText" class="p-5 rounded-2xl bg-clinic-slateLight border border-slate-100 text-center text-slate-500 text-xs leading-relaxed">
+                            Please select one or more symptoms above to view immediate clinical evaluation details.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Specialist Frame -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-clinic-gold/10 to-transparent rounded-[40px] transform -rotate-3 scale-95 pointer-events-none"></div>
+                    <div class="relative bg-white rounded-[40px] p-5 shadow-2xl border border-slate-100/80 max-w-sm w-full">
+                        <div class="relative bg-clinic-deep rounded-3xl overflow-hidden aspect-[4/5]">
+                            <img src="image_3b976a.jpg" alt="Dr. Nitish Kathuria portrait profile" onerror="this.src='https://placehold.co/400x500/03152d/ffffff?text=Dr.+Nitish+Kathuria';" class="absolute inset-0 w-full h-full object-cover object-top mix-blend-normal">
+                        </div>
+                    </div>
+                    <!-- Professional Badge -->
+                    <div class="absolute -bottom-6 bg-clinic-gold text-white font-bold text-[10px] uppercase tracking-widest py-3 px-6 rounded-xl shadow-lg border-2 border-white">
+                        Phacorefractive & Cornea Expert
+                    </div>
+                </div>
+
+                <!-- Narrative Tabs Area -->
+                <div class="lg:col-span-7 space-y-6 lg:pl-6 text-center lg:text-left">
+                    <span class="text-xs font-bold text-clinic-teal uppercase tracking-widest bg-clinic-teal/10 px-3.5 py-1.5 rounded-full">Surgeon Biography</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-clinic-deep font-serif leading-tight">Dr. Nitish Kathuria</h2>
+                    <p class="text-clinic-gold font-bold uppercase tracking-wider text-xs">Udaipur's Foremost Corneal Transplant & Cataract Authority</p>
+                    
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        With multiple clinical fellowships and over 15 years of operative performance, Dr. Nitish Kathuria has earned national trust. Specializing in advanced micro-incision surgeries, custom Contoura LASIK, and complicated anterior segment restorations.
+                    </p>
+
+                    <!-- Interactive Biography Tabs -->
+                    <div class="pt-4 border-t border-slate-100">
+                        <div class="flex justify-center lg:justify-start gap-4 border-b border-slate-100 pb-3 mb-4">
+                            <button onclick="switchBioTab('milestones')" id="tabBtn-milestones" class="bio-tab-btn text-xs font-bold uppercase tracking-widest text-clinic-blue border-b-2 border-clinic-blue pb-1 focus:outline-none">Milestones</button>
+                            <button onclick="switchBioTab('philosophy')" id="tabBtn-philosophy" class="bio-tab-btn text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-slate-600 pb-1 focus:outline-none">Philosophy</button>
+                            <button onclick="switchBioTab('fellowships')" id="tabBtn-fellowships" class="bio-tab-btn text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-slate-600 pb-1 focus:outline-none">Fellowships</button>
+                        </div>
+
+                        <!-- Tab Content 1 (Milestones) -->
+                        <div id="tabContent-milestones" class="bio-content-panel space-y-4">
+                            <div class="flex gap-4 text-left">
+                                <div class="w-8 h-8 rounded-full bg-clinic-gold/10 text-clinic-gold flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">15k</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-clinic-deep uppercase tracking-wider">15,000+ Sutureless Surgeries</h4>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Maintained clinical success rates in complex anterior reconstructions.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 text-left">
+                                <div class="w-8 h-8 rounded-full bg-clinic-teal/10 text-clinic-teal flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">100</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-clinic-deep uppercase tracking-wider">Top-Tier German Slit-lamp Tech</h4>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Introduced high-definition imaging diagnostic setups to standard clinical suites in Udaipur.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content 2 (Philosophy) -->
+                        <div id="tabContent-philosophy" class="bio-content-panel hidden space-y-2 text-left">
+                            <h4 class="text-xs font-bold text-clinic-deep uppercase tracking-wider">Patient-Centric Transparency</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                "Our mission is to eliminate fear from ophthalmic procedures. Every diagnostic result, lens option, and recovery pathway is mapped out honestly before planning surgery."
+                            </p>
+                        </div>
+
+                        <!-- Tab Content 3 (Fellowships) -->
+                        <div id="tabContent-fellowships" class="bio-content-panel hidden space-y-3 text-left">
+                            <div class="flex items-center gap-2 text-xs text-slate-700">
+                                <span class="text-clinic-gold"><i class="fa-solid fa-graduation-cap"></i></span>
+                                <span>Fellowship in Refractive Laser Corrective Procedures</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-slate-700">
+                                <span class="text-clinic-gold"><i class="fa-solid fa-building-columns"></i></span>
+                                <span>Advanced Corneal Reconstruction Fellowship</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us" class="py-20 bg-[#03152d] text-white relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#020e1f] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-xs font-bold text-clinic-gold uppercase tracking-widest bg-clinic-gold/10 px-3.5 py-1.5 rounded-full border border-clinic-gold/25">Why Choose Us</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 font-serif">Perfecting Global Ophthalmology Standards</h2>
+                <p class="text-slate-400 mt-2 text-sm">Every treatment pathway is carefully calculated, sterilely controlled, and personally supervised.</p>
+            </div>
+
+            <!-- Sleek Feature Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="p-8 bg-slate-900/55 rounded-3xl border border-slate-800/80 hover:border-clinic-gold/40 transition duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-clinic-gold/10 text-clinic-gold flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <h3 class="text-base font-bold mb-3 tracking-wide text-white">Advanced Diagnostic Equipment</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Top-tier German diagnostics measuring corneal topography, ensuring 100% personalized measurements before surgery.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-8 bg-slate-900/55 rounded-3xl border border-slate-800/80 hover:border-clinic-gold/40 transition duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-clinic-gold/10 text-clinic-gold flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-base font-bold mb-3 tracking-wide text-white">Personalized Treatment Plans</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        No general cookie-cutter options. Visual health plans formulated explicitly based on visual lifestyle habits & digital strain profiles.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-8 bg-slate-900/55 rounded-3xl border border-slate-800/80 hover:border-clinic-gold/40 transition duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-clinic-gold/10 text-clinic-gold flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                    <h3 class="text-base font-bold mb-3 tracking-wide text-white">Experienced Surgical Team</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Supported by certified anesthesia experts and clinical nursing staffs focused entirely on ophthalmological comfort.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="p-8 bg-slate-900/55 rounded-3xl border border-slate-800/80 hover:border-clinic-gold/40 transition duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-clinic-gold/10 text-clinic-gold flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-hospital-user"></i>
+                    </div>
+                    <h3 class="text-base font-bold mb-3 tracking-wide text-white">Modern Infrastructure</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Sterilized HEPA-filter operative theatres preventing postsurgical visual infections for optimal patient safety.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="p-8 bg-slate-900/55 rounded-3xl border border-slate-800/80 hover:border-clinic-gold/40 transition duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-clinic-gold/10 text-clinic-gold flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-handshake-simple"></i>
+                    </div>
+                    <h3 class="text-base font-bold mb-3 tracking-wide text-white">Transparent Consultation Process</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Direct pricing without hidden costs, accompanied by honest counseling on lens options (monofocal vs premium multifocal).
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="p-8 bg-slate-900/55 rounded-3xl border border-slate-800/80 hover:border-clinic-gold/40 transition duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-clinic-gold/10 text-clinic-gold flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-star text-xl"></i>
+                    </div>
+                    <h3 class="text-base font-bold mb-3 tracking-wide text-white">Gold-Standard Outcomes</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Over 99.8% surgical visual clarity benchmarks reported consistently through structured patient surveys.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-xs font-bold text-clinic-teal uppercase tracking-widest bg-clinic-teal/10 px-3.5 py-1.5 rounded-full">Testimonials</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-clinic-deep mt-4 font-serif">Patient Success Stories</h2>
+                <p class="text-slate-600 mt-2 text-sm">Real reviews from patients who experienced custom surgical care under Dr. Nitish Kathuria.</p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-slate-600 italic leading-relaxed mb-6">
+                            "Severe cataracts in both eyes made simple reading near impossible. Dr. Nitish's sutureless technique took 15 mins. Painless recovery. Beautiful bright colors are back!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-50">
+                        <div class="w-10 h-10 bg-clinic-gold/10 text-clinic-gold rounded-full flex items-center justify-center font-bold text-xs uppercase">
+                            RK
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-clinic-deep">Ramanand Khatri</p>
+                            <span class="text-[10px] text-emerald-600 font-bold uppercase">Cataract Patient</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-slate-600 italic leading-relaxed mb-6">
+                            "Excellent setup. Very hygienic. Dr. Nitish Kathuria explained my cornea issue transparently and stabilized my vision. Highly recommend this center."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-50">
+                        <div class="w-10 h-10 bg-clinic-gold/10 text-clinic-gold rounded-full flex items-center justify-center font-bold text-xs uppercase">
+                            MS
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-clinic-deep">Meenakshi Sharma</p>
+                            <span class="text-[10px] text-emerald-600 font-bold uppercase">Cornea Patient</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-slate-600 italic leading-relaxed mb-6">
+                            "Got my specs completely removed using customizable Contoura Laser treatment. Outstanding precision and zero visual discomfort afterwards."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-50">
+                        <div class="w-10 h-10 bg-clinic-gold/10 text-clinic-gold rounded-full flex items-center justify-center font-bold text-xs uppercase">
+                            AS
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-clinic-deep">Amit Singh</p>
+                            <span class="text-[10px] text-emerald-600 font-bold uppercase">LASIK Patient</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-xs font-bold text-clinic-teal uppercase tracking-widest bg-clinic-teal/10 px-3.5 py-1.5 rounded-full">Gallery</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-clinic-deep font-serif">Facility & Equipment Showcase</h2>
+                <p class="text-slate-500 mt-2 text-sm">Take a quick tour of our sterilised consultation spaces and premium laser operating chambers.</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Image 1 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square bg-slate-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600" alt="Consultation Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-clinic-deep via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-5">
+                        <p class="text-xs font-bold uppercase tracking-wider text-white">Modern Consulting Suite</p>
+                    </div>
+                </div>
+                <!-- Image 2 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square bg-slate-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=600" alt="Diagnostic Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-clinic-deep via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-5">
+                        <p class="text-xs font-bold uppercase tracking-wider text-white">Diagnostic Laboratory</p>
+                    </div>
+                </div>
+                <!-- Image 3 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square bg-slate-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&q=80&w=600" alt="HEPA OT Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-clinic-deep via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-5">
+                        <p class="text-xs font-bold uppercase tracking-wider text-white">Sterile HEPA OT</p>
+                    </div>
+                </div>
+                <!-- Image 4 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square bg-slate-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600" alt="Laser Diagnostics Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-clinic-deep via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-5">
+                        <p class="text-xs font-bold uppercase tracking-wider text-white">Phaco Surgical Systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-xs font-bold text-clinic-teal uppercase tracking-widest bg-clinic-teal/10 px-3.5 py-1.5 rounded-full">Process Map</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-clinic-deep font-serif">Journey to Clearer Vision</h2>
+                <p class="text-slate-600 mt-2 text-sm">Four direct steps designed to make clinical and physical visits completely stress-free.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <!-- Connector Line -->
+                <div class="hidden lg:block absolute top-12 left-16 right-16 h-0.5 bg-slate-200 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-12 h-12 rounded-full bg-clinic-blue text-white flex items-center justify-center font-bold text-sm mx-auto mb-6 border-4 border-slate-100">1</div>
+                    <h3 class="text-sm font-bold text-clinic-deep mb-2 uppercase tracking-wide">Book Consultation</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Book a visual diagnostic slot seamlessly online or call directly.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-12 h-12 rounded-full bg-clinic-blue text-white flex items-center justify-center font-bold text-sm mx-auto mb-6 border-4 border-slate-100">2</div>
+                    <h3 class="text-sm font-bold text-clinic-deep mb-2 uppercase tracking-wide">Eye Evaluation</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">In-depth clinical assessment with advanced imaging checkups.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-12 h-12 rounded-full bg-clinic-blue text-white flex items-center justify-center font-bold text-sm mx-auto mb-6 border-4 border-slate-100">3</div>
+                    <h3 class="text-sm font-bold text-clinic-deep mb-2 uppercase tracking-wide">Treatment Planning</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Dr. Nitish drafts structured plans customized around your visual life.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-12 h-12 rounded-full bg-clinic-blue text-white flex items-center justify-center font-bold text-sm mx-auto mb-6 border-4 border-slate-100">4</div>
+                    <h3 class="text-sm font-bold text-clinic-deep mb-2 uppercase tracking-wide">Procedure & Follow-up</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Painless 15-minute corrective procedure followed by post-op recovery checks.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="faqs" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold text-clinic-teal uppercase tracking-widest bg-clinic-teal/10 px-3.5 py-1.5 rounded-full">Help Desk</span>
+                <h2 class="text-3xl font-extrabold text-clinic-deep mt-4 font-serif">Frequently Asked Questions</h2>
+                <p class="text-slate-500 mt-2 text-sm">Verified clinical answers from our medical support team.</p>
+            </div>
+
+            <!-- Accordion blocks -->
+            <div class="space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-5 text-left bg-slate-50 hover:bg-slate-100/50 transition">
+                        <span class="font-bold text-xs sm:text-sm uppercase tracking-wider text-clinic-deep">Is cataract surgery safe and painful?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white border-t border-slate-100 text-xs text-slate-600 leading-relaxed">
+                        Yes. Sutureless micro-incision cataract surgery (MICS) is incredibly safe and completely painless. It takes only 10-15 minutes using topical anesthetic drops. Normal tasks can be resumed shortly after.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-5 text-left bg-slate-50 hover:bg-slate-100/50 transition">
+                        <span class="font-bold text-xs sm:text-sm uppercase tracking-wider text-clinic-deep">What is the recovery period after surgery?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white border-t border-slate-100 text-xs text-slate-600 leading-relaxed">
+                        Most patients see functional visual improvement within 24 to 48 hours. A simple protective eye guard is recommended during sleep for the initial few days. Medicated eye drops are used over several weeks to secure recovery.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-5 text-left bg-slate-50 hover:bg-slate-100/50 transition">
+                        <span class="font-bold text-xs sm:text-sm uppercase tracking-wider text-clinic-deep">Can LASIK completely remove my glasses?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white border-t border-slate-100 text-xs text-slate-600 leading-relaxed">
+                        Yes. Modern refractive laser therapies permanently reshape the cornea's curvature to treat nearsightedness, farsightedness, and astigmatism. Over 98% of candidate patients successfully achieve glasses-free visual freedom.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-5 text-left bg-slate-50 hover:bg-slate-100/50 transition">
+                        <span class="font-bold text-xs sm:text-sm uppercase tracking-wider text-clinic-deep">How do I choose the correct lens for Cataract surgery?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white border-t border-slate-100 text-xs text-slate-600 leading-relaxed">
+                        During your custom physical mapping, Dr. Nitish evaluates your routine tasks. If you work intensely on computers or drive at night, he will explain premium multifocal or extended depth-of-focus (EDOF) lens options to customize your outcome.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-br from-clinic-deep via-[#020e1f] to-clinic-deep text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-clinic-blue/20 via-transparent to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-clinic-gold/20 to-transparent"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center space-y-8">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-serif leading-tight">
+                Protect Your Vision With Expert Eye Care
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-light">
+                Experience global diagnostic and sutureless recovery protocols in Udaipur. Restoring absolute clarity is our highest clinical commitment.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 bg-clinic-blue hover:bg-clinic-teal text-white font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg transition duration-200">
+                    <i class="fa-regular fa-calendar-days mr-2"></i> Book Appointment
+                </button>
+                <a href="tel:+919928123232" class="w-full sm:w-auto px-8 py-4 bg-transparent hover:bg-white/5 text-white font-bold text-xs uppercase tracking-widest rounded-xl border border-white/20 transition duration-200 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone"></i> Call: +91 99281 23232
+                </a>
+            </div>
+
+            <p class="text-[11px] text-slate-400">
+                <i class="fa-solid fa-circle-info text-clinic-teal mr-1"></i> Located at Indore Plaza, 100 Feet Road, Meera Nagar, Udaipur
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-clinic-deep text-white pt-20 pb-8 border-t border-white/5 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/5">
+            
+            <!-- Bio Overview -->
+            <div class="md:col-span-4 space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl border border-clinic-gold/20">
+                        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-extrabold tracking-tight text-white uppercase leading-none">Cataract & Cornea</span>
+                        <span class="block text-[8px] tracking-widest uppercase text-clinic-teal font-bold mt-1">AN ADVANCED EYE CARE</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Premium ophthalmology center directed by Dr. Nitish Kathuria (MD). Delivering advanced corneal transplants, painless laser solutions, and modern preventative eye care in Udaipur.
+                </p>
+                <div class="flex items-center gap-4 text-base text-slate-400">
+                    <a href="#" class="hover:text-clinic-gold transition"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-clinic-gold transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-clinic-gold transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://wa.me/919928123232" target="_blank" class="hover:text-emerald-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Navigation Links -->
+            <div class="md:col-span-2 space-y-4">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-300">Quick Links</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a href="#about" class="hover:text-white transition">Surgeon Profile</a></li>
+                    <li><a href="#treatments" class="hover:text-white transition">Eye Treatments</a></li>
+                    <li><a href="#simulator" class="hover:text-white transition">Vision Simulator</a></li>
+                    <li><a href="#diagnosis" class="hover:text-white transition">Symptom Checker</a></li>
+                    <li><a href="#faqs" class="hover:text-white transition">FAQs desk</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact particulars matching flyer address -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-300">Contact Details</h4>
+                <ul class="space-y-3.5 text-xs text-slate-400">
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-location-dot text-clinic-gold mt-0.5"></i>
+                        <span>
+                            2nd Floor, Indore Plaza, 100 Feet Road, Near Parmanand Garden, Meera Nagar, Udaipur - 313001
+                        </span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-clinic-teal"></i>
+                        <a href="tel:+919928123232" class="hover:text-white transition">+91 99281 23232</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-clinic-teal"></i>
+                        <span>support@cataractcorneaclinic.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Mock Map with dynamic directions indicator -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-300">Clinic Location</h4>
+                <div class="relative w-full h-32 bg-slate-800 rounded-2xl overflow-hidden border border-slate-800 flex items-center justify-center text-center group">
+                    <div class="absolute inset-0 bg-cover bg-center filter grayscale contrast-125 opacity-70 group-hover:grayscale-0 transition duration-300" style="background-image: url('https://placehold.co/300x150/0f172a/ffffff?text=Meera+Nagar+Udaipur+Map');"></div>
+                    <div class="relative z-10 bg-slate-900/80 p-3 rounded-xl backdrop-blur-sm">
+                        <p class="text-[10px] font-bold text-clinic-gold">Meera Nagar, Udaipur</p>
+                        <a href="https://maps.google.com" target="_blank" class="block text-[9px] text-white underline mt-1">Get Live Directions <i class="fa-solid fa-arrow-up-right-from-square ml-0.5"></i></a>
+                    </div>
+                </div>
+                <div class="p-3.5 bg-red-950/10 border border-red-900/30 rounded-xl">
+                    <p class="text-[9px] text-red-300 uppercase font-bold flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> Urgent Eye Accident
+                    </p>
+                    <p class="text-[10px] text-slate-300 mt-1">Call Trauma Specialist: <strong>9928123232</strong></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <p>© 2026 Cataract & Cornea Clinic. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:underline">Privacy Charter</a>
+                <a href="#" class="hover:underline">Terms of Care</a>
+                <a href="#" class="hover:underline">Medical Disclaimer</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="bookingModal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Backdrop layer -->
+            <div class="fixed inset-0 bg-slate-950/75 backdrop-blur-md transition-opacity" aria-hidden="true" onclick="closeBookingModal()"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div class="inline-block align-middle bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-slate-100">
+                
+                <!-- Modal Head -->
+                <div class="bg-clinic-deep text-white p-6 relative">
+                    <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl focus:outline-none">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-clinic-gold border border-clinic-gold/20">
+                            <i class="fa-solid fa-calendar-plus text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold uppercase tracking-wider">Schedule Eye Examination</h3>
+                            <p class="text-[11px] text-slate-400">Dr. Nitish Kathuria • Udaipur Facility</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Wizard container -->
+                <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="p-6 space-y-4">
+                    
+                    <!-- Form Input Group 1 -->
+                    <div>
+                        <label for="treatmentType" class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Select Consultation Subject *</label>
+                        <select id="treatmentType" required class="w-full p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-clinic-blue/20">
+                            <option value="Cataract Surgery">Micro-Incision Cataract Surgery (MICS)</option>
+                            <option value="Cornea Treatment">Cornea & Keratoconus Care</option>
+                            <option value="LASIK Surgery">LASIK & Refractive Glasses Removal</option>
+                            <option value="Dry Eye treatment">Dry Eye Diagnostic Therapy</option>
+                            <option value="Routine Examination">Routine Computerized Examination</option>
+                            <option value="Emergency Eye Care">Emergency Checkup</option>
+                        </select>
+                    </div>
+
+                    <!-- Row Date & Time -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="bookingDate" class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Preferred Date *</label>
+                            <input type="date" id="bookingDate" required class="w-full p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-clinic-blue/20">
+                        </div>
+                        <div>
+                            <label for="bookingTime" class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Preferred Slot *</label>
+                            <select id="bookingTime" required class="w-full p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-clinic-blue/20">
+                                <option value="Morning Slot (10:00 AM - 01:00 PM)">Morning (10 - 1)</option>
+                                <option value="Afternoon Slot (02:00 PM - 05:00 PM)">Afternoon (2 - 5)</option>
+                                <option value="Evening Slot (05:00 PM - 07:00 PM)">Evening (5 - 7)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Patient Particulars -->
+                    <div>
+                        <label for="patientName" class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Patient Full Name *</label>
+                        <input type="text" id="patientName" required placeholder="Enter Full Name" class="w-full p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-clinic-blue/20">
+                    </div>
+
+                    <div>
+                        <label for="patientPhone" class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Mobile Number *</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3.5 text-xs font-semibold text-slate-400">+91</span>
+                            <input type="tel" id="patientPhone" required pattern="[0-9]{10}" placeholder="99281 23232" class="w-full pl-12 pr-3.5 py-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-clinic-blue/20">
+                        </div>
+                        <p class="text-[9px] text-slate-400 mt-1">A direct booking slip confirmation will be sent via WhatsApp & SMS.</p>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="pt-4 border-t border-slate-100 flex gap-3">
+                        <button type="button" onclick="closeBookingModal()" class="w-1/2 py-3.5 border border-slate-200 text-slate-500 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition">
+                            Dismiss
+                        </button>
+                        <button type="submit" class="w-1/2 py-3.5 bg-clinic-blue hover:bg-clinic-deep text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md transition">
+                            Submit Request
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Successful Submission layout screen -->
+                <div id="bookingSuccessBox" class="hidden p-8 text-center space-y-4">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-check-circle"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-clinic-deep">Appointment Requested</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Thank you, <strong id="successPatientName" class="text-slate-800">Patient</strong>. Your consultation request for <strong id="successTreatmentType" class="text-slate-800">Treatment</strong> is successfully compiled for <strong id="successDate" class="text-slate-800">Date</strong>.
+                    </p>
+                    <div class="bg-clinic-goldLight p-3.5 rounded-xl border border-clinic-gold/20 text-[10px] text-slate-600 leading-relaxed">
+                        <i class="fa-solid fa-circle-check text-clinic-gold mr-1"></i> A support coordinator from Meera Nagar clinic will contact you shortly to lock the slot.
+                    </div>
+                    <button onclick="closeBookingModal()" class="w-full py-3.5 bg-clinic-deep text-white rounded-xl text-xs font-bold uppercase tracking-widest">
+                        Perfect, Dismiss
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic minimum date to today
+        window.addEventListener('load', () => {
+            const dateInput = document.getElementById('bookingDate');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        });
+
+        // Toggle Responsive Menus
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fa-solid fa-xmark text-2xl';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fa-solid fa-bars-staggered text-2xl';
+            }
+        }
+
+        // Open Appointment Modal
+        function openBookingModal(category = '') {
+            const modal = document.getElementById('bookingModal');
+            const selectEl = document.getElementById('treatmentType');
+            
+            if (category && selectEl) {
+                selectEl.value = category;
+            }
+
+            document.getElementById('bookingForm').classList.remove('hidden');
+            document.getElementById('bookingSuccessBox').classList.add('hidden');
+            modal.classList.remove('hidden');
+        }
+
+        // Close Appointment Modal
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+        }
+
+        // Handle Appointment Form Submit
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('patientName').value;
+            const category = document.getElementById('treatmentType').value;
+            const date = document.getElementById('bookingDate').value;
+            
+            document.getElementById('successPatientName').textContent = name;
+            document.getElementById('successTreatmentType').textContent = category;
+            document.getElementById('successDate').textContent = date;
+
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('bookingSuccessBox').classList.remove('hidden');
+        }
+
+        // Accordion utility
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.className = 'fa-solid fa-chevron-up text-xs text-clinic-teal transition-transform duration-200';
+            } else {
+                content.classList.add('hidden');
+                icon.className = 'fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200';
+            }
+        }
+
+        // Switch Bio Tab Profile
+        function switchBioTab(tabId) {
+            const tabs = document.querySelectorAll('.bio-tab-btn');
+            const panels = document.querySelectorAll('.bio-content-panel');
+            
+            tabs.forEach(t => {
+                t.classList.remove('text-clinic-blue', 'border-clinic-blue');
+                t.classList.add('text-slate-400', 'hover:text-slate-600');
+            });
+            panels.forEach(p => p.classList.add('hidden'));
+
+            const targetBtn = document.getElementById(`tabBtn-${tabId}`);
+            if (targetBtn) {
+                targetBtn.classList.remove('text-slate-400', 'hover:text-slate-600');
+                targetBtn.classList.add('text-clinic-blue', 'border-clinic-blue');
+            }
+            
+            const targetContent = document.getElementById(`tabContent-${tabId}`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+        }
+
+        // Interactive Diagnosis Checklist logic
+        let selectedSymptomsCount = 0;
+        let indicatedSeverity = 0;
+
+        function toggleDiagnosisSymptom(button, symptom, scoreWeight) {
+            const icon = button.querySelector('i');
+            const active = button.classList.contains('border-clinic-gold');
+            
+            if (!active) {
+                // Activate symptom button
+                button.classList.remove('border-slate-100', 'bg-slate-50');
+                button.classList.add('border-clinic-gold', 'bg-clinic-goldLight');
+                icon.className = 'fa-solid fa-circle-check text-clinic-gold text-base';
+                indicatedSeverity += scoreWeight;
+                selectedSymptomsCount++;
+            } else {
+                // Deactivate symptom button
+                button.classList.add('border-slate-100', 'bg-slate-50');
+                button.classList.remove('border-clinic-gold', 'bg-clinic-goldLight');
+                icon.className = 'fa-regular fa-square text-slate-300 text-base';
+                indicatedSeverity -= scoreWeight;
+                selectedSymptomsCount--;
+            }
+
+            // Bind values to UI
+            const finalSeverity = Math.min(100, Math.max(0, indicatedSeverity));
+            const bar = document.getElementById('severityBar');
+            const label = document.getElementById('severityPercentLabel');
+            const textPanel = document.getElementById('diagnosticOutcomeText');
+
+            bar.style.width = `${finalSeverity}%`;
+            label.textContent = `${finalSeverity}%`;
+
+            if (selectedSymptomsCount === 0) {
+                textPanel.className = "p-5 rounded-2xl bg-clinic-slateLight border border-slate-100 text-center text-slate-500 text-xs leading-relaxed";
+                textPanel.innerHTML = "Please select one or more symptoms above to view immediate clinical evaluation details.";
+            } else if (finalSeverity <= 35) {
+                textPanel.className = "p-5 rounded-2xl bg-amber-50 border border-amber-200 text-slate-700 text-xs text-left leading-relaxed";
+                textPanel.innerHTML = `<span class="font-bold text-slate-800">Mild Indicators Detected:</span> Early signs of progressive cataract lens clouding or standard ocular dry fatigue are present. Monitor your vision or schedule a routine physical mapping soon.`;
+            } else {
+                textPanel.className = "p-5 rounded-2xl bg-rose-50 border border-rose-200 text-slate-700 text-xs text-left leading-relaxed";
+                textPanel.innerHTML = `<span class="font-bold text-slate-800">Critical Clinical Alert:</span> Multiple highly definitive symptoms (Score ${finalSeverity}%) suggest advanced cataract progress or refractive issues. Schedule an immediate examination with Dr. Nitish Kathuria in Udaipur to secure clarity.`;
+            }
+        }
+
+        // High-Fidelity Split Comparative Slider mechanics
+        const container = document.getElementById('splitSliderContainer');
+        const overlay = document.getElementById('blurredVisualLayer');
+        const handle = document.getElementById('splitSliderHandle');
+        const statusLabel = document.getElementById('statusLabel');
+        const statusIndicatorBar = document.getElementById('statusIndicatorBar');
+        const statusDescription = document.getElementById('statusDescription');
+
+        let isDragging = false;
+
+        function setSliderPosition(x) {
+            const rect = container.getBoundingClientRect();
+            let pos = (x - rect.left) / rect.width;
+            
+            // Boundary constraints
+            if (pos < 0) pos = 0;
+            if (pos > 1) pos = 1;
+
+            const percent = pos * 100;
+            overlay.style.width = `${percent}%`;
+            handle.style.left = `${percent}%`;
+
+            // Dynamic text feedback linking user interactions with real health data
+            statusIndicatorBar.style.width = `${percent}%`;
+            
+            if (percent < 30) {
+                statusLabel.textContent = "Surgical Success";
+                statusLabel.className = "text-emerald-500 uppercase";
+                statusDescription.textContent = "Crisp clarity restored. Normal reading and night driving parameters unlocked.";
+            } else if (percent >= 30 && percent < 70) {
+                statusLabel.textContent = "Early Cataract";
+                statusLabel.className = "text-clinic-gold uppercase";
+                statusDescription.textContent = "Minor yellowish hue, subtle light sensitivity under direct reading spots.";
+            } else {
+                statusLabel.textContent = "Severe Blur";
+                statusLabel.className = "text-rose-600 uppercase";
+                statusDescription.textContent = "Heavily dimmed contours, night glares and halos around active headlights.";
+            }
+        }
+
+        // Event listeners for dragging comparative slider
+        container.addEventListener('mousedown', () => { isDragging = true; });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+        
+        container.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.clientX);
+        });
+
+        // Mobile responsive swipe touch indicators
+        container.addEventListener('touchstart', () => { isDragging = true; });
+        window.addEventListener('touchend', () => { isDragging = false; });
+        
+        container.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.touches[0].clientX);
+        });
+
+        // Initialize Split-Slider at 50%
+        window.onload = function() {
+            setSliderPosition(container.getBoundingClientRect().left + (container.getBoundingClientRect().width / 2));
+        };
+    </script>
+</body>
+</html>
